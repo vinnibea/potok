@@ -1,6 +1,5 @@
 <script setup>
 import SearchInputVue from './SearchInput.vue';
-import img_1 from '~/assets/fly.jpeg';
 
 const subMenuItems = [
     {
@@ -193,11 +192,8 @@ watch(iconRef, (prev, what) => {
 })
 
 onMounted(() => {
-
-    console.log(iconRef.value)
     document.addEventListener('click', (event) => {
         if (!showDropDown.value) return;
-        console.log(event.target.classList)
         if (!Array.from(event.target.classList).includes('navbar-link') && !Array.from(event.target.classList).includes('drop-down-half')) {
 
             showDropDown.value = false;

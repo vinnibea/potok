@@ -89,7 +89,6 @@ const counter = (i) => {
 const onShowMobileMenu = () => {
     showMobile.value = true;
     document.body.style = "overflowY: hidden; max-height: 100vh; scroll: hidden; position: fixed; left: 0; right: 0; "
-    document.body.attributes = "scroll = `no`"
 }
 
 const onHideMobileMenu = (status) => {
@@ -99,7 +98,7 @@ const onHideMobileMenu = (status) => {
 
 const activeArticle = ref(0);
 
-const { width: windowWidth } = useWindowSize()
+// const { width: windowWidth } = useWindowSize()
 let timer;
 // onMounted(() => {
 //     timer = setInterval(() => {
@@ -150,7 +149,7 @@ watch(mainSwipe, (answer) => {
             </div>
             <header ref="headerRef" class="header" :class="[
                 {
-                    'header-collapsed': hideHeader && isVisible,
+                    'header-collapsed': hideHeader,
                     'header-isVisible': !isVisible,
                 }
 
@@ -436,9 +435,7 @@ watch(mainSwipe, (answer) => {
 </template>
 
 <style>
-body {
-    background-color: red;
-}
+
 .hero-row {
     padding: 8px 12px 48px;
 }

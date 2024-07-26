@@ -8,15 +8,10 @@ const props = defineProps({
         default: false,
     }
 })
-const shouldShowSearchOnMobile = ref(true);
 const onCloseSearch = (e) => {
     emit('closeSearch')
 }
 
-
-const onMobileOpened = () => {
-    shouldShowSearchOnMobile.value = true;
-}
 const listener = (e) => {
     if(props.isMobile) {
         return;
