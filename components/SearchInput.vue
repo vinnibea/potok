@@ -108,6 +108,7 @@ span.input-icon {
     border: none;
     height: 100%;
     padding-right: 120px;
+    box-shadow: 1px 1px 4px rgba(72, 72, 72, 0.181);
 }
 .input.search-input:focus {
     outline: none;
