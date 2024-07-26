@@ -101,24 +101,24 @@ const activeArticle = ref(0);
 
 const { width: windowWidth } = useWindowSize()
 let timer;
-onMounted(() => {
-    timer = setInterval(() => {
-        if (activeArticle.value >= 2) {
-            activeArticle.value = 0;
-            return;
-        }
-        activeArticle.value++;
+// onMounted(() => {
+//     timer = setInterval(() => {
+//         if (activeArticle.value >= 2) {
+//             activeArticle.value = 0;
+//             return;
+//         }
+//         activeArticle.value++;
 
-    }, 10000)
-});
+//     }, 10000)
+// });
 
-watch(windowWidth, (v) => {
-    if (v < 1200) {
-        clearTimeout(timer);
-    }
-})
+// watch(windowWidth, (v) => {
+//     if (v < 1200) {
+//         clearTimeout(timer);
+//     }
+// })
 const setActiveArticle = (i) => {
-    clearTimeout(timer)
+    // clearTimeout(timer)
     activeArticle.value = i;
 }
 
