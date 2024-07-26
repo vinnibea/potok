@@ -88,11 +88,11 @@ const counter = (i) => {
 
 const onShowMobileMenu = () => {
     showMobile.value = true;
-    document.body.style = "overflowY: hidden; max-height: 100vh; scroll: hidden; position: fixed; left: 0; right: 0; "
+    document.body.style = "overflowY: hidden; max-height: auto; scroll: hidden; position: fixed; left: 0; right: 0; "
 }
 
 const onHideMobileMenu = (status) => {
-    document.body.style = "overflowY: hidden; max-height: 100vh; position: static;"
+    document.body.style = "overflowY: hidden; min-height: 100vh; position: static;"
     showMobile.value = false;
 }
 
@@ -544,7 +544,7 @@ p.subtitle {
 
 .container.main-container {
 
-    min-height: 100vh;
+ min-height: 100dvh;
 }
 
 .navbar-additional {
@@ -581,9 +581,6 @@ p.subtitle {
     display: none;
 }
 
-body {
-    min-height: 100vh;
-}
 
 .navbar-burger {
     color: white;
@@ -658,7 +655,6 @@ article.box {
 }
 
 .header {
-    background-color: rgb(126, 126, 126);
     transition: all 0.3s ease;
 }
 
@@ -669,7 +665,7 @@ article.box {
 .container.main-container {
     justify-content: flex-end;
     filter: grayscale(0.6);
-    background-color: rgba(22, 22, 22, 0.882);
+    
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -693,7 +689,6 @@ header.header {
     right: 0;
     left: 0;
     position: absolute;
-    background-color: rgba(175, 17, 17, 0.45);
     backdrop-filter: blur(8px);
 }
 
@@ -710,7 +705,6 @@ header.header {
 .hero.is-fullheight-with-navbar {
 
     box-shadow: 0px 2px 22px rgba(175, 70, 70, 0.2);
-    min-height: 100vh;
 }
 
 @media screen and (max-width: 700px) {
@@ -848,7 +842,7 @@ header.header {
         background-color: white;
         top: 0;
         bottom: 0;
-        min-height: 100vh;
+        
     }
 
 
