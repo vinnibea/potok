@@ -5,6 +5,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/icon', '@vueuse/nuxt', ['@nuxt/image', {
     provider: 'static',
     dir: "assets/",
-}], "@nuxt/image"]
+}]]
     
 })
