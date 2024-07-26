@@ -58,11 +58,11 @@ watch(isSwiping, (answer) => {
 
 const heroRef = ref(null)
 const headerRef = ref(null);
-const isVisible = useElementVisibility(heroRef);
-const { width, height } = useElementSize(headerRef)
+// const isVisible = useElementVisibility(heroRef);
+// const { width, height } = useElementSize(headerRef)
 
 const hideHeader = ref(false);
-const headRef = ref(null);
+// const headRef = ref(null);
 // const { stop } = useIntersectionObserver(
 //     headRef,
 //     ([{ isIntersecting }], observerElement) => {
@@ -147,13 +147,13 @@ watch(mainSwipe, (answer) => {
 
                 <MobileMenu :showModal="showMobile" @onClose="onHideMobileMenu"></MobileMenu>
             </div>
-
+            <!-- {
+                'header-collapsed': hideHeader,
+                'header-isVisible': !isVisible,
+            } -->
             <!-- ref="headerRef" -->
             <header  class="header" :class="[
-                {
-                    'header-collapsed': hideHeader,
-                    'header-isVisible': !isVisible,
-                }
+               
 
             ]">
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
