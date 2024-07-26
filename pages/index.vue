@@ -420,7 +420,7 @@ const setActiveArticle = (i) => {
                 </div>
 
             </header>
-         ]
+     
             <stream></stream>
             <div class="is-flex is-flex-direction-column">
                 <show-biz></show-biz>
