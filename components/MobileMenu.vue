@@ -167,7 +167,6 @@ const onCloseModal = () => {
             <info-top @closeModal="onCloseModal" :mobile="true"></info-top>
             <search-input :isMobile="true"></search-input>
             <section class="modal-card-body hero is-fullheight">
-                <!-- Content ... -->
                 <div class="columns px-2 py-2">
                     <div class="column column-mobile">
                         <a v-for="item in mobileItems" class="navbar-item has-text-black nav-item-mobile"

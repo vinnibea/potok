@@ -1,5 +1,6 @@
 <script setup>
 import SearchInputVue from './SearchInput.vue';
+import img_1 from '~/assets/fly.jpeg';
 
 const subMenuItems = [
     {

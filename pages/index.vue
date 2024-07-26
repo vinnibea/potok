@@ -1,5 +1,7 @@
 <script setup>
-import backgroundUrl from '~/assets/fly.jpeg'
+import backgroundUrl from '~/assets/fly.jpeg';
+import backgroundUrl2 from '~/assets/s2.jpg';
+import backgroundUrl3 from '~/assets/s3.jpg';
 import HeaderTopVue from '~/components/HeaderTop.vue';
 import NavVue from '~/components/Nav.vue';
 import MobileMenu from '~/components/MobileMenu.vue';
@@ -8,26 +10,28 @@ import { useResizeObserver } from '@vueuse/core'
 import { useElementVisibility } from '@vueuse/core'
 import { useElementSize } from '@vueuse/core'
 import { useWindowSize } from '@vueuse/core'
+
+
+
 const mainData = [{
     title: 'ЕС ужесточил въезд для туристов из-за штаммов COVID-19',
     link: '/es-uzhestochil-vezd-dlya-turistov-iz-za-shtammov-covid-19.html',
-    img: '/_nuxt/assets/fly.jpeg',
+    img: backgroundUrl,
     content: 'Еврокомиссия внесла изменения в требования для въезда туристов из стран, не входящих в ЕС, и обновила критерии для стран содружества, которые стремятся снять карантинные ограничения. Об этом информирует ответственная пресс-служба учреждения…',
 }, {
     title: 'В Крым едет миссия Совета Европы по правам человека﻿',
     link: '/href="/ukraine/115450-v-krym-edet-missiya-soveta-evropy-po-pravam-cheloveka.html',
-    img: '/_nuxt/assets/s2.jpg',
+    img: backgroundUrl2,
     content: 'В понедельник, 25 января 2024 года, Генеральный секретарь Совета Европы Турбьерн Ягланд объявил о начале работы делегации в аннексированном Россией Крыму, которая оценит ситуацию с правами человека на полуострове. Об этом говорится…',
 },
 {
     title: 'Лондонский суд: возможна причастность Путина к убийству Литвиненко',
     link: '/mirovie-novoti/115412-londonskij-sud-vozmozhna-prichastnost-putina-k-ubijstvu-litvinenko.html',
-    img: '/_nuxt/assets/s3.jpg',
+    img: backgroundUrl3,
     content: 'Королевский суд Лондона заявил, что убийство экс-офицера ФСБ Александра Литвиненко возможно было одобрено президентом России Владимиром Путиным. Об этом говорится в докладе, с которым выступил на заседании Палаты общин судья сэр Роберт Оуэн, передает…',
 }]
 
 const el = ref(null)
-const text = ref('')
 const carouselRef = ref(null);
 const swipeMainRef = ref(null);
 const { isSwiping, direction } = useSwipe(carouselRef);
@@ -62,17 +66,10 @@ const headRef = ref(null);
 const { stop } = useIntersectionObserver(
     headRef,
     ([{ isIntersecting }], observerElement) => {
-        console.log(isIntersecting, observerElement)
-        setTimeout(() => {
+      
             hideHeader.value = isIntersecting
-        }, 500);
     },
 )
-
-const activeTitle = ref(0)
-const onActive = (i) => {
-    activeTitle.value = i;
-}
 
 const showMobile = ref(false);
 // menu items < a href = "/prikol-dnya" > Прикол дня</a >
