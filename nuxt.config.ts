@@ -3,6 +3,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/icon', '@vueuse/nuxt'],
 ssr: true,
 css: [
-  '@/assets/bulma.scss',
+  '~/assets/bulma.scss',
 ],
 })
