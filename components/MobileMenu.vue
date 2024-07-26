@@ -235,7 +235,7 @@ a.nav-item-mobile:hover {
 
 .modal-card {
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 100svh;
     padding-top: 0px;
 
 }
@@ -255,7 +255,7 @@ a.nav-item-mobile:hover {
     }
 
     .hero.is-fullheight {
-        min-height: 100vh;
+        min-height: 100svh;
     }
 
     .modal-card-foot {

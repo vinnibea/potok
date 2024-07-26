@@ -312,7 +312,6 @@ onMounted(() => {
 
 .navbar.navbar-relative {
     position: relative;
-    background-color: rgba(104, 1, 1, 0.368);
     backdrop-filter: blur(8px);
 }
 

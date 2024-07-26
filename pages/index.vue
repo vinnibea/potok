@@ -438,12 +438,13 @@ const setActiveArticle = (i) => {
     display: flex;
     flex-wrap: nowrap;
     cursor: pointer;
-    padding: 4px;
-    border-left: 4px solid red;
+    padding: 0px 2px;
+    border-left: 14px solid rgba(212, 212, 212, 0.252);
+    justify-content:
 }
 
 .content-fresh-wrapper.is-active {
-    background-color: rgba(24, 24, 24, 0.778);
+    background-color: rgba(112, 112, 112, 0.778);
     box-shadow: 2px 2px 22px rgba(36, 36, 36, 0.3);
 }
 
@@ -465,6 +466,7 @@ const setActiveArticle = (i) => {
     margin: 0 auto;
     max-height: 100%;
     z-index: 10;
+    background-color: rgba(39, 39, 39, 0.202);
 }
 
 img.img-top {
@@ -493,11 +495,9 @@ img.img-top {
 }
 
 .hero-fresh-content .title {
-    color: rgb(223, 223, 223);
     margin: 0 auto;
-    font-size: 1.5rem;
-    min-height: 120px;
-    text-align: left;
+    font-size: 1rem;
+    text-align: center;
     flex: 1;
 }
 
@@ -511,10 +511,6 @@ img.img-top {
     border-radius: 4px;
 }
 
-.subtitle {
-    background-color: rgba(244, 244, 244, 0);
-
-}
 
 .carusel-mobile {
     display: none;
@@ -533,8 +529,9 @@ p.subtitle {
     color: #333;
     font-size: 16px;
     padding-left: 8px;
-
-    backdrop-filter: blur(8px);
+   border-top: 1px solid;
+   border-bottom: 1px solid;
+   border-radius: 0;
 }
 
 .container.content-container {
@@ -544,7 +541,7 @@ p.subtitle {
 
 .container.main-container {
 
- min-height: 100dvh;
+ min-height: 100svh;
 }
 
 .navbar-additional {
@@ -558,7 +555,7 @@ p.subtitle {
 }
 
 .navbar-additional .navbar-item {
-    background-color: rgba(196, 196, 196, 0);
+    background-color: rgba(155, 155, 155, 0);
     text-transform: uppercase;
 
 }
@@ -596,9 +593,11 @@ p.subtitle {
 }
 
 section.hero.hero-fresh {
-    gap: 12px;
+    background-color: rgba(87, 87, 87, 0.239);
+    gap: 24px;
     flex: 1;
     flex-direction: row;
+    backdrop-filter: blur(8px);
 }
 
 article.box {
