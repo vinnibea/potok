@@ -436,6 +436,9 @@ watch(mainSwipe, (answer) => {
 </template>
 
 <style>
+body {
+    background-color: red;
+}
 .hero-row {
     padding: 8px 12px 48px;
 }
@@ -600,7 +603,7 @@ p.subtitle {
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: red;
     min-height: 100vh;
 }
 
