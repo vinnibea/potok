@@ -5,11 +5,11 @@ import backgroundUrl3 from '~/assets/s3.jpg';
 import HeaderTopVue from '~/components/HeaderTop.vue';
 import NavVue from '~/components/Nav.vue';
 import MobileMenu from '~/components/MobileMenu.vue';
-import { useIntersectionObserver } from '@vueuse/core'
-import { useResizeObserver } from '@vueuse/core'
-import { useElementVisibility } from '@vueuse/core'
-import { useElementSize } from '@vueuse/core'
-import { useWindowSize } from '@vueuse/core'
+// import { useIntersectionObserver } from '@vueuse/core'
+// import { useResizeObserver } from '@vueuse/core'
+// import { useElementVisibility } from '@vueuse/core'
+// import { useElementSize } from '@vueuse/core'
+// import { useWindowSize } from '@vueuse/core'
 
 
 
