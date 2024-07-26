@@ -100,24 +100,24 @@ const activeArticle = ref(0);
 
 const { width: windowWidth } = useWindowSize()
 let timer;
-// onMounted(() => {
-//     timer = setInterval(() => {
-//         if (activeArticle.value >= 2) {
-//             activeArticle.value = 0;
-//             return;
-//         }
-//         activeArticle.value++;
+onMounted(() => {
+    timer = setInterval(() => {
+        if (activeArticle.value >= 2) {
+            activeArticle.value = 0;
+            return;
+        }
+        activeArticle.value++;
 
-//     }, 10000)
-// });
+    }, 10000)
+});
 
-// watch(windowWidth, (v) => {
-//     if (v < 1200) {
-//         clearTimeout(timer);
-//     }
-// })
+watch(windowWidth, (v) => {
+    if (v < 1200) {
+        clearTimeout(timer);
+    }
+})
 const setActiveArticle = (i) => {
-    // clearTimeout(timer)
+    clearTimeout(timer)
     activeArticle.value = i;
 }
 
@@ -289,11 +289,11 @@ const setActiveArticle = (i) => {
                     {{ mainData[activeArticle].title }}
                 </h1>
                 <div class="hero-row">
-                    <!-- @click="setActiveArticle(i)" :class="[{
-                        'is-active': i === activeArticle,
-                    }]" -->
+                    
                     <section class="hero hero-fresh">
-                        <div class="content-fresh-wrapper" v-for="(data) in mainData" :key="data.img"
+                        <div class="content-fresh-wrapper" v-for="(data, i) in mainData" :key="data.img" @click="setActiveArticle(i)" :class="[{
+                            'is-active': i === activeArticle,
+                        }]"
               >
                             <article class="hero-fresh-content">
                                 <h1 class="title">
@@ -419,9 +419,9 @@ const setActiveArticle = (i) => {
 
             </header>
             <stream></stream>
-            <!-- <div class="is-flex is-flex-direction-column">
+            <div class="is-flex is-flex-direction-column">
                 <show-biz></show-biz>
-            </div> -->
+            </div>
 
         </div>
 
@@ -438,14 +438,12 @@ const setActiveArticle = (i) => {
     display: flex;
     flex-wrap: nowrap;
     cursor: pointer;
-    padding: 0px 2px;
-    border-left: 14px solid rgba(212, 212, 212, 0.252);
-    justify-content:
+    border-left: 4px solid red;
 }
 
 .content-fresh-wrapper.is-active {
-    background-color: rgba(112, 112, 112, 0.778);
-    box-shadow: 2px 2px 22px rgba(36, 36, 36, 0.3);
+    
+    box-shadow: 2px 2px 22px rgba(157, 157, 157, 0.3);
 }
 
 .header-hidden {
@@ -489,8 +487,7 @@ img.img-top {
 .hero-fresh-content {
     align-content: baseline;
     justify-content: space-around;
-    display: flex;
-    flex-direction: column;
+   
 
 }
 
@@ -499,6 +496,8 @@ img.img-top {
     font-size: 1rem;
     text-align: center;
     flex: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.35);
 }
 
 .hero-fresh-content .subtitle {
@@ -508,7 +507,6 @@ img.img-top {
     text-align: justify;
     color: white;
     padding: 4px 12px;
-    border-radius: 4px;
 }
 
 
@@ -530,9 +528,7 @@ p.subtitle {
     color: #333;
     font-size: 16px;
     padding-left: 8px;
-   border-top: 1px solid;
-   border-bottom: 1px solid;
-   border-radius: 0;
+   border-top: 4px solid;
 }
 
 .container.content-container {
@@ -593,11 +589,11 @@ p.subtitle {
 }
 
 section.hero.hero-fresh {
-    background-color: rgba(87, 87, 87, 0.239);
-    gap: 24px;
     flex: 1;
     flex-direction: row;
+    gap: 4px;
     backdrop-filter: blur(8px);
+    
 }
 
 article.box {
@@ -621,7 +617,7 @@ article.box {
     font-size: 1.2rem;
     color: #eee;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgb(68, 68, 68);
+    text-shadow: 2px 2px 4px rgb(174, 172, 172);
 }
 
 .article-main .title {
@@ -736,7 +732,7 @@ header.header {
     }
 
     .selector-item-active {
-        background-color: rgb(255, 0, 0);
+        background-color: rgb(19, 12, 12);
     }
 }
 
@@ -752,14 +748,14 @@ header.header {
 }
 @media screen and (max-width: 1224px) {
      .hero-top {
-        padding: 140px 0 0;
+        padding: 42px 12px 42px;
      }
     .hero-top > h1.title {
-        display: block;
+        display: inline;
         min-width: 85%;
         max-width: 85%;
-        background-color: rgba(12, 12, 12, 0.333);
-        border-left: 12px solid red;
+        
+
     }
 
 
@@ -786,7 +782,7 @@ header.header {
     }
 
     .selector-item-active {
-        background-color: rgb(255, 0, 0);
+        background-color: rgb(111, 111, 111);
     }
 
 }

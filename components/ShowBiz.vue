@@ -44,9 +44,9 @@ const setActive = (i) => {
                         }
                     ]">
                     <a
-                        href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html"></a><br>
+                        href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html"></a>
                     <a href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">
-                        <img class="image is-1by3" src=""> </a>
+                        <img class="image is-1by3" src="../assets/fly.jpeg"> </a>
                     <h3 class="title is-6"><a
                             href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">Новости
                             шоу-бизнеса знаменитостей: последние сплетни, слухи 2024</a></h3>
@@ -59,7 +59,7 @@ const setActive = (i) => {
                     <a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">
 
                     </a>
-                    <br>
+                
                     <a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">
                         <img src="../assets/s2.jpg"></a><br>
                     <h3 class="title is-6"><a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">Потап развелся
@@ -71,7 +71,7 @@ const setActive = (i) => {
                         }
                     ]">
                     <a
-                        href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html"></a><br>
+                        href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html"></a>
                     <a href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html">
                         <img src="../assets/s3.jpg"></a><br>
                     <h3 class="title is-6"><a
@@ -79,13 +79,14 @@ const setActive = (i) => {
                             взломали телефон Ольги Бузовой: откровенные фото и переписка</a></h3>
 
                 </div>
-                <button class="button is-danger is-outlined">Показать больше</button>
+                <button class="button">Показать больше</button>
             </div>
         </div>
     </div>
 </template>
 
 <style>
+.show {display: flex;}
 .show-translate {
     transform: translateX(-120%);
 
@@ -115,33 +116,32 @@ div.img-wrapper {
 }
 
 .main_showbiz>div .img-wrapper img {
-    border-radius: 8px;
+    width: 100%;
     position: relative;
-    filter: blur(1px);
-    opacity: 0.8;
+    opacity: 1;
     border: 4px solid rgb(29, 29, 29);
 }
 
 .main_showbiz>div {
     position: relative;
+    
 }
 
 .show img {
     border-radius: 8px;
     padding: 4px;
-    max-width: 290px;
-    min-width: 290px;
-    height: 230px;
+    max-width: 180px;
+    min-width: 180px;
+    height: 120px;
 }
 
 .main_showbiz .show {
-    border-bottom: 1px solid rgba(98, 98, 98, 0.326);
+    border-bottom: 1px solid rgba(20, 20, 20, 0.326);
     padding: 4px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
     transition: all 0.3s ease;
+    align-items: flex-start;
 
 }
 
@@ -152,10 +152,11 @@ div.img-wrapper {
 
 .show-wrapper {
     padding: 8px;
+    background-color: rgba(52, 52, 52, 0.642);
 }
 .show-wrapper div .title {
-    padding: 0px 12px;
-    text-align: center;
+    padding: 8px;
+    color: white;
 }
 
 .show-wrapper > .title {
