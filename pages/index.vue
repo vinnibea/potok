@@ -46,14 +46,14 @@ watch(isSwiping, (answer) => {
 
 
 
-useResizeObserver(el, (entries) => {
-    const entry = entries[0];
-    const { width } = entry.contentRect;
-    if (width > 460) {
-        showMobile.value = false;
-        document.body.style = 'position: relative; overflow: hidden'
-    }
-})
+// useResizeObserver(el, (entries) => {
+//     const entry = entries[0];
+//     const { width } = entry.contentRect;
+//     if (width > 460) {
+//         showMobile.value = false;
+//         document.body.style = 'position: relative; overflow: hidden'
+//     }
+// })
 
 
 const heroRef = ref(null)
@@ -141,13 +141,15 @@ watch(mainSwipe, (answer) => {
 
     <div class="container hero is-fullheight-with-navbar"  ref="el">
         <div class="container main-container hero"
-            :style="{ backgroundImage: `url(${mainData[activeArticle].img})`, 'filter': 'grayscale(12px)' }">
+            :style="{ backgroundImage: `url(${mainData[activeArticle].img})`}">
 
             <div class="mobile-menu-wrapper">
 
                 <MobileMenu :showModal="showMobile" @onClose="onHideMobileMenu"></MobileMenu>
             </div>
-            <header ref="headerRef" class="header" :class="[
+
+            <!-- ref="headerRef" -->
+            <header  class="header" :class="[
                 {
                     'header-collapsed': hideHeader,
                     'header-isVisible': !isVisible,
@@ -333,8 +335,8 @@ watch(mainSwipe, (answer) => {
             </div>
         </div>
         <div ref="heroRef"></div>
-
-        <div class="container content-container columns" ref="headRef" :style="`padding-top: ${150}px`">
+        <!-- ref="headRef" -->
+        <div class="container content-container columns"  :style="`padding-top: ${150}px`">
             <header ref="headerRef" class="header header-hidden" :class="[
                 {
                     'header-isVisible': !isVisible && hideHeader,
@@ -489,18 +491,6 @@ img.img-top {
 
 }
 
-.article-control-button {
-    width: 18px;
-    height: 18px;
-    border: 1px solid white;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.article-control-button-active {
-    background-color: red;
-}
 
 .hero-fresh-content {
     align-content: baseline;
