@@ -160,7 +160,7 @@ const setActiveArticle = (i) => {
                 <HeaderTopVue />
                 <div class="carusel carusel-mobile" ref="carouselRef">
 
-                    <ul class="navbar navbar-additional">
+                    <ul class="navbar-additional">
                         <li class="navbar-item" :style="{
                 transform: `translate(${transitionFn}px)`
             }"> <a href="/srochno">Калейдоскоп новостей</a>
@@ -339,7 +339,7 @@ const setActiveArticle = (i) => {
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
 
                 <div class="carusel carusel-mobile">
-                    <ul class="navbar navbar-additional">
+                    <ul class="navbar-additional">
                         <li class="navbar-item" :style="{
                 transform: `translate(${transitionFn}px)`
             }"> <a href="/srochno">Калейдоскоп новостей</a>
@@ -521,7 +521,8 @@ img.img-top {
     display: none;
 }
 
-li.navbar-item {
+.navbar-additional.ul > li.navbar-item {
+    padding: 0;
     transition: all 0.3s ease;
 }
 
@@ -547,15 +548,14 @@ p.subtitle {
 .navbar-additional {
     backdrop-filter: none;
     box-shadow: none;
-    gap: 8px;
-    padding: 4px;
+    gap: 2px;
     display: flex;
     flex-wrap: wrap;
     z-index: 0;
 }
 
 .navbar-additional .navbar-item {
-    background-color: rgba(155, 155, 155, 0);
+    background-color: rgba(255, 255, 255, 0);
     text-transform: uppercase;
 
 }
@@ -814,10 +814,7 @@ header.header {
     .navbar-additional .navbar-item a {
         color: white;
         font-size: 10px;
-    }
-
-    .navbar-additional .navbar-item {
-        padding: 2px;
+        line-height: 1;
     }
 
     .hero-body h1 {
@@ -851,29 +848,29 @@ header.header {
     }
 
     .navbar-additional .navbar-item {
-        padding: 2px;
+       
     }
 
     .navbar-additional .navbar-item {
         max-width: 180px;
-        min-width: 180px;
+        min-width: 150px;
         text-align: center;
 
     }
 
     .carusel ul {
         position: relative;
-        color: white;
-        background-color: black;
+        color: rgb(247, 247, 247);
+        background-color: rgba(255, 255, 255, 0);
     }
 
     .carusel {
         display: flex;
         align-items: flex-start;
         position: relative;
-        background-color: rgba(88, 88, 88, 0.278);
-
+        background-color: rgba(82, 82, 82, 0.104);
         max-width: 100vw;
+        border-top: 1px solid rgba(255, 255, 255, 0.216);
     }
 
     .carusel .trigger-right {
@@ -881,7 +878,7 @@ header.header {
         color: white;
         top: 50%;
         font-size: 16px;
-        transform: translateY(-48%);
+        transform: translateY(-35%);
 
         right: 0px;
 
@@ -897,7 +894,7 @@ header.header {
         position: absolute;
         color: white;
         top: 50%;
-        transform: translateY(-48%);
+        transform: translateY(-35%);
         font-size: 16px;
 
 
@@ -932,7 +929,6 @@ header.header {
         flex-wrap: nowrap;
         overflow: hidden;
         align-items: center;
-        padding: 0 8px;
         position: relative;
     }
 

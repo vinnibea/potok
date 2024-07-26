@@ -59,9 +59,10 @@ defineProps({
 }
 
 .modal-footer-lang.info.mobile {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     color: black;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 4px 8px;
     gap: 24px;
 }
 
