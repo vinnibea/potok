@@ -63,13 +63,13 @@ const { width, height } = useElementSize(headerRef)
 
 const hideHeader = ref(false);
 const headRef = ref(null);
-const { stop } = useIntersectionObserver(
-    headRef,
-    ([{ isIntersecting }], observerElement) => {
+// const { stop } = useIntersectionObserver(
+//     headRef,
+//     ([{ isIntersecting }], observerElement) => {
       
-            hideHeader.value = isIntersecting
-    },
-)
+//             hideHeader.value = isIntersecting
+//     },
+// )
 
 const showMobile = ref(false);
 // menu items < a href = "/prikol-dnya" > Прикол дня</a >
