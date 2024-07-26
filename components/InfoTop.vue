@@ -5,7 +5,7 @@ defineProps({
         type: Boolean,
         default: false,
     }
-})
+});
 </script>
 <template>
     <span class="modal-footer-lang info" :class="[{
@@ -52,16 +52,17 @@ defineProps({
     display: none;
     padding: 20px;
 }
+
 .modal-footer-lang.info {
     gap: 12px;
     padding: 2px 4px;
 }
 
 .modal-footer-lang.info.mobile {
- background-color: white;
- color: black;
- justify-content: space-evenly;
- gap: 24px;
+    background-color: white;
+    color: black;
+    justify-content: space-evenly;
+    gap: 24px;
 }
 
 .info-dual {
@@ -109,6 +110,7 @@ defineProps({
         float: right;
         display: block;
     }
+
     .info-dual {
         display: flex;
         flex-direction: column;

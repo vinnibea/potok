@@ -46,7 +46,7 @@ const setActive = (i) => {
                     <a
                         href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html"></a><br>
                     <a href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">
-                        <img class="image is-1by3" src="../assets/s1.jpg"> </a>
+                        <img class="image is-1by3" src=""> </a>
                     <h3 class="title is-6"><a
                             href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">Новости
                             шоу-бизнеса знаменитостей: последние сплетни, слухи 2024</a></h3>
