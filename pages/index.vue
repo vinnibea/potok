@@ -336,12 +336,14 @@ watch(mainSwipe, (answer) => {
         </div>
         <div ref="heroRef"></div>
         <!-- ref="headRef" -->
+<!-- 
+        {
+            'header-isVisible': !isVisible && hideHeader,
+        } -->
+
         <div class="container content-container columns"  :style="`padding-top: ${150}px`">
             <header ref="headerRef" class="header header-hidden" :class="[
-                {
-                    'header-isVisible': !isVisible && hideHeader,
-                }
-
+               
             ]">
                 <HeaderTopVue />
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
