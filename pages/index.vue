@@ -34,14 +34,14 @@ const mainData = [{
 const el = ref(null)
 const carouselRef = ref(null);
 const swipeMainRef = ref(null);
-const { isSwiping, direction } = useSwipe(carouselRef);
-const { isSwiping: mainSwipe, direction: mainDirection } = useSwipe(swipeMainRef);
+// const { isSwiping, direction } = useSwipe(carouselRef);
+// const { isSwiping: mainSwipe, direction: mainDirection } = useSwipe(swipeMainRef);
 
-watch(isSwiping, (answer) => {
-    if (answer) {
-        counter(direction.value === 'left' ? -1 : 1);
-    }
-})
+// watch(isSwiping, (answer) => {
+//     if (answer) {
+//         counter(direction.value === 'left' ? -1 : 1);
+//     }
+// })
 
 
 
@@ -121,19 +121,19 @@ const setActiveArticle = (i) => {
     activeArticle.value = i;
 }
 
-watch(mainSwipe, (answer) => {
-    if (answer) {
-        if(activeArticle.value === 2 && mainDirection.value === 'right' ) {
-         activeArticle.value = 0
-         return;
-        };
-        if(activeArticle.value === 0 && mainDirection.value === 'left') {
-            activeArticle.value = 2
-            return 
-        };
-        setActiveArticle(mainDirection.value === 'left' ? activeArticle.value += -1 :  activeArticle.value +=1);
-    }
-})
+// watch(mainSwipe, (answer) => {
+//     if (answer) {
+//         if(activeArticle.value === 2 && mainDirection.value === 'right' ) {
+//          activeArticle.value = 0
+//          return;
+//         };
+//         if(activeArticle.value === 0 && mainDirection.value === 'left') {
+//             activeArticle.value = 2
+//             return 
+//         };
+//         setActiveArticle(mainDirection.value === 'left' ? activeArticle.value += -1 :  activeArticle.value +=1);
+//     }
+// })
 
 </script>
 
@@ -289,12 +289,12 @@ watch(mainSwipe, (answer) => {
                     {{ mainData[activeArticle].title }}
                 </h1>
                 <div class="hero-row">
-
+                    <!-- @click="setActiveArticle(i)" :class="[{
+                        'is-active': i === activeArticle,
+                    }]" -->
                     <section class="hero hero-fresh">
-                        <div class="content-fresh-wrapper" v-for="(data, i) in mainData" :key="data.img"
-                            @click="setActiveArticle(i)" :class="[{
-                'is-active': i === activeArticle,
-            }]">
+                        <div class="content-fresh-wrapper" v-for="(data) in mainData" :key="data.img"
+              >
 
 
                             <article class="hero-fresh-content">
