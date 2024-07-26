@@ -5,11 +5,11 @@ import backgroundUrl3 from '~/assets/s3.jpg';
 import HeaderTopVue from '~/components/HeaderTop.vue';
 import NavVue from '~/components/Nav.vue';
 import MobileMenu from '~/components/MobileMenu.vue';
-// import { useIntersectionObserver } from '@vueuse/core'
-// import { useResizeObserver } from '@vueuse/core'
-// import { useElementVisibility } from '@vueuse/core'
-// import { useElementSize } from '@vueuse/core'
-// import { useWindowSize } from '@vueuse/core'
+import { useIntersectionObserver } from '@vueuse/core'
+import { useResizeObserver } from '@vueuse/core'
+import { useElementVisibility } from '@vueuse/core'
+import { useElementSize } from '@vueuse/core'
+import { useWindowSize } from '@vueuse/core'
 
 
 
@@ -46,30 +46,30 @@ const swipeMainRef = ref(null);
 
 
 
-// useResizeObserver(el, (entries) => {
-//     const entry = entries[0];
-//     const { width } = entry.contentRect;
-//     if (width > 460) {
-//         showMobile.value = false;
-//         document.body.style = 'position: relative; overflow: hidden'
-//     }
-// })
+useResizeObserver(el, (entries) => {
+    const entry = entries[0];
+    const { width } = entry.contentRect;
+    if (width > 460) {
+        showMobile.value = false;
+        document.body.style = 'position: relative; overflow: hidden'
+    }
+})
 
 
 const heroRef = ref(null)
 const headerRef = ref(null);
-// const isVisible = useElementVisibility(heroRef);
-// const { width, height } = useElementSize(headerRef)
+const isVisible = useElementVisibility(heroRef);
+const { width, height } = useElementSize(headerRef)
 
 const hideHeader = ref(false);
-// const headRef = ref(null);
-// const { stop } = useIntersectionObserver(
-//     headRef,
-//     ([{ isIntersecting }], observerElement) => {
+const headRef = ref(null);
+const { stop } = useIntersectionObserver(
+    headRef,
+    ([{ isIntersecting }], observerElement) => {
       
-//             hideHeader.value = isIntersecting
-//     },
-// )
+            hideHeader.value = isIntersecting
+    },
+)
 
 const showMobile = ref(false);
 // menu items < a href = "/prikol-dnya" > Прикол дня</a >
@@ -98,7 +98,7 @@ const onHideMobileMenu = (status) => {
 
 const activeArticle = ref(0);
 
-// const { width: windowWidth } = useWindowSize()
+const { width: windowWidth } = useWindowSize()
 let timer;
 // onMounted(() => {
 //     timer = setInterval(() => {
@@ -147,14 +147,14 @@ const setActiveArticle = (i) => {
 
                 <MobileMenu :showModal="showMobile" @onClose="onHideMobileMenu"></MobileMenu>
             </div>
-            <!-- {
-                'header-collapsed': hideHeader,
-                'header-isVisible': !isVisible,
-            } -->
-            <!-- ref="headerRef" -->
-            <header  class="header" :class="[
-               
-
+           
+           
+            <header  class="header" ref="headerRef" :class="[
+                {
+                    'header-collapsed': hideHeader,
+                    'header-isVisible': !isVisible,
+                } 
+ 
             ]">
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
                 <HeaderTopVue />
@@ -295,8 +295,6 @@ const setActiveArticle = (i) => {
                     <section class="hero hero-fresh">
                         <div class="content-fresh-wrapper" v-for="(data) in mainData" :key="data.img"
               >
-
-
                             <article class="hero-fresh-content">
                                 <h1 class="title">
                                     {{ data.title }}
@@ -308,16 +306,8 @@ const setActiveArticle = (i) => {
                                     {{ data.content }}
 
                                 </p>
-
-
                             </article>
-
-
-
-
                         </div>
-
-
                     </section>
                 </div>
 
@@ -334,16 +324,16 @@ const setActiveArticle = (i) => {
 
             </div>
         </div>
-        <div ref="heroRef"></div>
-        <!-- ref="headRef" -->
-<!-- 
-        {
-            'header-isVisible': !isVisible && hideHeader,
-        } -->
+        <div ref="heroRef" ></div>
+        <!--  -->
 
-        <div class="container content-container columns"  :style="`padding-top: ${150}px`">
+
+        <div class="container content-container columns"  ref="headRef" :style="`padding-top: ${150}px`">
             <header ref="headerRef" class="header header-hidden" :class="[
                
+        {
+            'header-isVisible': !isVisible && hideHeader,
+        }
             ]">
                 <HeaderTopVue />
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
