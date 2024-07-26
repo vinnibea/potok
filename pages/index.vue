@@ -427,9 +427,9 @@ watch(mainSwipe, (answer) => {
 
             </header>
             <stream></stream>
-            <div class="is-flex is-flex-direction-column">
+            <!-- <div class="is-flex is-flex-direction-column">
                 <show-biz></show-biz>
-            </div>
+            </div> -->
 
         </div>
 
@@ -590,7 +590,6 @@ p.subtitle {
 }
 
 body {
-    background-color: red;
     min-height: 100vh;
 }
 
