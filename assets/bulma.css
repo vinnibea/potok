@@ -2,6 +2,7 @@
 /*! bulma.io v1.0.1 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 :root {
+  --my-red: rgb(89, 0, 0);
   --bulma-control-radius: var(--bulma-radius);
   --bulma-control-radius-small: var(--bulma-radius-small);
   --bulma-control-border-width: 1px;

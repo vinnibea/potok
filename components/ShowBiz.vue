@@ -47,9 +47,9 @@ const setActive = (i) => {
                         href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html"></a>
                     <a href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">
                         <img class="image is-1by3" src="../assets/fly.jpeg"> </a>
-                    <h3 class="title is-6"><a
+                    <h4 class="title is-6"><a
                             href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">Новости
-                            шоу-бизнеса знаменитостей: последние сплетни, слухи 2024</a></h3>
+                            шоу-бизнеса знаменитостей: последние сплетни, слухи 2024</a></h4>
                 </div>
                 <div class="show" :class="[
                         {
@@ -62,8 +62,8 @@ const setActive = (i) => {
                 
                     <a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">
                         <img src="../assets/s2.jpg"></a><br>
-                    <h3 class="title is-6"><a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">Потап развелся
-                            с женой Ириной</a></h3>
+                    <h4 class="title is-6"><a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">Потап развелся
+                            с женой Ириной</a></h4>
                 </div>
                 <div class="show" :class="[
                         {
@@ -74,9 +74,9 @@ const setActive = (i) => {
                         href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html"></a>
                     <a href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html">
                         <img src="../assets/s3.jpg"></a><br>
-                    <h3 class="title is-6"><a
+                    <h4 class="title is-6"><a
                             href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html">Хакеры
-                            взломали телефон Ольги Бузовой: откровенные фото и переписка</a></h3>
+                            взломали телефон Ольги Бузовой: откровенные фото и переписка</a></h4>
 
                 </div>
                 <button class="button">Показать больше</button>
@@ -95,7 +95,6 @@ const setActive = (i) => {
 div.img-wrapper {
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -112,18 +111,20 @@ div.img-wrapper {
 }
 
 .icon-play:hover {
-    color: rgba(109, 0, 0, 0.623);
+    color: #f0f0f0;;
 }
 
 .main_showbiz>div .img-wrapper img {
     width: 100%;
     position: relative;
     opacity: 1;
-    border: 4px solid rgb(29, 29, 29);
+    border-top: 24px solid rgb(0, 0, 0);
+    border-bottom: 24px solid rgb(0, 0, 0);
 }
 
 .main_showbiz>div {
     position: relative;
+    background-color: rgb(89, 0, 0);
     
 }
 
@@ -137,7 +138,7 @@ div.img-wrapper {
 
 .main_showbiz .show {
     border-bottom: 1px solid rgba(20, 20, 20, 0.326);
-    padding: 4px;
+  
     display: flex;
     flex-direction: row;
     transition: all 0.3s ease;
@@ -147,28 +148,28 @@ div.img-wrapper {
 
 .main_showbiz_block~div {
     display: flex;
-    align-items: center;
 }
 
 .show-wrapper {
-    padding: 8px;
-    background-color: rgba(52, 52, 52, 0.642);
+
+    background-color: rgba(29, 29, 29, 0.642);
 }
 .show-wrapper div .title {
     padding: 8px;
-    color: white;
+    color: #f0f0f0;
 }
 
 .show-wrapper > .title {
-    padding: 0px 12px;
+    margin: 0;
     text-align: left;
+    color: #f0f0f0;
+    background-color: rgb(89, 0, 0);
 }
 
 .navbar-content {
     box-shadow: none;
     justify-content: flex-start;
     display: flex;
-    align-items: center;
     gap: 12px;
     border-bottom: 1px solid rgba(80, 80, 80, 0.256);
 }
@@ -185,7 +186,7 @@ div.img-wrapper {
 
 .content-item.subtitle {
     margin: 0;
-    color: #333;
+ color: #bababa;
     padding: 0 4px;
     opacity: 0.77;
     font-size: 16px;
@@ -194,32 +195,33 @@ div.img-wrapper {
 }
 
 .content-item.subtitle.is-active {
-    border-bottom: 2px solid red;
-    color: #333;
+    border-bottom: 2px solid rgb(243, 243, 243);
+    color: #747474;
     opacity: 1;
 }
-
+ h3.title a {
+    color: #fff7f7;
+ }
 .title.is-6>a {
-    color: #333;
+    color: #f0f0f0;
 }
 
 .main_showbiz>.title {
-    color: #333;
+    color: #f0f0f0;
     transform: rotate(-45%);
     width: 100%;
-    align-self: center;
 }
 
 .main_showbiz {
     display: flex;
-    padding-right: 24px;
+  
+    
 }
 
 .main_showbiz_block {
     padding: 12px;
     display: flex;
     flex-direction: column;
-    align-content: center;
     gap: 8px;
     overflow: hidden;
 }
@@ -234,24 +236,14 @@ div.img-wrapper {
 
 @media screen and (max-width: 1024px) {
     .show-wrapper > div .title {
-        padding: 0px 12px 24px;
-        text-align: center;
+        color: #f0f0f0;
     } 
 
-    .main_showbiz .show {
-        flex-direction: column;
-    }
-    .show-wrapper,
+    
     .main_showbiz {
         margin: 0;
         display: flex;
         flex-direction: column;
-        padding: 0 24px;
-    }
-
-    .show-wrapper .title {
-        margin: auto;
-        padding: 24px;
     }
 
     .main_showbiz_block {
@@ -259,25 +251,27 @@ div.img-wrapper {
     }
 
     .show img {
-        max-width: 420px;
-        min-width: 420px;
-        height: 300px;
+        max-width: 140px;
+        min-width: 140px;
+        height: 90px;
     }
 }
 
 @media screen and (max-width: 700px) {
+ 
     .show-wrapper > div .title {
-        padding: 0px 12px 24px;
-        text-align: center;
+        font-weight: 500;
+        
     }
     .show-wrapper,
     .main_showbiz {
         padding: 0;
     }
 
-    .show-wrapper .title {
-        margin: auto;
-        padding: 24px;
+    .show-wrapper h3.title {
+        padding: 14px;
+        font-size: 2rem;
+        text-align: right;
     }
 
     .main_showbiz_block {
@@ -285,9 +279,13 @@ div.img-wrapper {
     }
 
     .show img {
-        max-width: 420px;
-        min-width: 420px;
-        height: 300px;
+        max-width: 140px;
+        min-width: 140px;
+        height: 90px;
+    }
+
+    .show {
+        flex-direction: row;
     }
 }
 </style>

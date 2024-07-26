@@ -85,7 +85,9 @@ const newsData = [{
     background-color:  transparent;
     
 }
-
+.news > .title.is-3 {
+    
+}
 .subtitle.is-6 {
     color: #333;
 }
