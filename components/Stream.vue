@@ -27,7 +27,7 @@ const newsData = [{
 {
     title: "Вербное воскресенье: какого числа, традиции и приметы",
     time: "10:42",
-    link: "/2023/03/02/verbnoe-voskresene-v-2023-godu-kakogo-chisla-tradicii-i-primety.html", 
+    link: "/2023/03/02/verbnoe-voskresene-v-2023-godu-kakogo-chisla-tradicii-i-primety.html",
 },
 {
     title: "Потап развелся с женой Ириной",
@@ -37,17 +37,17 @@ const newsData = [{
 {
     title: "Хакеры взломали телефон Ольги Бузовой: откровенные фото и переписка",
     time: "09:53",
-    link:"/2022/12/03/xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html",
+    link: "/2022/12/03/xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html",
 },
 {
     title: "«София» 2024: смотреть сериал онлайн 3 и 4 серия в хорошем качестве",
     time: "09:14",
-    link:"/2022/11/30/sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html",
+    link: "/2022/11/30/sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html",
 },
 {
     title: "Развод Бузовой и Тарасова: в Инстаграм обсуждают Ольгу и Дмитрия",
     time: "08:39",
-    link:"/2022/11/29/razvod-buzovoj-i-tarasova-2022-v-instagram-obsuzhdayut-olgu-i-dmitriya.html",
+    link: "/2022/11/29/razvod-buzovoj-i-tarasova-2022-v-instagram-obsuzhdayut-olgu-i-dmitriya.html",
 }]
 
 </script>
@@ -61,13 +61,18 @@ const newsData = [{
                 <div class="media-content">
                     <div class="content">
 
-                        <a :href="item.link">
-                            <h3 class="subtitle is-6">{{ item.title }} </h3>
+                        <a class="fire-link" :href="item.link">
+                            
+                            <Icon name="mdi:fire" v-if="item.title.length < 50"></Icon> <h3 class="subtitle is-6">{{ item.title }} </h3>
                         </a>
-                        <strong>{{item.time}}</strong>
-                        <br />
 
-
+                        <div class="news-bottom">
+                            <strong>{{ item.time }}</strong>
+                            <div class="news-bottom news-bottom-right">
+                                <Icon name="mdi:eye"> </Icon>
+                                
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -77,17 +82,37 @@ const newsData = [{
 </template>
 
 <style>
+ .news {
+    padding: 0 12px 12px;
+ }
+.fire-link {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.fire-link > span {
+    color: orange;
+}
 .box.box-news {
     box-shadow: none;
     border-radius: 0;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.349);
-    padding: 0 12px 14px 12px;
-    background-color:  transparent;
-    
+    border-bottom: 1px solid rgba(29, 29, 29, 0.349);
+    padding: 0 8px 2px 2px;
+    background-color: transparent;
+
 }
-.news > .title.is-3 {
-    
+.news-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0.8;
 }
+.news-bottom {
+    gap: 12px;
+}
+.news>.title.is-3 {}
+
 .subtitle.is-6 {
     color: #333;
 }
@@ -95,24 +120,26 @@ const newsData = [{
 .content strong {
     color: grey;
     opacity: 1;
+    font-size: 12px;
+    font-weight: 900;
 }
 
 @media screen and (max-width: 700) {
-   
+
 
     .box.box-news {
         box-shadow: none;
         border-radius: 0;
         border-bottom: 1px solid rgba(128, 128, 128, 0.349);
         padding: 0;
-        background-color:  transparent;
-        
+        background-color: transparent;
+
     }
 
     .news {
         border-right: 0px solid rgba(255, 255, 255, 0);
         padding: 0;
     }
-    
+
 }
 </style>

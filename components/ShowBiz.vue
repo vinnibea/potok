@@ -82,6 +82,7 @@ const setActive = (i) => {
                 <button class="button">Показать больше</button>
             </div>
         </div>
+        <themes></themes>
     </div>
 </template>
 
@@ -269,9 +270,9 @@ div.img-wrapper {
     }
 
     .show-wrapper h3.title {
-        padding: 14px;
-        font-size: 2rem;
-        text-align: right;
+        padding: 8px 12px;
+        font-size: 1.5rem;
+        text-align: justify;
     }
 
     .main_showbiz_block {
@@ -287,5 +288,6 @@ div.img-wrapper {
     .show {
         flex-direction: row;
     }
+
 }
 </style>
