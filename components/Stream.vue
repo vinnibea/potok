@@ -77,15 +77,11 @@ const newsData = [{
 </template>
 
 <style>
-.news {
-    border-right: 1px solid rgba(128, 128, 128, 0.075);
-    padding-right: 24px;
-}
 .box.box-news {
     box-shadow: none;
     border-radius: 0;
     border-bottom: 1px solid rgba(128, 128, 128, 0.349);
-    padding: 0;
+    padding: 0 12px 14px 12px;
     background-color:  transparent;
     
 }
@@ -100,14 +96,7 @@ const newsData = [{
 }
 
 @media screen and (max-width: 700) {
-    section.news {
-        border-right: none !important;
-        padding-right: 0;
-    }
-    .news {
-        border-right: none;
-        padding-right: 0;
-    }
+   
 
     .box.box-news {
         box-shadow: none;
@@ -116,6 +105,11 @@ const newsData = [{
         padding: 0;
         background-color:  transparent;
         
+    }
+
+    .news {
+        border-right: 0px solid rgba(255, 255, 255, 0);
+        padding: 0;
     }
     
 }
