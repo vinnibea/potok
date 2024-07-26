@@ -236,6 +236,10 @@ div.img-wrapper {
     .show-wrapper > div .title {
         padding: 0px 12px 24px;
         text-align: center;
+    } 
+
+    .main_showbiz .show {
+        flex-direction: column;
     }
     .show-wrapper,
     .main_showbiz {
