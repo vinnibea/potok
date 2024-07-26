@@ -332,7 +332,7 @@ const setActiveArticle = (i) => {
             <header ref="headerRef" class="header header-hidden" :class="[
                
         {
-            'header-isVisible': !isVisible && hideHeader,
+            'header-isVisible': !isVisible,
         }
             ]">
                 <HeaderTopVue />
@@ -420,6 +420,7 @@ const setActiveArticle = (i) => {
                 </div>
 
             </header>
+         ]
             <stream></stream>
             <div class="is-flex is-flex-direction-column">
                 <show-biz></show-biz>
