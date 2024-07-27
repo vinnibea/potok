@@ -440,11 +440,11 @@ const setActiveArticle = (i) => {
     min-width: 100%;
 }
 .container.main-container.hero {
-    background: url('images/yourimage.jpg') no-repeat center center fixed;
+    background: no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    object-fit: cover;
 }
 
 .content-fresh-wrapper {
