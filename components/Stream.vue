@@ -67,7 +67,9 @@ const newsData = [{
 
                         <a class="fire-link" :href="item.link">
                             
-                            <Icon name="mdi:fire" v-if="item.title.length < 50"></Icon> <h3 class="subtitle is-6">{{ item.title }} </h3>
+                            <Icon name="mdi:fire" v-if="item.title.length < 50"></Icon> <h3 class="subtitle is-6" :class="[
+                                {'fire-link-active': item.title.length < 50}
+                            ]">{{ item.title }} </h3>
                         </a>
 
                         <div class="news-bottom">
@@ -88,10 +90,13 @@ const newsData = [{
 </template>
 
 <style>
-
+.fire-link-active {
+    font-weight: 700;
+}
 .banner {
   width: 181px;
   height: 256px;
+  margin: 0 auto;
 }
  .news {
     padding: 0 12px 12px;
@@ -114,6 +119,10 @@ const newsData = [{
     background-color: transparent;
 
 }
+
+.fire-link-active {
+    font-weight: 700;
+}
 .news-bottom {
     display: flex;
     align-items: center;
@@ -123,10 +132,19 @@ const newsData = [{
 .news-bottom {
     gap: 12px;
 }
-.news>.title.is-3 {}
 
 .subtitle.is-6 {
-    color: #333;
+    color: #262626;
+    font-weight: 300;
+    padding: 0;
+}
+
+.subtitle.is-6.fire-link-active {
+    font-weight: 500;
+}
+
+.subtitle.is-6:hover {
+    color: #570b0b;
 }
 
 .content strong {

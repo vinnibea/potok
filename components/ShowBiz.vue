@@ -152,6 +152,7 @@ div.img-wrapper {
     max-width: 180px;
     min-width: 180px;
     height: 120px;
+    object-fit: cover;
 }
 
 .main_showbiz .show {
@@ -162,6 +163,11 @@ div.img-wrapper {
     transition: all 0.3s ease;
     align-items: flex-start;
 
+}
+
+.main_showbiz .show:hover {
+   
+  background-color: rgba(105, 105, 105, 0.429);
 }
 
 .main_showbiz_block~div {
@@ -325,6 +331,8 @@ div.img-wrapper {
         font-size: 18px;
         display: block;
     }
-
+    .navbar-content {
+        justify-content: flex-end;
+    }
 }
 </style>
