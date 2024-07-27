@@ -1,4 +1,5 @@
 <script setup>
+import backgroundUrl2 from '~/assets/s2.jpg';
 const dataAll = [{
     href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', content: [
         {
@@ -153,46 +154,161 @@ const dataAll = [{
                 </a>
             </h2>
             <section class="content-middle items">
+                
                 <article class="card article-card" v-for="article in theme.content" :key="article.link">
-                    <div class="img-holder"></div>
-                    <h2 class="subtitle is-5"><a :href="article.link">{{ article.title }}</a></h2>
+                    <a :href="article.link">
+                    <div class="img-holder">
+                        <img :src="backgroundUrl2">
+                    </div>
+                </a>
+                    <h2 class="subtitle is-5"><a :href="article.link">{{ article.title }}
+                        <div class="news-bottom news-theme-bottom">
+                            <strong class="theme-time">00:00</strong>
+                            <div class="news-bottom news-bottom-right">
+                                <Icon name="mdi:eye"> </Icon>
+                                
+                            </div>
+                        </div>
+                    </a>
+                       
+                    </h2>
+                    
                 </article>
+         
             </section>
         </div>
     </div>
 </template>
 
 <style> 
-
+.news-theme-bottom {
+    transition: all 0.3s ease;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    padding: 4px;
+    background-color: rgba(168, 166, 166, 0.156);
+    width: 102%;
+    align-self: center;
+    
+}
+strong.theme-time {
+    color:whitesmoke;
+    font-size: 12px;
+}
 .themes {
     padding-top: 24px;
     background-color:white;
 }
 .img-holder {
     width: 100%;
-    min-height: 150px;
+    border-radius: 4px;
     background-color: var(--my-red);
+    position: absolute;
+    z-index: 0;
+    bottom: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.img-holder img {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    object-fit: cover;
+    object-position: 40% 20%;
+    filter: grayscale(0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.content-middle {
+    padding: 0;
 }
 .content-middle.items {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 48px;
    
 }
-.content-middle {
+.content-middle.items {
+    gap: 12px;
     padding: 8px 12px;
     background-color: white;
+    justify-content: space-between;
 }
-.article-card {
+
+
+.card.article-card {
     flex-basis: 30%;
     box-shadow: none;
     justify-content: stretch;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 220px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0;
 }
 
-.article-card .subtitle {
+.card.article-card:first-child, .card.article-card:first-child .img-holder,.card.article-card:first-child img , .card.article-card:nth-child(2), .card.article-card:nth-child(2) .img-holder {
+    height: 340px;
+}
+
+.card.article-card:hover .news-theme-bottom {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+    padding: 2px 8px;
+}
+
+.card.article-card:hover img {
+    transform: scale(1.2) translate(0%, -2%);
+    opacity: 1;
+    filter: grayscale(0.4)
+}
+.card.article-card:nth-child(1){
+    height: 340px;
+}
+.card.article-card:nth-child(2){
+    flex-basis: calc(66% - 1%);
+    height: 340px;
+}
+
+.article-card  .subtitle.is-5 > a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(36, 36, 36, 0.579);
+    backdrop-filter: blur(8px);
     font-size: 16px;
     font-weight: bold;
-    padding: 12px 8px;
+    min-height: 76px;
+    position: relative;
+
+    color: #fefefe;
+    padding: 4px 4px 2px;
+   text-align: left;
+}
+
+@media screen and (max-width: 1024px) {
+    .content-middle.items {
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    .card.article-card {
+        flex-basis: 30%;
+        box-shadow: none;
+        justify-content: stretch;
+        position: relative;
+        width: 100%;
+        
+        height: 230px;
+    }
 }
 </style>

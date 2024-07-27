@@ -428,7 +428,6 @@ const setActiveArticle = (i) => {
             </div>
 
         </div>
-        <themes></themes>
     </div>
 </template>
 

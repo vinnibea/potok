@@ -1,4 +1,8 @@
 <script setup>
+
+import liveCredit from '~/assets/LiveCredit.jpg';
+
+
 const newsData = [{
     title: "ЕС ужесточил въезд для туристов из-за штаммов COVID-19",
     time: "14:45",
@@ -78,10 +82,17 @@ const newsData = [{
                 </div>
             </article>
         </div>
+
+        <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
     </section>
 </template>
 
 <style>
+
+.banner {
+  width: 181px;
+  height: 256px;
+}
  .news {
     padding: 0 12px 12px;
     flex-basis: 45%;
