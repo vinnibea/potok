@@ -178,13 +178,14 @@ const dataAll = [{
     flex-direction: row;
     flex-wrap: wrap;
     gap: 48px;
+   
 }
 .content-middle {
     padding: 8px 12px;
     background-color: white;
 }
 .article-card {
-    flex-basis: 42%;
+    flex-basis: 30%;
     box-shadow: none;
     justify-content: stretch;
 }

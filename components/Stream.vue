@@ -84,6 +84,7 @@ const newsData = [{
 <style>
  .news {
     padding: 0 12px 12px;
+    flex-basis: 45%;
  }
 .fire-link {
     display: flex;

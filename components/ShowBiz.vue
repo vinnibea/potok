@@ -82,7 +82,7 @@ const setActive = (i) => {
                 <button class="button">Показать больше</button>
             </div>
         </div>
-        <themes></themes>
+       
     </div>
 </template>
 

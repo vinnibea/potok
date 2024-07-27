@@ -422,22 +422,13 @@ const setActiveArticle = (i) => {
             </header>
      
             <stream></stream>
+            
             <div class="is-flex is-flex-direction-column">
-                <show-biz></show-biz>
-         
-    
-
-
-
-
-                    
-                
-
-
+              <show-biz></show-biz>
             </div>
 
         </div>
-
+        <themes></themes>
     </div>
 </template>
 
@@ -445,6 +436,9 @@ const setActiveArticle = (i) => {
 
 .hero-row {
     padding: 8px 12px 48px;
+}
+.container.hero.is-fullheight-with-navbar, .container.main-container.hero, .container.container.content-container, .container.is-widescreen.themes {
+    min-width: 100%;
 }
 .container.main-container.hero {
     background: url('images/yourimage.jpg') no-repeat center center fixed;
@@ -552,8 +546,7 @@ p.subtitle {
 }
 
 .container.content-container {
-  
-    border-top: 2px solid rgba(193, 8, 8, 0.65);
+  gap: 24px;
 }
 
 .container.main-container {
