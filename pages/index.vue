@@ -1,5 +1,5 @@
 <script setup>
-import backgroundUrl from '~/assets/fly.jpeg';
+import backgroundUrl from '~/assets/f.webp';
 import backgroundUrl2 from '~/assets/s2.jpg';
 import backgroundUrl3 from '~/assets/s3.jpg';
 import HeaderTopVue from '~/components/HeaderTop.vue';

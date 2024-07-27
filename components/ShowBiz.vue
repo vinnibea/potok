@@ -19,7 +19,7 @@ const setActive = (i) => {
                     href="/shoybiz/115478-sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html"></a><br>
                 <a href="/shoybiz/115478-sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html">
                     <div class="img-wrapper">
-                        <img src="../assets/s4.png">
+                        <!-- <img src="../assets/s4.png"> -->
                         <Icon name="ri:play-circle-line" class="icon-play">
 
                         </Icon>
