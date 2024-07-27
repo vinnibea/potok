@@ -10,15 +10,16 @@ const setActive = (i) => {
 <template>
 
     <div class="show-wrapper">
-        <h2 class="title">ШОУБИЗ</h2>
+        
         <div class="main_showbiz">
-
+          
             <div>
+                <h2 class="title">ШОУБИЗ</h2>
                 <a
                     href="/shoybiz/115478-sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html"></a><br>
                 <a href="/shoybiz/115478-sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html">
                     <div class="img-wrapper">
-                        <img src="../assets/s4.jpg">
+                        <img src="../assets/s4.png">
                         <Icon name="ri:play-circle-line" class="icon-play">
 
                         </Icon>
@@ -87,6 +88,20 @@ const setActive = (i) => {
 </template>
 
 <style>
+
+.main_showbiz>div>h2.title {
+    margin: 0;
+    padding-bottom: 0;
+    padding-top: 2px;
+    line-height: 24px;
+}
+.button {
+    margin: 0 auto;
+    width: 95%;
+    color: white;
+    background-color: var(--my-red);
+    border: none;
+}
 .show {display: flex;}
 .show-translate {
     transform: translateX(-120%);
@@ -97,6 +112,8 @@ div.img-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
+    width: 100%;
+    height: 350px;
 }
 
 .icon-play {
@@ -125,8 +142,9 @@ div.img-wrapper {
 
 .main_showbiz>div {
     position: relative;
-    background-color: rgb(89, 0, 0);
-    
+    background-color: rgb(46, 46, 46);
+    border-right: 1px solid rgb(42, 42, 42);
+    padding: 2px;
 }
 
 .show img {
@@ -138,7 +156,7 @@ div.img-wrapper {
 }
 
 .main_showbiz .show {
-    border-bottom: 1px solid rgba(20, 20, 20, 0.326);
+    border-bottom: 1px solid rgba(28, 28, 28, 0.326);
   
     display: flex;
     flex-direction: row;
@@ -152,27 +170,33 @@ div.img-wrapper {
 }
 
 .show-wrapper {
-
+    display: flex;
+    flex-direction: row;
     background-color: rgba(29, 29, 29, 0.642);
+    padding-bottom: 12px;
 }
 .show-wrapper div .title {
     padding: 8px;
     color: #f0f0f0;
+    
 }
 
 .show-wrapper > .title {
     margin: 0;
     text-align: left;
     color: #f0f0f0;
-    background-color: rgb(89, 0, 0);
+    background-color: rgb(46, 46, 46);   
+     
 }
 
 .navbar-content {
-    box-shadow: none;
-    justify-content: flex-start;
+    
     display: flex;
     gap: 12px;
-    border-bottom: 1px solid rgba(80, 80, 80, 0.256);
+    box-shadow: none;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(126, 126, 126, 0.256);
 }
 
 ;
@@ -181,7 +205,7 @@ div.img-wrapper {
     color: #333 !important;
     cursor: pointer;
     opacity: 1;
-    border-bottom: 1px solid white;
+    border-bottom: px solid white;
 
 }
 
@@ -193,11 +217,12 @@ div.img-wrapper {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    border-bottom: 2px solid transparent;
 }
 
 .content-item.subtitle.is-active {
     border-bottom: 2px solid rgb(243, 243, 243);
-    color: #747474;
+    color: white;
     opacity: 1;
 }
  h3.title a {
@@ -210,12 +235,11 @@ div.img-wrapper {
 .main_showbiz>.title {
     color: #f0f0f0;
     transform: rotate(-45%);
-    width: 100%;
 }
 
 .main_showbiz {
     display: flex;
-  
+   padding-bottom: 12px;
     
 }
 
@@ -227,18 +251,24 @@ div.img-wrapper {
     overflow: hidden;
 }
 
-.show-wrapper,
+
 .main_showbiz {
     margin: 0;
     display: flex;
+    background-color: rgb(46, 46, 46);
+}
+
+.show-wrapper {
+    background-color: rgb(46, 46, 46);
     flex-direction: column;
-    padding: 0;
+}
+
+.main_showbiz_block .show, div.main_showbiz_block {
+    background-color: rgb(46, 46, 46);
 }
 
 @media screen and (max-width: 1024px) {
-    .show-wrapper > div .title {
-        color: #f0f0f0;
-    } 
+    
 
     
     .main_showbiz {
@@ -267,6 +297,7 @@ div.img-wrapper {
     .show-wrapper,
     .main_showbiz {
         padding: 0;
+        padding-bottom: 12px;
     }
 
     .show-wrapper h3.title {
@@ -287,6 +318,13 @@ div.img-wrapper {
 
     .show {
         flex-direction: row;
+    }
+
+    .main_showbiz > div > .title > a {
+        color: rgb(255, 255, 255);
+        text-align: left;
+        font-size: 18px;
+        display: block;
     }
 
 }
