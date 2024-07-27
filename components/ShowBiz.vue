@@ -24,7 +24,6 @@ const setActive = (i) => {
 
                         </Icon>
                     </div>
-
                 </a>
                 <h3 class="title"><a
                         href="/shoybiz/115478-sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html">«София»
