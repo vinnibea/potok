@@ -394,7 +394,6 @@ h2 .news-theme-bottom strong {
     width: 12px;
     height: 12px;
     background-color: var(--my-red);
-    border-radius: 50%;
     left: -10px;
     top: 50%;
     transform: translateY(-50%);
@@ -410,14 +409,28 @@ h2 .news-theme-bottom strong {
 
         box-shadow: none;
         position: relative;
-
-
-
     }
 
-    .content-middle .title::before {
-        display: none;
-        opacity: 0;
+    .theme-title::before {
+        width: 8px;
+        height: 8px;
+        left: 0;
+    }
+
+    section.theme-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 24px;
+    }
+
+    .card.article-card {
+        flex-basis: 20%;
+        min-height: 250px;
+        flex: 1 1;
+    }
+    .theme-title {
+        padding: 4px 12px;
     }
 }
 </style>
