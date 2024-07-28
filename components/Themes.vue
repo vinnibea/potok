@@ -190,10 +190,10 @@ const newsDataNow = dataAll.map(item => {
 
 <template>
     <div class="container is-widescreen themes" :style="{
-      paddingTop: end === 1 ?  0 : '96px',
+        paddingTop: end === 1 ? 0 : '96px',
     }
-        
-    ">
+
+        ">
         <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.href">
             <h2 class="theme-title">
                 <a :href="theme.href">
@@ -203,7 +203,14 @@ const newsDataNow = dataAll.map(item => {
             <section class="theme-container">
                 <article class="card article-card" :class="`item-${i}`" v-for="(article, i) in theme.content"
                     :key="article.link">
+
+                    <div class="news-bottom news-bottom-right news-theme-bottom-tags">
+                        <strong v-if="article.tag1">{{ article.tag1[1] }}</strong>
+                        <strong v-if="article.tag2">{{ article.tag2[1] }}</strong>
+                    </div>
+
                     <div class="img-holder">
+                        
                         <img :src="backgroundUrl2">
                     </div>
 
@@ -212,18 +219,18 @@ const newsDataNow = dataAll.map(item => {
                         <a :href="article.link">
                             {{ article.title }}
                         </a>
-                        <div class="news-bottom news-theme-bottom">
-                            <strong>{{ article.date }}</strong>
-                            <div class="news-bottom news-bottom-right">
-                                <strong>{{ article.votes }}</strong>
-                                <Icon name="mdi:eye"> </Icon>
-                            </div>
-
-                        </div>
+                        
 
 
                     </h2>
+                    <div class="news-bottom news-theme-bottom">
+                        <strong>{{ article.date }}</strong>
+                        <div class="news-bottom news-bottom-right">
+                            <strong>{{ article.votes }}</strong>
+                            <Icon name="mdi:eye"> </Icon>
+                        </div>
 
+                    </div>
                 </article>
                 <div>
 
@@ -245,13 +252,13 @@ const newsDataNow = dataAll.map(item => {
     text-transform: uppercase;
     font-weight: 700;
     font-size: 2rem;
-    padding: 8px 12px;
+    padding: 0px 12px 0;
 }
 
 section.theme-container {
     display: grid;
-    grid-template-columns: 240px 220px 280fr;
-    grid-template-rows: 190px 150px 150px 150px 250px;
+    grid-template-columns: 240px 220px 280px;
+    grid-template-rows: 120px 150px 150px 150px 250px;
     gap: 4px;
     grid-auto-flow: row;
 }
@@ -268,7 +275,7 @@ section.theme-container {
 
 .item-2 {
 
-    grid-area: 1 / 4 / 3 / -1;
+    grid-area: 1 / 4 / 4 / -1;
 }
 
 .item-3 {
@@ -281,28 +288,37 @@ section.theme-container {
 }
 
 .item-5 {
-
-    grid-area: 4 / 1 / 6 / -1;
+    grid-area: 4 / 1 / -1 / 5;
 }
 
 
 
 
-h2 .news-theme-bottom strong {
+
+.news-theme-bottom strong, .news-bottom-right strong, h2 .news-bottom-right span, .news-bottom-right strong {
     font-size: 12px;
-    color: rgb(186, 186, 186);
-    font-weight: 700;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
 }
+
+
 
 .news-theme-bottom {
     transition: all 0.3s ease;
     pointer-events: none;
     padding: 4px;
-    background-color: rgba(166, 166, 166, 0.156);
+    background-color: rgb(17, 17, 17);
     align-self: center;
     width: 100%;
 }
 
+.news-bottom-right.news-theme-bottom-tags {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    font-size: 16px;
+    font-weight: 700;
+}
 
 .themes {
     background-color: rgb(255, 255, 255);
@@ -320,15 +336,16 @@ h2 .news-theme-bottom strong {
     left: 0;
     right: 0;
     bottom: 0;
+
 }
 
 .img-holder img {
-    opacity: 0.9;
+    opacity: 9;
     cursor: pointer;
     transition: all 0.3s ease;
     object-fit: cover;
     object-position: 0% 20%;
-    filter: grayscale(0.5);
+    filter: grayscale(0.6);
     width: 100%;
     height: 100%;
     border-radius: 0;
@@ -352,8 +369,10 @@ h2 .news-theme-bottom strong {
 .card.article-card:hover img {
     background: 50% 50%;
     opacity: 1;
-    filter: grayscale(0.4)
+    filter: grayscale(0.5);
+    transform: scale(1.1) translateY(-5%);
 }
+
 
 .section.content-middle {
     padding: 0 0 96px 0;
@@ -363,28 +382,52 @@ h2 .news-theme-bottom strong {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 16px;
-    font-weight: bold;
-
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    color: #ffffff;
-
-    margin: 0;
+    margin: auto auto;
+    font-weight: 700;
+    min-width: 100%;
+    background-color: rgba(48, 46, 46, 0.152);
+    color: #b6b6b6;
+    padding: 4px;
     text-align: left;
     z-index: 0;
-    font-size: 18px;
 }
 
 .card.article-card h2 a {
     color: #ffffff;
-    padding: 24px 12px;
-    font-size: 1.5rem
+    border-left: 4px solid var(--my-red);
+    border-right: 4px solid var(--my-red);
+    padding: 2px;
 }
 
+
+.item-0.card.article-card h2 a {
+    font-size: 1.5rem;
+}
+
+.item-1.card.article-card h2 a {
+    font-size: 1.2rem;
+}
+
+.item-2.card.article-card h2 a {
+    font-size: 1.5rem;
+}
+
+.item-3.card.article-card h2 a {
+    font-size: 2rem;
+;
+    
+}
+
+.item-4.img-holder.article-card h2 a {
+    font-size: 1rem;
+    
+
+}
+
+.item-5.card.article-card h2 a {
+    color: #ffffff;
+    font-size: 3rem;
+}
 
 
 .theme-title::before {
@@ -397,6 +440,11 @@ h2 .news-theme-bottom strong {
     left: -10px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.item-5 .card.article-card .img-holder>h2>a {
+    font-size: 4rem;
+    padding: 0;
 }
 
 @media screen and (max-width: 700px) {
@@ -429,6 +477,7 @@ h2 .news-theme-bottom strong {
         min-height: 250px;
         flex: 1 1;
     }
+
     .theme-title {
         padding: 4px 12px;
     }
