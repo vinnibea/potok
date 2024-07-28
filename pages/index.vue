@@ -58,13 +58,12 @@ const heroRef = ref(null)
 const headerRef = ref(null);
 const isVisible = useElementVisibility(heroRef);
 const { width, height } = useElementSize(headerRef)
-
-const hideHeader = ref(false);
+const hideHeader= ref(null);
 const headRef = ref(null);
 const { stop } = useIntersectionObserver(
     headRef,
     ([{ isIntersecting }], observerElement) => {
-      
+        console.log(  isIntersecting, isVisible.value)
             hideHeader.value = isIntersecting
     },
 )
@@ -148,11 +147,11 @@ const setActiveArticle = (i) => {
                 <MobileMenu :showModal="showMobile" @onClose="onHideMobileMenu"></MobileMenu>
             </div>
            
-           
-            <header  class="header" ref="headerRef" :class="[
+         
+            <header  class="header" :class="[
                 {
-                    'header-collapsed': hideHeader,
-                    'header-isVisible': !isVisible,
+                    'header-hidden': hideHeader,
+                    'header-isVisible': !hideHeader
                 } 
  
             ]">
@@ -237,79 +236,78 @@ const setActiveArticle = (i) => {
                     </span>
 
                 </div>
-                <div class="desktop-sub">
-                    <ul class="navbar navbar-additional">
-                        <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/analitika">Аналитика</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
-                        </li>
-                        <li class="navbar-item"> <a href="/sonnik">Сонник</a>
-                        </li>
-                    </ul>
-
-                    <span class="trigger-left" v-if="transition">
-                        <Icon class="icon" name="ri:arrow-left-wide-fill" @click="counter(1)"></Icon>
-                    </span>
-
-                    <span class="trigger-right" v-if="transitionFn !== -2376">
-                        <Icon class="icon" name="ri:arrow-right-wide-fill" @click="counter(-1)"></Icon>
-                    </span>
-
-                </div>
+               
             </header>
 
             <section class="hero-top"  ref="swipeMainRef">
-                <h1 class="title px-4 py-6" style="color: white">
-                    {{ mainData[activeArticle].title }}
-                </h1>
-                <div class="hero-row">
+              
                     
-                    <section class="hero hero-fresh">
-                        <div class="content-fresh-wrapper" v-for="(data, i) in mainData" :key="data.img" @click="setActiveArticle(i)" :class="[{
-                            'is-active': i === activeArticle,
-                        }]"
+                   <div class="hero-columns">
+                        <div class="content-fresh-wrapper" 
               >
-                            <article class="hero-fresh-content">
+                            <article class="hero">
                                 <h1 class="title">
-                                    {{ data.title }}
+                                    {{ mainData[activeArticle].title }}
                                 </h1>
 
-
-                                <p class="subtitle">
+                                
+                                <!-- <p class="subtitle">
 
                                     {{ data.content }}
 
-                                </p>
+                                </p> -->
                             </article>
+
+                            
                         </div>
-                    </section>
-                </div>
+
+                        <div class="desktop-sub">
+                            <ul class="navbar navbar-additional">
+                                <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/analitika">Аналитика</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
+                                </li>
+                                <li class="navbar-item"> <a href="/sonnik">Сонник</a>
+                                </li>
+                            </ul>
+        
+                            <span class="trigger-left" v-if="transition">
+                                <Icon class="icon" name="ri:arrow-left-wide-fill" @click="counter(1)"></Icon>
+                            </span>
+        
+                            <span class="trigger-right" v-if="transitionFn !== -2376">
+                                <Icon class="icon" name="ri:arrow-right-wide-fill" @click="counter(-1)"></Icon>
+                            </span>
+        
+                        </div>
+                    </div>
+            
 
 
 
@@ -324,22 +322,20 @@ const setActiveArticle = (i) => {
 
             </div>
         </div>
-        <div ref="heroRef" ></div>
-        <!--  -->
-
-
-        <div class="container content-container columns"  ref="headRef" :style="`padding-top: ${150}px`">
-            <header ref="headerRef" class="header header-hidden" :class="[
+    
+        <div class="container content-container columns"  :style="`padding-top: ${120}px`">
+            <header  class="header-hidden" :class="[
                
         {
-            'header-isVisible': !isVisible,
+            'header-isVisible': hideHeader,
+            'header-hidden': !hideHeader,
         }
             ]">
                 <HeaderTopVue />
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
 
                 <div class="carusel carusel-mobile">
-                    <ul class="navbar-additional">
+                    <ul class="navbar-additional navbar-additional-mobile">
                         <li class="navbar-item" :style="{
                 transform: `translate(${transitionFn}px)`
             }"> <a href="/srochno">Калейдоскоп новостей</a>
@@ -423,7 +419,7 @@ const setActiveArticle = (i) => {
      
             <stream></stream>
             
-            <div class="is-flex is-flex-direction-column">
+            <div class="is-flex is-flex-direction-column" ref="headRef">
               <show-biz></show-biz>
             </div>
 
@@ -432,40 +428,46 @@ const setActiveArticle = (i) => {
 </template>
 
 <style>
-
-.hero-row {
-    padding: 8px 12px 48px;
+.hero-columns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
 }
 .container.hero.is-fullheight-with-navbar, .container.main-container.hero, .container.container.content-container, .container.is-widescreen.themes {
     min-width: 100%;
 }
 .container.main-container.hero {
+    justify-content: flex-end;
     background: no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     object-fit: cover;
+    padding-bottom: 24px;
+    z-index: 3;
 }
 
 .content-fresh-wrapper {
     display: flex;
     flex-wrap: nowrap;
     cursor: pointer;
-    border-left: 4px solid red;
+    padding: 8px 12px;
+  
+    width: 75%;
 }
 
-.content-fresh-wrapper.is-active {
-    
-    box-shadow: 2px 2px 22px rgba(157, 157, 157, 0.3);
-}
 
 .header-hidden {
+    position: fixed;
+    max-height: 0px;
     opacity: 0;
-    max-height: 0;
-    transition: all 0.5s;
+    transition: all 1s;
+    transform: translateY(-100%);
 }
 
-.header.header-isVisible {
+.header-isVisible {
+    max-height: 100%;
     width: inherit;
     max-width: inherit;
     min-width: inherit;
@@ -475,9 +477,18 @@ const setActiveArticle = (i) => {
     right: 0;
     opacity: 1;
     margin: 0 auto;
-    max-height: 100%;
-    z-index: 10;
+    z-index: 1;
     background-color: rgba(120, 8, 8, 0.581);
+    transform: translateY(0%);
+}
+
+.header-content {
+    background-color: rgba(120, 8, 8, 0.581); 
+}
+
+.header.header-isVisible  {
+    transition: all 1s ease;
+    backdrop-filter: blur(8px)
 }
 
 img.img-top {
@@ -551,12 +562,14 @@ p.subtitle {
 .container.main-container {
  min-height: 100svh;
 }
-
+.desktop-sub {
+background-color: var(--my-red)
+}
 .navbar-additional {
     backdrop-filter: none;
     box-shadow: none;
-    gap: 2px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     z-index: 0;
 }
@@ -564,6 +577,7 @@ p.subtitle {
 .navbar-additional .navbar-item {
     background-color: rgba(255, 255, 255, 0);
     text-transform: uppercase;
+    line-height: 1rem;
 
 }
 
@@ -626,7 +640,7 @@ article.box {
 }
 
 .article-main h2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #eee;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgb(174, 172, 172);
@@ -635,8 +649,8 @@ article.box {
 .article-main .title {
     margin: 0 auto;
     text-align: center;
-    padding: 2px 4px;
-    font-size: 1rem;
+    padding: 8px 12px;
+    font-size: 4rem;
 }
 
 .article-main p.subtitle {
@@ -649,8 +663,6 @@ article.box {
 
 .hero-fresh>h1.title {
     color: #eee;
-    font-size: 1rem;
-    max-width: 90%;
 }
 
 .hero-top {}
@@ -665,14 +677,20 @@ article.box {
     transition: all 0.3s ease;
 }
 
-.header-collapsed {
-    transform: translateY(-100%)
-}
-
 .container.main-container {
-    justify-content: flex-end;
+    justify-content: center;
     filter: grayscale(0.6);
     background-position: 50% 50%;
+}
+
+.container.main-container .title {
+    padding: 24px 12px;
+    color: white;
+    max-width: 75%;
+    font-size: 3rem;
+    min-height: 4rem;
+    border-left: 4px solid red;
+    backdrop-filter: blur(8px);
 }
 
 .icon-social {
@@ -696,6 +714,7 @@ header.header {
     position: absolute;
     backdrop-filter: blur(8px);
     background-color: red;
+    z-index: 1;
 }
 
 .header-end {
@@ -707,14 +726,19 @@ header.header {
     display: none;
 }
 
-
+.content-fresh-wrapper article.hero {
+    flex-direction: row;
+    background: linear-gradient(to right, rgba(139, 139, 139, 0.449), rgba(255, 255, 255, 0));
+}
 .hero.is-fullheight-with-navbar {
 
     box-shadow: 0px 2px 22px rgba(175, 70, 70, 0.2);
 }
 
 @media screen and (max-width: 700px) {
-
+    .content-fresh-wrapper {
+        width: 100%;
+    }
 
     main.is-flex.is-justify-content-space-between.container.content-container {
         flex-direction: column !important;
@@ -725,6 +749,10 @@ header.header {
     }
 
     .selector {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
         display: flex;
         gap: 20px;
         padding: 24px;
@@ -750,7 +778,7 @@ header.header {
 .hero-body h1 {
     color: #eee;
     font-size: 3rem;
-    min-width: 90%;
+
     max-width: max-content;
     padding-right: 0;
 }
@@ -759,7 +787,7 @@ header.header {
 }
 @media screen and (max-width: 1224px) {
      .hero-top {
-        padding: 42px 12px 42px;
+       
      }
     .hero-top > h1.title {
         display: inline;
@@ -775,7 +803,6 @@ header.header {
     }
 
     .selector {
-        display: flex;
         gap: 20px;
         padding: 24px;
         justify-content: center;
@@ -800,6 +827,10 @@ header.header {
 }
 
 @media screen and (max-width: 700px) {
+    .container.main-container .title  {
+        max-width: fit-content;
+        font-size: 2rem;
+    }
     .header {
         max-width: 100%;
         z-index: 20;
@@ -819,7 +850,7 @@ header.header {
         display: inline-block;
     }
 
-    .navbar-additional .navbar-item a {
+    .navbar-additional-mobile .navbar-item a {
         color: white;
         font-size: 10px;
         line-height: 1;
@@ -850,16 +881,13 @@ header.header {
     }
 
 
-    .navbar-additional .navbar-item a {
+    .navbar-additional .navbar-additional-mobile .navbar-item a {
         color: white;
         font-size: 10px;
     }
 
-    .navbar-additional .navbar-item {
-       
-    }
 
-    .navbar-additional .navbar-item {
+    .navbar-additional .navbar-additional-mobile .navbar-item {
         max-width: 180px;
         min-width: 150px;
         text-align: center;
@@ -931,6 +959,10 @@ header.header {
     .container.content-container {
         padding: 12px 4px;
         border-top: 1px solid rgba(193, 8, 8, 0.65);
+    }
+
+    .container.main-container.hero {
+        justify-content: center;
     }
 }
 
