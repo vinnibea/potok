@@ -1,31 +1,18 @@
 <script setup>
 import backgroundUrl2 from '~/assets/s2.jpg';
-
 import { format } from 'date-fns';
+
+const props = defineProps({
+    start: {
+        type: Number,
+        default: 0,
+    },
+    end: {
+        type: Number,
+        default: 0,
+    },
+})
 const dataAll = [{
-    href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', content: [
-        {
-            link: "/buznes-ekonomuka/115472-otkrytie-torgov-na-mezhbanke-27-yanvarya-2022.html",
-            title: "Открытие торгов на межбанке",
-        },
-        {
-            link: "/buznes-ekonomuka/115470-27-yanvarya-2022-ceny-na-neft-padayut-posle-vesomogo-rosta-nakanune.html",
-            title: "27 января 2022: цены на нефть падают после весомого роста накануне",
-        },
-        {
-            link: "/buznes-ekonomuka/115468-kursy-valyut-nbu-27-yanvarya-2022.html",
-            title: "Курсы валют НБУ",
-        },
-        {
-            link: "/buznes-ekonomuka/115460-26-yanvarya-2022-neft-vnov-opustilas-nizhe-30-doll.html",
-            title: "Нефть вновь опустилась ниже 30 долл",
-        },
-        {
-            link: "/buznes-ekonomuka/115466-stavki-bankovskix-metallov-nbu-27-yanvarya-2022.html",
-            title: "Ставки банковских металлов НБУ"
-        }
-    ]
-}, {
     href: "/index.php", theme: 'Главные новости', content: [
 
         {
@@ -47,7 +34,33 @@ const dataAll = [{
         {
             link: "/main/114928-viktor-yanukovich-nameren-vernutsya-v-politiku.html",
             title: 'Виктор Янукович намерен вернуться в политику'
-        }]
+        },
+        { text: "В 2024 году многие украинцы задаются вопросом, останется ли 8 марта выходным днем.Еще с советских времен многие привыкли в этот день чествовать и поздравлять женщин, и, конечно же, 8 марта уже многие десятилетия остается выходным днем.Однако, в 2024…", link: "/main/115490-8-marta-2023-goda-kak-otdyxaem.html", tag1: ["/main/", "Главная"], tag2: ["/srochno", "Калейдоскоп новостей"], title: "8 марта 2024 года: как отдыхаем" }]
+},
+{
+    href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', content: [
+        {
+            link: "/buznes-ekonomuka/115472-otkrytie-torgov-na-mezhbanke-27-yanvarya-2022.html",
+            title: "Открытие торгов на межбанке",
+        },
+        {
+            link: "/buznes-ekonomuka/115470-27-yanvarya-2022-ceny-na-neft-padayut-posle-vesomogo-rosta-nakanune.html",
+            title: "27 января 2022: цены на нефть падают после весомого роста накануне",
+        },
+        {
+            link: "/buznes-ekonomuka/115468-kursy-valyut-nbu-27-yanvarya-2022.html",
+            title: "Курсы валют НБУ",
+        },
+        {
+            link: "/buznes-ekonomuka/115460-26-yanvarya-2022-neft-vnov-opustilas-nizhe-30-doll.html",
+            title: "Нефть вновь опустилась ниже 30 долл",
+        },
+        {
+            link: "/buznes-ekonomuka/115466-stavki-bankovskix-metallov-nbu-27-yanvarya-2022.html",
+            title: "Ставки банковских металлов НБУ"
+        },
+        { text: "Сегодня коммерческие банки Украины покупают:Доллар США по 37,00 - 38,20, продают - 38,87 - 39,00 грн/долл.Евро по 39,20 - 40,50 грн./евро, а продают - по 39,40 - 40,60…", link: "/buznes-ekonomuka/115474-kursy-nalichnyx-valyut-v-bankax-ukrainy-27-yanvarya-2022.html", tag1: ["/buznes-ekonomuka/", "Бизнес и экономика"], tag2: ["/mirovie-novoti/", "Мировые новости"], title: "Курсы наличных валют в банках Украины" }
+    ]
 },
 {
     href: "/mirovie-novoti", theme: 'Мировые новости', content: [
@@ -70,7 +83,7 @@ const dataAll = [{
         {
             link: "/mirovie-novoti/115320-v-stambelu-gorit-otel-s-lyudmi.html",
             title: 'В Стамбуле горит отель с людьми'
-        }]
+        }, { text: "Королевский суд Лондона заявил, что убийство экс-офицера ФСБ Александра Литвиненко возможно было одобрено президентом России Владимиром Путиным. Об этом говорится в докладе, с которым выступил на заседании Палаты общин судья сэр Роберт Оуэн, передает…", link: "/mirovie-novoti/115412-londonskij-sud-vozmozhna-prichastnost-putina-k-ubijstvu-litvinenko.html", tag1: ["/hour/", "Новость часа"], tag2: ["/mirovie-novoti/", "Мировые новости"], title: "Лондонский суд: возможна причастность Путина к убийству Литвиненко" }]
 },
 
 {
@@ -95,7 +108,8 @@ const dataAll = [{
         {
             link: "/ukraine/115310-v-kiev-priletel-gryzlov.html",
             title: 'В Киев прилетел Грызлов'
-        }
+        },
+        { text: "Еврокомиссия внесла изменения в требования для въезда туристов из стран, не входящих в ЕС, и обновила критерии для стран содружества, которые стремятся снять карантинные ограничения. Об этом информирует ответственная пресс-служба учреждения…", link: "/es-uzhestochil-vezd-dlya-turistov-iz-za-shtammov-covid-19.html", tag1: ["/ukraine/", "Новости Украины"], tag2: ["/novost-dnya/", "Новость дня"], title: "ЕС ужесточил въезд для туристов из-за штаммов COVID-19" }
     ]
 }, {
     href: "/sport", theme: 'Спорт', content: [
@@ -118,7 +132,8 @@ const dataAll = [{
         {
             link: "/main/113844-ukraina-proigrala-ispanii-01.html",
             title: 'Украина проиграла Испании 0:1'
-        }]
+        },
+        { text: "Знаменитый французский футболист Зинедин Зидан стал главным тренером мадридского Реала. Для футболиста это первый опыт самостоятельной тренерской работы с профессиональной командой.Отметим, что Зидан пришел на смену Рафаэлю Бенитесу, уволенному за неудовлетворительные результаты работы.Зинедин как футболист играл…", link: "/sport/115278-zinedin-zidan-stal-glavnym-trenerom-madridskogo-reala.html", tag1: ["/sport/", "Спортивные новости"], title: "Зинедин Зидан стал главным тренером мадридского Реала" }]
 },
 
 {
@@ -142,13 +157,14 @@ const dataAll = [{
         {
             link: "/srochno/115276-otkryty-eshhe-4-yelementa-iz-tablicy-mendeleeva.html",
             title: 'Открыты еще 4 элемента из таблицы Менделеева'
-        }
+        },
+        { text: "В 2024 году многие украинцы задаются вопросом, останется ли 8 марта выходным днем.Еще с советских времен многие привыкли в этот день чествовать и поздравлять женщин, и, конечно же, 8 марта уже многие десятилетия остается выходным днем.Однако, в 2024…", link: "/main/115490-8-marta-2023-goda-kak-otdyxaem.html", tag1: ["/main/", "Главная"], tag2: ["/srochno", "Калейдоскоп новостей"], title: "8 марта 2024 года: как отдыхаем" }
     ]
 }];
 
 
 const newsDataNow = dataAll.map(item => {
-    const content  = item.content;
+    const content = item.content;
     item.content = content.map((el, i) => {
         const votes = Math.floor((Math.random() * 350) + 50);
         if (i > 5) {
@@ -158,7 +174,7 @@ const newsDataNow = dataAll.map(item => {
                 date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate() - 1), 'MM/dd/yyyy').split('/').join('.')
             };
         } else {
-            console.log(el, 'element')
+
             return {
                 ...el,
                 votes,
@@ -166,189 +182,212 @@ const newsDataNow = dataAll.map(item => {
             };
         }
     })
-       console.log(item.content, 'moooooddddddddd')
     return {
         ...item,
     }
-})
+}).slice(props.start, props.end)
 </script>
 
 <template>
-    <div class="container is-widescreen themes">
-        <div class="section is-wide content-middle" v-for="theme in newsDataNow" :key="theme.href">
-            <h2 class="title">
+    <div class="container is-widescreen themes" :style="{
+      paddingTop: end === 1 ?  0 : '96px',
+    }
+        
+    ">
+        <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.href">
+            <h2 class="theme-title">
                 <a :href="theme.href">
                     {{ theme.theme }}
                 </a>
             </h2>
-            <section class="content-middle items">
+            <section class="theme-container">
+                <article class="card article-card" :class="`item-${i}`" v-for="(article, i) in theme.content"
+                    :key="article.link">
+                    <div class="img-holder">
+                        <img :src="backgroundUrl2">
+                    </div>
 
-                <article class="card article-card" v-for="article in theme.content" :key="article.link">
-                    <a :href="article.link">
-                        <div class="img-holder">
-                            <img :src="backgroundUrl2">
-                        </div>
-                    </a>
-                    <h2 class="subtitle is-5"><a :href="article.link">{{ article.title }}
-                            <div class="news-bottom news-theme-bottom">
-                                <strong>{{ article.date }}</strong>
-                                <div class="news-bottom news-bottom-right">
-                                    <strong>{{ article.votes }}</strong>
-                                    <Icon name="mdi:eye"> </Icon>
 
-                                </div>
-                            </div>
+                    <h2 class="">
+                        <a :href="article.link">
+                            {{ article.title }}
                         </a>
+                        <div class="news-bottom news-theme-bottom">
+                            <strong>{{ article.date }}</strong>
+                            <div class="news-bottom news-bottom-right">
+                                <strong>{{ article.votes }}</strong>
+                                <Icon name="mdi:eye"> </Icon>
+                            </div>
+
+                        </div>
+
 
                     </h2>
 
                 </article>
+                <div>
+
+
+                </div>
+
 
             </section>
+
+
         </div>
     </div>
 </template>
 
 <style>
+.theme-title {
+    background-color: white;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2rem;
+    padding: 8px 12px;
+}
 
-.subtitle.is-5 .news-theme-bottom strong{
+section.theme-container {
+    display: grid;
+    grid-template-columns: 240px 220px 280fr;
+    grid-template-rows: 190px 150px 150px 150px 250px;
+    gap: 4px;
+    grid-auto-flow: row;
+}
+
+.item-0 {
+
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.item-1 {
+
+    grid-area: 1 / 2 / 1 / -1;
+}
+
+.item-2 {
+
+    grid-area: 1 / 4 / 3 / -1;
+}
+
+.item-3 {
+
+    grid-area: 2 / 2 / 4 / -1;
+}
+
+.item-4 {
+    grid-area: 3 / 1 / 3 / 2;
+}
+
+.item-5 {
+
+    grid-area: 4 / 1 / 6 / -1;
+}
+
+
+
+
+h2 .news-theme-bottom strong {
     font-size: 12px;
-    color: white;
-} 
- .news-theme-bottom {
+    color: rgb(186, 186, 186);
+    font-weight: 700;
+}
+
+.news-theme-bottom {
     transition: all 0.3s ease;
-    transform: translateY(100%);
-    opacity: 0;
     pointer-events: none;
     padding: 4px;
-    background-color: rgba(168, 166, 166, 0.156);
-    width: 102%;
+    background-color: rgba(166, 166, 166, 0.156);
     align-self: center;
-
+    width: 100%;
 }
 
-strong.theme-time {
-    color: whitesmoke;
-    font-size: 12px;
-}
 
 .themes {
-    padding-top: 24px;
-    background-color: white;
-}
-
-.img-holder {
-    width: 100%;
-    border-radius: 4px;
-    background-color: var(--my-red);
-    position: absolute;
-    z-index: 0;
-    bottom: 0px;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
-.img-holder img {
-    opacity: 0.8;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    object-fit: cover;
-    object-position: 40% 20%;
-    filter: grayscale(0.5);
-    width: 100%;
-    height: 100%;
-}
-
-.content-middle {
+    background-color: rgb(255, 255, 255);
     padding: 0;
 }
 
-.content-middle.items {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-bottom: 1px solid rgb(181, 181, 181);
-
+.img-holder {
+    background-color: var(--my-red);
+    z-index: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
-.content-middle.items {
-    gap: 12px;
-    padding: 0px 12px 48px;
-    background-color: white;
-    justify-content: space-between;
-    margin-bottom: 24px;
+.img-holder img {
+    opacity: 0.9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    object-fit: cover;
+    object-position: 0% 20%;
+    filter: grayscale(0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+
 }
 
 
 .card.article-card {
-    flex-basis: 30%;
-    box-shadow: none;
-    justify-content: stretch;
     position: relative;
-    width: 100%;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 220px;
-    border-radius: 4px;
+    align-items: flex-end;
     overflow: hidden;
     margin: 0;
+    border-radius: 0;
 }
 
-.card.article-card:first-child,
-.card.article-card:first-child .img-holder,
-.card.article-card:first-child img,
-.card.article-card:nth-child(2),
-.card.article-card:nth-child(2) .img-holder {
-    height: 340px;
-}
-
-.card.article-card:hover .news-theme-bottom {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-    padding: 2px 8px;
-}
 
 .card.article-card:hover img {
-    transform: scale(1.2) translate(0%, -2%);
+    background: 50% 50%;
     opacity: 1;
     filter: grayscale(0.4)
 }
 
-.card.article-card:nth-child(1) {
-    height: 340px;
+.section.content-middle {
+    padding: 0 0 96px 0;
 }
 
-.card.article-card:nth-child(2) {
-    flex-basis: calc(66% - 1%);
-    height: 340px;
-}
-
-.article-card .subtitle.is-5>a {
+.card.article-card h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: rgba(36, 36, 36, 0.579);
-    backdrop-filter: blur(8px);
     font-size: 16px;
     font-weight: bold;
-    min-height: 76px;
-    position: relative;
 
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
 
-    color: #fefefe;
-    padding: 4px 4px 2px;
+    color: #ffffff;
+
+    margin: 0;
     text-align: left;
+    z-index: 0;
+    font-size: 18px;
 }
 
-.content-middle .title {
-    position: relative;
-    text-transform: uppercase;
+.card.article-card h2 a {
+    color: #ffffff;
+    padding: 24px 12px;
+    font-size: 1.5rem
 }
 
-.content-middle .title::before {
+
+
+.theme-title::before {
     content: '';
     display: block;
     position: absolute;
@@ -364,17 +403,16 @@ strong.theme-time {
 @media screen and (max-width: 1024px) {
     .content-middle.items {
         flex-direction: column;
-        gap: 48px;
+        gap: 28px;
     }
 
     .card.article-card {
-        flex-basis: 30%;
-        box-shadow: none;
-        justify-content: stretch;
-        position: relative;
-        width: 100%;
 
-        height: 230px;
+        box-shadow: none;
+        position: relative;
+
+
+
     }
 
     .content-middle .title::before {

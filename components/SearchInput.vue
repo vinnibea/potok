@@ -17,7 +17,7 @@ const listener = (e) => {
         return;
     }
     if(!Array.from(e.target.classList).includes('search-input') && !Array.from(e.target.classList).includes('icon-search')) {
-        console.log('true')
+       
         emit('closeSearch')
     }
  }

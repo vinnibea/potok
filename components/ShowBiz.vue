@@ -46,7 +46,7 @@ const newsDataNow = data.map((el, i) => {
 <template>
 
     <div class="show-wrapper">
-        
+        <themes :start="0" :end="1"></themes>
         <div class="main_showbiz">
           
             <div>
@@ -74,31 +74,7 @@ const newsDataNow = data.map((el, i) => {
                         'is-active': active === 1,
                     }]">ПОПУЛЯРНОЕ</span>
                 </div>
-                <!-- <div class="show" :class="[
-                        {
-                            'show-translate': active === 1,
-                        }
-                    ]">
-                    <a
-                        href=></a>
-                    <a href=>
-                        <img class="image is-1by3" src=> </a>
-                    <h4 class="title is-6"><a
-                            href=></a></h4>
-                </div>
-                <div class="show" :class="[
-                        {
-                            'show-translate': active === 1,
-                        }
-                    ]">
-                    <a href=>
-
-                    </a>
                 
-                    <a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">
-                        <img src=""></a><br>
-                    <h4 class="title is-6"><a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html"></a></h4>
-                </div> -->
                 <div v-for="item in newsDataNow" class="show" :key="item.link" :class="[
                         {
                             'show-translate': active === 1,
@@ -124,7 +100,9 @@ const newsDataNow = data.map((el, i) => {
                 <button class="button">Показать больше</button>
             </div>
         </div>
-       <themes></themes>
+       <themes :start="1" :end="5"></themes>
+     
+       
     </div>
 </template>
 
@@ -236,8 +214,7 @@ div.img-wrapper {
 .show-wrapper {
     display: flex;
     flex-direction: row;
-    background-color: rgba(29, 29, 29, 0.642);
-    padding-bottom: 12px;
+    padding-right: 12px;
 }
 .show-wrapper div .title {
     padding: 8px;
@@ -301,11 +278,6 @@ div.img-wrapper {
     transform: rotate(-45%);
 }
 
-.main_showbiz {
-    display: flex;
-   padding-bottom: 12px;
-    
-}
 
 .main_showbiz_block {
     padding: 12px;
@@ -323,7 +295,6 @@ div.img-wrapper {
 }
 
 .show-wrapper {
-    background-color: rgb(46, 46, 46);
     flex-direction: column;
 }
 

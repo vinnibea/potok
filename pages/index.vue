@@ -63,7 +63,7 @@ const headRef = ref(null);
 const { stop } = useIntersectionObserver(
     headRef,
     ([{ isIntersecting }], observerElement) => {
-        console.log(  isIntersecting, isVisible.value)
+       
             hideHeader.value = isIntersecting
     },
 )
@@ -77,8 +77,6 @@ const transitionE = 1 * 216;
 
 const transitionFn = computed(() => transition.value * transitionE);
 const counter = (i) => {
-
-    console.log(transitionFn.value)
     if (i === -1 && transitionFn.value === -1944) return  transition.value = 0;
     if (i === 1 && transitionFn.value === 0) return 
     transition.value += i;
@@ -424,8 +422,9 @@ const setActiveArticle = (i) => {
             <div class="is-flex is-flex-direction-column" ref="headRef">
               <show-biz></show-biz>
             </div>
-
+            
         </div>
+        <footer class="card-footer"></footer>
     </div>
 </template>
 

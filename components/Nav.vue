@@ -180,7 +180,7 @@ const onModalShow = () => {
 }
 const iconRef = ref(null)
 const onSearchOpen = () => {
-    console.log('nav')
+
     modalOpened.value = false;
     showSearch.value = true;
     emit('closeMobile');
@@ -188,7 +188,7 @@ const onSearchOpen = () => {
 };
 
 watch(iconRef, (prev, what) => {
-    console.log(Array.from(prev.childNodes), what?.childNodes)
+  
 })
 
 onMounted(() => {
