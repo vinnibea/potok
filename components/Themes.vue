@@ -1,5 +1,7 @@
 <script setup>
 import backgroundUrl2 from '~/assets/s2.jpg';
+
+import { format } from 'date-fns';
 const dataAll = [{
     href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', content: [
         {
@@ -143,45 +145,77 @@ const dataAll = [{
         }
     ]
 }];
+
+
+const newsDataNow = dataAll.map(item => {
+    const content  = item.content;
+    item.content = content.map((el, i) => {
+        const votes = Math.floor((Math.random() * 350) + 50);
+        if (i > 5) {
+            return {
+                ...el,
+                votes,
+                date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate() - 1), 'MM/dd/yyyy').split('/').join('.')
+            };
+        } else {
+            console.log(el, 'element')
+            return {
+                ...el,
+                votes,
+                date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate()), 'MM/dd/yyyy').split('/').join('.')
+            };
+        }
+    })
+       console.log(item.content, 'moooooddddddddd')
+    return {
+        ...item,
+    }
+})
 </script>
 
 <template>
     <div class="container is-widescreen themes">
-        <div class="section is-wide content-middle" v-for="theme in dataAll" :key="theme.href">
+        <div class="section is-wide content-middle" v-for="theme in newsDataNow" :key="theme.href">
             <h2 class="title">
                 <a :href="theme.href">
                     {{ theme.theme }}
                 </a>
             </h2>
             <section class="content-middle items">
-                
+
                 <article class="card article-card" v-for="article in theme.content" :key="article.link">
                     <a :href="article.link">
-                    <div class="img-holder">
-                        <img :src="backgroundUrl2">
-                    </div>
-                </a>
-                    <h2 class="subtitle is-5"><a :href="article.link">{{ article.title }}
-                        <div class="news-bottom news-theme-bottom">
-                            <strong class="theme-time">00:00</strong>
-                            <div class="news-bottom news-bottom-right">
-                                <Icon name="mdi:eye"> </Icon>
-                                
-                            </div>
+                        <div class="img-holder">
+                            <img :src="backgroundUrl2">
                         </div>
                     </a>
-                       
+                    <h2 class="subtitle is-5"><a :href="article.link">{{ article.title }}
+                            <div class="news-bottom news-theme-bottom">
+                                <strong>{{ article.date }}</strong>
+                                <div class="news-bottom news-bottom-right">
+                                    <strong>{{ article.votes }}</strong>
+                                    <Icon name="mdi:eye"> </Icon>
+
+                                </div>
+                            </div>
+                        </a>
+
                     </h2>
-                    
+
                 </article>
-         
+
             </section>
         </div>
     </div>
 </template>
 
-<style> 
-.news-theme-bottom {
+<style>
+
+.subtitle.is-5 .news-theme-bottom strong{
+    font-size: 12px;
+    color: white;
+} 
+ .news-theme-bottom {
     transition: all 0.3s ease;
     transform: translateY(100%);
     opacity: 0;
@@ -190,16 +224,19 @@ const dataAll = [{
     background-color: rgba(168, 166, 166, 0.156);
     width: 102%;
     align-self: center;
-    
+
 }
+
 strong.theme-time {
-    color:whitesmoke;
+    color: whitesmoke;
     font-size: 12px;
 }
+
 .themes {
     padding-top: 24px;
-    background-color:white;
+    background-color: white;
 }
+
 .img-holder {
     width: 100%;
     border-radius: 4px;
@@ -226,13 +263,15 @@ strong.theme-time {
 .content-middle {
     padding: 0;
 }
+
 .content-middle.items {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     border-bottom: 1px solid rgb(181, 181, 181);
-   
+
 }
+
 .content-middle.items {
     gap: 12px;
     padding: 0px 12px 48px;
@@ -257,7 +296,11 @@ strong.theme-time {
     margin: 0;
 }
 
-.card.article-card:first-child, .card.article-card:first-child .img-holder,.card.article-card:first-child img , .card.article-card:nth-child(2), .card.article-card:nth-child(2) .img-holder {
+.card.article-card:first-child,
+.card.article-card:first-child .img-holder,
+.card.article-card:first-child img,
+.card.article-card:nth-child(2),
+.card.article-card:nth-child(2) .img-holder {
     height: 340px;
 }
 
@@ -273,15 +316,17 @@ strong.theme-time {
     opacity: 1;
     filter: grayscale(0.4)
 }
-.card.article-card:nth-child(1){
+
+.card.article-card:nth-child(1) {
     height: 340px;
 }
-.card.article-card:nth-child(2){
+
+.card.article-card:nth-child(2) {
     flex-basis: calc(66% - 1%);
     height: 340px;
 }
 
-.article-card  .subtitle.is-5 > a {
+.article-card .subtitle.is-5>a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -291,11 +336,11 @@ strong.theme-time {
     font-weight: bold;
     min-height: 76px;
     position: relative;
-  
+
 
     color: #fefefe;
     padding: 4px 4px 2px;
-   text-align: left;
+    text-align: left;
 }
 
 .content-middle .title {
@@ -309,7 +354,7 @@ strong.theme-time {
     position: absolute;
     width: 12px;
     height: 12px;
-    background-color:var(--my-red);
+    background-color: var(--my-red);
     border-radius: 50%;
     left: -10px;
     top: 50%;
@@ -328,7 +373,7 @@ strong.theme-time {
         justify-content: stretch;
         position: relative;
         width: 100%;
-        
+
         height: 230px;
     }
 

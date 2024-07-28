@@ -1,10 +1,46 @@
 <script setup>
-
+import {format} from 'date-fns';
+import backgroundUr1 from '~/assets/s3.jpg';
+import backgroundUr2 from '~/assets/s2.jpg';
+import backgroundUr3 from '~/assets/s3.jpg';
 const active = ref(0);
 
 const setActive = (i) => {
     active.value = i;
 }
+
+const data = [{
+    link: "/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html",
+    title: 'Новости шоу-бизнеса знаменитостей: последние сплетни, слухи 2024',
+    img: backgroundUr1 ,
+}, 
+{
+    link:"/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html" ,
+    title: 'Потап развелся с женой Ириной',
+    img: backgroundUr2,
+},
+{
+    link: "/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html",
+    title: 'Хакеры взломали телефон Ольги Бузовой: откровенные фото и переписка',
+    img: backgroundUr3,
+}]
+
+const newsDataNow = data.map((el, i) => {
+    const votes = Math.floor((Math.random() * 350) + 50);
+     if(i > 5) {
+        return  {
+            ...el,
+            votes,
+            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate() - 1) , 'MM/dd/yyyy').split('/').join('.')
+        };
+     } else {
+        return {
+            ...el,
+            votes,
+            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate()), 'MM/dd/yyyy').split('/').join('.')
+        };
+     }
+ })
 </script>
 
 <template>
@@ -38,46 +74,52 @@ const setActive = (i) => {
                         'is-active': active === 1,
                     }]">ПОПУЛЯРНОЕ</span>
                 </div>
-                <div class="show" :class="[
+                <!-- <div class="show" :class="[
                         {
                             'show-translate': active === 1,
                         }
                     ]">
                     <a
-                        href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html"></a>
-                    <a href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">
-                        <img class="image is-1by3" src="../assets/fly.jpeg"> </a>
+                        href=></a>
+                    <a href=>
+                        <img class="image is-1by3" src=> </a>
                     <h4 class="title is-6"><a
-                            href="/shoybiz/115492-novosti-shou-biznesa-znamenitostej-poslednie-spletni-sluxi-2023.html">Новости
-                            шоу-бизнеса знаменитостей: последние сплетни, слухи 2024</a></h4>
+                            href=></a></h4>
                 </div>
                 <div class="show" :class="[
                         {
                             'show-translate': active === 1,
                         }
                     ]">
-                    <a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">
+                    <a href=>
 
                     </a>
                 
                     <a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">
-                        <img src="../assets/s2.jpg"></a><br>
-                    <h4 class="title is-6"><a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html">Потап развелся
-                            с женой Ириной</a></h4>
-                </div>
-                <div class="show" :class="[
+                        <img src=""></a><br>
+                    <h4 class="title is-6"><a href="/shoybiz/115482-potap-razvelsya-s-zhenoj-irinoj.html"></a></h4>
+                </div> -->
+                <div v-for="item in newsDataNow" class="show" :key="item.link" :class="[
                         {
                             'show-translate': active === 1,
                         }
                     ]">
                     <a
-                        href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html"></a>
-                    <a href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html">
-                        <img src="../assets/s3.jpg"></a><br>
-                    <h4 class="title is-6"><a
-                            href="/shoybiz/115480-xakery-vzlomali-telefon-olgi-buzovoj-otkrovennye-foto-i-perepiska.html">Хакеры
-                            взломали телефон Ольги Бузовой: откровенные фото и переписка</a></h4>
-
+                        :href="item.link"></a>
+                    <a :href="item.link">
+                        <img :src="item.img"></a><br>
+                    <div class="show-content">
+                        <h4 class="title is-6"><a
+                            :href="item.link">{{item.title}}</a></h4>
+                            <div class="news-bottom">
+                                <strong>{{item.date}}</strong>
+                                <div class="news-bottom news-bottom-right">
+                                    <strong>{{item.votes}}</strong>
+                                    <Icon name="mdi:eye"></Icon>
+                                    
+                                </div>
+                            </div>
+                    </div>
                 </div>
                 <button class="button">Показать больше</button>
             </div>
@@ -87,7 +129,26 @@ const setActive = (i) => {
 </template>
 
 <style>
+.show-content .news-bottom, .show-content .news-bottom strong {
+    color: white;
+    font-size: 12px;
+}
+.show {
+    min-height: 8rem;
+}
+.show-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
 
+}
+
+.show-content .news-bottom:not(.news-bottom-right) {
+    padding: 4px 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
 .main_showbiz>div>h2.title {
     margin: 0;
     padding-bottom: 0;
@@ -147,9 +208,7 @@ div.img-wrapper {
 }
 
 .show img {
-    border-radius: 8px;
-    padding: 4px;
-    max-width: 180px;
+    max-width: 100%;
     min-width: 180px;
     height: 120px;
     object-fit: cover;

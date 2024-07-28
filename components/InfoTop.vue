@@ -1,11 +1,19 @@
 <script setup>
 const emit = defineEmits(['closeModal'])
+import { format } from 'date-fns';
+import { ru } from "date-fns/locale";
 defineProps({
     mobile: {
         type: Boolean,
         default: false,
     }
 });
+
+
+const date = ref(null)
+const day = format(new Date(Date.now()), 'EEEEEE', {locale: ru}).toUpperCase();
+const [ m, d ]  = format(new Date( Date.now()), 'MM/dd/yyyy').split('/');
+    date.value = d + '.' + m;
 </script>
 <template>
     <span class="modal-footer-lang info" :class="[{
@@ -14,10 +22,10 @@ defineProps({
         <span class="info-group">
             <span class="info-dual">
                 <span>
-                    ВС
+                   {{day}}
                 </span>
                 <span>
-                    21.07
+                    {{date}}
                 </span>
             </span>
         </span>

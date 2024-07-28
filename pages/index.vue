@@ -99,7 +99,9 @@ const activeArticle = ref(0);
 
 const { width: windowWidth } = useWindowSize()
 let timer;
+
 onMounted(() => {
+    
     timer = setInterval(() => {
         if (activeArticle.value >= 2) {
             activeArticle.value = 0;

@@ -1,7 +1,7 @@
 <script setup>
 
 import liveCredit from '~/assets/LiveCredit.jpg';
-
+import {format} from 'date-fns';
 
 const newsData = [{
     title: "ЕС ужесточил въезд для туристов из-за штаммов COVID-19",
@@ -53,14 +53,29 @@ const newsData = [{
     time: "08:39",
     link: "/2022/11/29/razvod-buzovoj-i-tarasova-2022-v-instagram-obsuzhdayut-olgu-i-dmitriya.html",
 }]
-
+ const newsDataNow = newsData.map((el, i) => {
+    const votes = Math.floor((Math.random() * 350) + 50);
+     if(i > 5) {
+        return  {
+            ...el,
+            votes,
+            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate() - 1) , 'MM/dd/yyyy').split('/').join('.')
+        };
+     } else {
+        return {
+            ...el,
+            votes,
+            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate()), 'MM/dd/yyyy').split('/').join('.')
+        };
+     }
+ })
 </script>
 
 
 <template>
     <section class="news">
         <h2 class="title is-3">ПОТОК НОВОСТЕЙ</h2>
-        <div class="box box-news" v-for="item in newsData" :key="item.title">
+        <div class="box box-news" v-for="item in newsDataNow" :key="item.title">
             <article class="media">
                 <div class="media-content">
                     <div class="content">
@@ -73,9 +88,10 @@ const newsData = [{
                         </a>
 
                         <div class="news-bottom">
-                            <strong>{{ item.time }}</strong>
+                            <strong>{{ item.time }}, {{item.date}}</strong>
                             <div class="news-bottom news-bottom-right">
-                                <Icon name="mdi:eye"> </Icon>
+                                <strong>{{item.votes}}</strong>
+                                <Icon name="mdi:eye"></Icon>
                                 
                             </div>
                         </div>
