@@ -399,7 +399,7 @@ h2 .news-theme-bottom strong {
     transform: translateY(-50%);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 700px) {
     .content-middle.items {
         flex-direction: column;
         gap: 28px;
