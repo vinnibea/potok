@@ -277,9 +277,9 @@ const newsDataNow = dataAll.map((item, j) => {
 
                         </a>
                     </h2>
-                    <div class="news-bottom news-bottom-text" v-if="article.text">
+                    <!-- <div class="news-bottom news-bottom-text" v-if="article.text">
                         <p class="subtitle content-description">{{ article.text }}</p>
-                    </div>
+                    </div> -->
                     <div class="news-bottom news-theme-bottom">
 
                         <strong>{{ article.date }}</strong>
@@ -337,7 +337,7 @@ const newsDataNow = dataAll.map((item, j) => {
 }
 
 .img-small img {
-    max-height: 70px;
+    min-height: 100px;
     object-fit: cover;
 }
 
@@ -346,7 +346,7 @@ const newsDataNow = dataAll.map((item, j) => {
     width: 24px;
     height: 24px;
     bottom: 0%;
-    transform: translateY(50%);
+    transform: translateY(-25%);
     z-index: 1;
     right: 0;
     background-color: var(--my-red);
@@ -361,47 +361,42 @@ const newsDataNow = dataAll.map((item, j) => {
     text-transform: uppercase;
     font-weight: 900;
     font-size: 2rem;
-    padding: 0px 16px;
-    margin-bottom: 16px;
-    margin-top: -4px;
+    padding: 0px 4px;
 }
 
 section.theme-container {
     display: grid;
-    grid-template-columns: 120px 240px 220px 1fr;
-    grid-template-rows: 120px 150px 120px 70px 70px 70px 70px 70px;
-    row-gap: 27px;
-    grid-auto-flow: row;
+    grid-template-columns: 120px minmax(130px, 1fr) 120px minmax(130px, 1fr) 120px minmax(130px, 1fr);
+    grid-template-rows: 120px 120px 120px 120px 120px;
     border-bottom: 1px solid rgb(227, 227, 227);
     padding-bottom: 24px;
+    row-gap: 24px;
 }
 
 .item-0 {
-
-    grid-area: 8 / 2 / 8 / 6;
+    grid-area: 5/ 4 / 5 / 5;
 }
 
 .item-1 {
 
-    grid-area: 7 / 2 / 7 / 6;
+    grid-area: 5 / 2 / 5 / 3;
 }
 
 .item-2 {
-
-    grid-area: 6 / 2 / 6 / 6;
+    grid-area: 4 / 6 / 4 / -1;
 }
 
 .item-3 {
 
-    grid-area: 5 / 2 / 5 / 6
+    grid-area: 4 / 4 / 4 / 4;
 }
 
 .item-4 {
-    grid-area: 4 / 2 / 4 / 6;
+    grid-area: 4 / 2 / 4 / 3;
 }
 
 .item-5 {
-    grid-area: 1 / 1 / 4 / 6;
+    grid-area: 1 / 1 / 4 / 7;
 }
 
 
@@ -587,7 +582,24 @@ h2 .news-bottom-right span,
 
 .item-5 .card.article-card .img-holder>h2>a {
     font-size: 4rem;
+    font-weight: 900;
 }
+
+.item-5.card.article-card h2 a:hover {
+    color: rgba(60, 60, 60, 0.742);
+}
+.card.article-card.item-5:hover >.img-holder > img {
+ transform: scale(1.05) translateX(-2%);
+ opacity: 0.3;
+
+}
+
+.card.article-card.item-5:hover .news-bottom.news-bottom-right.news-theme-bottom-tags *,
+
+.card.article-card.item-5:hover  h2 > a {
+    color: rgba(0, 0, 0, 0.742);
+}
+.item-5 {}
 
 @media screen and (max-width: 1024px) {
     .news-bottom.news-bottom-text {
