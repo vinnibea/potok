@@ -253,9 +253,9 @@ const newsDataNow = dataAll.map((item, j) => {
                     <span class="iterator">{{ i }}</span>
                 </span>
                 <article class="card article-card" :class="`item-${i}`" v-for="(article, i) in theme.content"
-                    :key="article.link">
+                    :key="article.link" >
 
-                    <div class="news-bottom news-bottom-right news-theme-bottom-tags">
+                    <div class="news-bottom news-bottom-right news-theme-bottom-tags" >
                         <strong v-if="article.tag1">
 
                             <a :href="article.tag1[0]">
@@ -637,7 +637,6 @@ h2 .news-bottom-right span,
         grid-area: 1 / 1 / 4 / -1;
     }
      .picture-1 {
-        border: 2px solid;
         grid-area: 6 / 1 / 6 / 2;
      }
     .picture-2 {
@@ -679,13 +678,7 @@ h2 .news-bottom-right span,
         padding: 0 0 24px 0;
     }
 
-    .theme-title {
-        text-align: center;
-    }
-
-    .theme-title::before {
-        left: 18px;
-    }
+    
 
     .item-5.card.article-card h2 a {
         padding: 12px;
@@ -705,23 +698,6 @@ h2 .news-bottom-right span,
 
     .section.content-middle {
         padding: 0 0 24px 0;
-    }
-
-    .theme-title {
-        text-align: center;
-    }
-
-    .theme-title::before {
-        left: 18px;
-    }
-
-    .item-5.card.article-card h2 a {
-        padding: 12px;
-        font-size: 1.5rem;
-    }
-
-    .theme-title {
-        font-size: 24px;
     }
 
     .card.article-card h2:not(.card.article-card.item-5 h2) {
@@ -793,6 +769,25 @@ h2 .news-bottom-right span,
 
     .picture-5 { 
         grid-area: 3 / 1 / 3 / 2;
+    }
+
+    @media screen and(max-width: 560px) {
+        .theme-title {
+            text-align: center;
+        }
+    
+        .theme-title::before {
+            left: 18px;
+        }
+    }
+
+    .item-5.card.article-card h2 a {
+        padding: 12px;
+        font-size: 1.5rem;
+    }
+
+    .theme-title {
+        font-size: 24px;
     }
 }
 </style>
