@@ -447,6 +447,7 @@ const setActiveArticle = (i) => {
     object-fit: cover;
     padding-bottom: 24px;
     z-index: 3;
+    box-shadow: inset 2px 2xp 2px black;
 }
 
 .content-fresh-wrapper {
@@ -481,6 +482,7 @@ const setActiveArticle = (i) => {
     z-index: 2;
     background-color: rgba(120, 8, 8, 0.581);
     transform: translateY(0%);
+    backdrop-filter: blur(8px);
 }
 
 .header-content {

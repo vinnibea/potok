@@ -3,6 +3,7 @@ import {format} from 'date-fns';
 import backgroundUr1 from '~/assets/s3.jpg';
 import backgroundUr2 from '~/assets/s2.jpg';
 import backgroundUr3 from '~/assets/s3.jpg';
+import backgroundUr5 from '~/assets/s21.jpeg';
 const active = ref(0);
 
 const setActive = (i) => {
@@ -55,7 +56,7 @@ const newsDataNow = data.map((el, i) => {
                     href="/shoybiz/115478-sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html"></a><br>
                 <a href="/shoybiz/115478-sofiya-2022-smotret-serial-onlajn-3-i-4-seriya-v-xoroshem-kachestve.html">
                     <div class="img-wrapper">
-                        <!-- <img src="../assets/s4.png"> -->
+                        <img class="play" :src="backgroundUr5">
                         <Icon name="ri:play-circle-line" class="icon-play">
 
                         </Icon>
@@ -109,6 +110,9 @@ const newsDataNow = data.map((el, i) => {
 </template>
 
 <style>
+.play {
+    object-fit: cover;
+}
 .show-content .news-bottom, .show-content .news-bottom strong {
     color: white;
     font-size: 12px;
@@ -158,7 +162,7 @@ div.img-wrapper {
 
 .icon-play {
     font-size: 196px;
-    color: rgba(33, 33, 33, 0.589);
+    color: rgba(156, 156, 156, 0.589);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -176,8 +180,6 @@ div.img-wrapper {
     width: 100%;
     position: relative;
     opacity: 1;
-    border-top: 24px solid rgb(0, 0, 0);
-    border-bottom: 24px solid rgb(0, 0, 0);
 }
 
 .main_showbiz>div {

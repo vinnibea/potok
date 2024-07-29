@@ -244,13 +244,13 @@ const newsDataNow = dataAll.map((item, j) => {
         <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.href">
             <h2 class="theme-title">
                 <a :href="theme.href">
-                    {{ theme.theme}}
+                    {{ theme.theme }}
                 </a>
             </h2>
             <section class="theme-container">
                 <span v-for="i in 5" :key="i" class="img-small">
                     <img width="120" height="70" :src="theme.content[5 - i].img">
-                    <span class="iterator">{{i}}</span>
+                    <span class="iterator">{{ i }}</span>
                 </span>
                 <article class="card article-card" :class="`item-${i}`" v-for="(article, i) in theme.content"
                     :key="article.link">
@@ -269,13 +269,19 @@ const newsDataNow = dataAll.map((item, j) => {
 
                     <div class="img-holder" v-if="i === 5">
                         <img width="120" height="70" :src="article.img">
+
                     </div>
                     <h2 class="big-title">
                         <a :href="article.link">
                             {{ article.title }}
+
                         </a>
                     </h2>
+                    <div class="news-bottom news-bottom-text" v-if="article.text">
+                        <p class="subtitle content-description">{{ article.text }}</p>
+                    </div>
                     <div class="news-bottom news-theme-bottom">
+
                         <strong>{{ article.date }}</strong>
                         <div class="news-bottom news-bottom-right">
                             <strong>{{ article.votes }}</strong>
@@ -292,9 +298,39 @@ const newsDataNow = dataAll.map((item, j) => {
 </template>
 
 <style>
+.news-bottom .subtitle {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    padding: 24px 8px 42px;
+    border: none;
+    text-align: right;
+    position: relative;
+    z-index: 0;
+    margin-left: 36px;
+    margin-bottom: 24px;
+    font-size: 18px;
+    align-self: flex-end;
+    display: inline-block;
+    
+    color: rgb(255, 255, 255)}
+
+.subtitle.content-description {
+    max-width: 80%;
+}
+
+.news-bottom.news-bottom-text {
+    border-top: 4px solid rgba(255, 255, 255, 0);
+    backdrop-filter: blur(81px);
+    justify-content: flex-end;
+    max-width: 100%;
+    background: linear-gradient(to right, rgba(167, 167, 167, 0),rgba(208, 56, 56, 0.546), rgba(128, 4, 4, 0.868), rgb(34, 1, 1));
+    padding: 0 8px;
+}
+
 .big-title {
     padding-left: 12px;
 }
+
 .img-small {
     position: relative;
     border: 4px solid white;
@@ -304,6 +340,7 @@ const newsDataNow = dataAll.map((item, j) => {
     max-height: 70px;
     object-fit: cover;
 }
+
 .iterator {
     position: absolute;
     width: 24px;
@@ -331,12 +368,12 @@ const newsDataNow = dataAll.map((item, j) => {
 
 section.theme-container {
     display: grid;
-    grid-template-columns: 120px 240px 220px 280px;
+    grid-template-columns: 120px 240px 220px 1fr;
     grid-template-rows: 120px 150px 120px 70px 70px 70px 70px 70px;
     row-gap: 27px;
     grid-auto-flow: row;
     border-bottom: 1px solid rgb(227, 227, 227);
-    padding-bottom: 48px;
+    padding-bottom: 24px;
 }
 
 .item-0 {
@@ -395,7 +432,7 @@ h2 .news-bottom-right span,
     position: absolute;
     top: 0;
     z-index: 1;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 700;
     padding: 4px 8px;
 
@@ -403,8 +440,8 @@ h2 .news-bottom-right span,
 
 .news-bottom.news-bottom-right.news-theme-bottom-tags strong a {
     color: whitesmoke;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 900;
 
     transition: all 0.3s ease;
     border: 1px solid transparent;
@@ -431,6 +468,7 @@ h2 .news-bottom-right span,
     right: 0;
     bottom: 0;
     z-index: 0;
+    
 }
 
 .img-holder img {
@@ -438,11 +476,11 @@ h2 .news-bottom-right span,
     transition: all 0.3s ease;
     object-fit: cover;
     object-position: 0% 20%;
-    filter: grayscale(0.6);
+    filter: grayscale(0.5);
     width: 100%;
     height: 100%;
     border-radius: 0;
-
+    box-shadow: inset -45px -45px 4px black;
 }
 
 .img-holder img:not(.item-5 .img-holder img) {
@@ -487,7 +525,7 @@ h2 .news-bottom-right span,
 }
 
 .section.content-middle {
-    padding: 0 0 96px 0;
+    padding: 0 0 24px 0;
 }
 
 .card.article-card h2 {
@@ -498,7 +536,7 @@ h2 .news-bottom-right span,
     font-weight: 700;
     min-width: 100%;
     color: #b6b6b6;
-    padding: 0 24px;
+    padding: 0px 12px 0;
     text-align: left;
     z-index: 0;
 }
@@ -528,7 +566,10 @@ h2 .news-bottom-right span,
 .item-5.card.article-card h2 a {
     color: #ffffff;
     font-size: 3rem;
-    padding: 48px 12px;
+    padding: 24px 18px 64px;
+    margin-bottom: -2px;
+    z-index: 1;
+    position: relative;
 }
 
 
@@ -546,10 +587,30 @@ h2 .news-bottom-right span,
 
 .item-5 .card.article-card .img-holder>h2>a {
     font-size: 4rem;
-    padding: 0;
 }
 
 @media screen and (max-width: 1024px) {
+    .news-bottom.news-bottom-text {
+        max-width: 100%;
+        padding: 12px;
+    }
+
+    .subtitle.content-description {
+        min-width: 100%;
+        line-height: 1;
+    }
+    .news-bottom .subtitle {
+        border-top: none;
+        color: rgb(0, 0, 0);
+        font-weight: 500;
+        padding: 2px 4px 12px;
+        border: none;
+        text-align: right;
+        margin-bottom: 0px;
+        font-size:14px;
+        display: inline-block;
+        
+        color: rgb(255, 255, 255)}
     section.theme-container {
         display: grid;
         grid-template-columns: 80px 120px 90px 140px;
@@ -561,15 +622,16 @@ h2 .news-bottom-right span,
     .section.content-middle {
         padding: 0 0 24px 0;
     }
+
     .theme-title {
-        text-align: center; 
+        text-align: center;
     }
 
     .theme-title::before {
         left: 18px;
     }
-    
-    .item-5.card.article-card h2 a{
+
+    .item-5.card.article-card h2 a {
         padding: 12px;
         font-size: 2.5rem;
     }
@@ -581,6 +643,7 @@ h2 .news-bottom-right span,
         min-height: 70px;
         object-fit: cover;
     }
+
     section.theme-container {
         display: grid;
         grid-template-columns: 80px 90px 90px 90px;
@@ -592,15 +655,16 @@ h2 .news-bottom-right span,
     .section.content-middle {
         padding: 0 0 24px 0;
     }
+
     .theme-title {
-        text-align: center; 
+        text-align: center;
     }
 
     .theme-title::before {
         left: 18px;
     }
-    
-    .item-5.card.article-card h2 a{
+
+    .item-5.card.article-card h2 a {
         padding: 12px;
         font-size: 1.5rem;
     }
@@ -608,7 +672,7 @@ h2 .news-bottom-right span,
     .theme-title {
         font-size: 24px;
     }
-    
+
     .card.article-card h2:not(.card.article-card.item-5 h2) {
         padding: 0;
         font-weight: 300;
@@ -621,6 +685,15 @@ h2 .news-bottom-right span,
     .news-bottom.news-bottom-right.news-theme-bottom-tags strong a {
         font-size: 12px;
         font-weight: 700;
+    }
+
+    .item-5.card.article-card h2 a {
+        color: #ffffff;
+        font-size: 1.5rem;
+        padding: 24px 18px 24px;
+        margin-bottom: 0px;
+        z-index: 1;
+        position: relative;
     }
 }
 </style>
