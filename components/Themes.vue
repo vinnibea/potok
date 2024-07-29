@@ -335,6 +335,8 @@ section.theme-container {
     grid-template-rows: 120px 150px 120px 70px 70px 70px 70px 70px;
     row-gap: 27px;
     grid-auto-flow: row;
+    border-bottom: 1px solid rgb(227, 227, 227);
+    padding-bottom: 48px;
 }
 
 .item-0 {
@@ -500,6 +502,7 @@ h2 .news-bottom-right span,
     text-align: left;
     z-index: 0;
 }
+
 
 .card.article-card h2 a {
     color: #ffffff;
