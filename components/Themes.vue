@@ -244,7 +244,7 @@ const newsDataNow = dataAll.map((item, j) => {
         <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.href">
             <h2 class="theme-title">
                 <a :href="theme.href">
-                    {{ theme.theme }}
+                    {{ theme.theme}}
                 </a>
             </h2>
             <section class="theme-container">
@@ -301,7 +301,8 @@ const newsDataNow = dataAll.map((item, j) => {
 }
 
 .img-small img {
-    max-height: 70px;
+    min-height: 70px;
+    object-fit: cover;
 }
 .iterator {
     position: absolute;
@@ -568,6 +569,51 @@ h2 .news-bottom-right span,
     .item-5.card.article-card h2 a{
         padding: 12px;
         font-size: 2.5rem;
+    }
+}
+
+
+@media screen and (max-width: 560px) {
+    section.theme-container {
+        display: grid;
+        grid-template-columns: 80px 90px 90px 90px;
+        grid-template-rows: 70px 70px 70px 90px 90px 90px 90px 90px;
+        row-gap: 27px;
+        grid-auto-flow: row;
+    }
+
+    .section.content-middle {
+        padding: 0 0 24px 0;
+    }
+    .theme-title {
+        text-align: center; 
+    }
+
+    .theme-title::before {
+        left: 18px;
+    }
+    
+    .item-5.card.article-card h2 a{
+        padding: 12px;
+        font-size: 1.5rem;
+    }
+
+    .theme-title {
+        font-size: 24px;
+    }
+    
+    .card.article-card h2:not(.card.article-card.item-5 h2) {
+        padding: 0;
+        font-weight: 300;
+    }
+
+    .container.content-conteiner {
+        padding: 0 !important;
+    }
+
+    .news-bottom.news-bottom-right.news-theme-bottom-tags strong a {
+        font-size: 12px;
+        font-weight: 700;
     }
 }
 </style>

@@ -323,7 +323,7 @@ const setActiveArticle = (i) => {
             </div>
         </div>
     
-        <div class="container content-container columns"  :style="`padding-top: ${120}px`">
+        <div class="container content-container columns"  :style="`padding-top: ${20}px`">
             <header  class="header-hidden" :class="[
                
         {
@@ -959,8 +959,7 @@ header.header {
     }
 
     .container.content-container {
-        padding: 12px 4px;
-        border-top: 1px solid rgba(193, 8, 8, 0.65);
+        padding: 12px 0px;
     }
 
     .container.main-container.hero {
