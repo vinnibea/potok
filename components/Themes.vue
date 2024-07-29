@@ -695,5 +695,9 @@ h2 .news-bottom-right span,
         z-index: 1;
         position: relative;
     }
+
+    .news-bottom-text {
+        display: none;
+    }
 }
 </style>
