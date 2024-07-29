@@ -301,7 +301,7 @@ const newsDataNow = dataAll.map((item, j) => {
 }
 
 .img-small img {
-    min-height: 70px;
+    max-height: 70px;
     object-fit: cover;
 }
 .iterator {
@@ -577,6 +577,10 @@ h2 .news-bottom-right span,
 
 
 @media screen and (max-width: 560px) {
+    .img-small img {
+        max-height: 70px;
+        object-fit: cover;
+    }
     section.theme-container {
         display: grid;
         grid-template-columns: 80px 90px 90px 90px;
