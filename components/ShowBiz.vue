@@ -100,6 +100,8 @@ const newsDataNow = data.map((el, i) => {
                 <button class="button">Показать больше</button>
             </div>
         </div>
+
+        
        <themes :start="1" :end="5"></themes>
      
        
@@ -217,9 +219,8 @@ div.img-wrapper {
     padding-right: 12px;
 }
 .show-wrapper div .title {
-    padding: 8px;
     color: #f0f0f0;
-    
+    padding: 12px;
 }
 
 .show-wrapper > .title {

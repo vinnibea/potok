@@ -100,8 +100,10 @@ const newsData = [{
                 </div>
             </article>
         </div>
-
+           
         <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
+
+        <big></big>
     </section>
 </template>
 

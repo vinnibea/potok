@@ -1,7 +1,44 @@
 <script setup>
 import backgroundUrl2 from '~/assets/s2.jpg';
+import t1 from '~/assets/t1.jpg';
+import t2 from '~/assets/t2.webp';
+import t3 from '~/assets/t3.jpeg';
+import t4 from '~/assets/t4.webp';
+import t5 from '~/assets/t5.jpg';
+import t6 from '~/assets/t6.jpg';
+import t7 from '~/assets/t7.webp';
+import t8 from '~/assets/t8.jpg';
+import t9 from '~/assets/t9.jpg';
+import t10 from '~/assets/t10.jpg';
+import t11 from '~/assets/t11.jpg';
+import t12 from '~/assets/t12.jpg';
+import t13 from '~/assets/t13.jpg';
+import t14 from '~/assets/t14.jpg';
+import t15 from '~/assets/t15.jpg';
+import t16 from '~/assets/t16.webp';
+import t17 from '~/assets/t17.png';
+import t18 from '~/assets/t18.webp';
+import t19 from '~/assets/t19.png';
+import t20 from '~/assets/t20.jpg';
+import t21 from '~/assets/t21.jpg';
+import t22 from '~/assets/t22.jpg';
+import t23 from '~/assets/t23.jpg';
+import t24 from '~/assets/t24.jpg';
+import t25 from '~/assets/t25.jpg';
+import t26 from '~/assets/t26.jpeg';
+import t27 from '~/assets/t27.webp';
+import t28 from '~/assets/t28.jpg';
+import t29 from '~/assets/t29.jpeg';
+import t30 from '~/assets/t30.jpeg';
+import t31 from '~/assets/t31.jpg';
+import t32 from '~/assets/t32.jpg';
+import t33 from '~/assets/t33.jpg';
+import t34 from '~/assets/t34.webp';
+import t35 from '~/assets/t35.webp';
+import t36 from '~/assets/t36.jpg';
 import { format } from 'date-fns';
 
+const images = [t6, t5, t4, t3, t2, t1, t7, t8, t9, t10, t11, t12, t18, t17, t16, t15, t14, t13, t24, t23, t22, t21, t20, t19, t30, t29, t28, t27, t26, t25, t32, t33, t34, t35, t36]
 const props = defineProps({
     start: {
         type: Number,
@@ -162,35 +199,45 @@ const dataAll = [{
     ]
 }];
 
-
-const newsDataNow = dataAll.map(item => {
+let counter = 0;
+const newsDataNow = dataAll.map((item, j) => {
     const content = item.content;
+
     item.content = content.map((el, i) => {
         const votes = Math.floor((Math.random() * 350) + 50);
+        let objectToReturn;
         if (i > 5) {
-            return {
+            objectToReturn = {
                 ...el,
+                img: images[counter],
                 votes,
                 date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate() - 1), 'MM/dd/yyyy').split('/').join('.')
             };
+
+            return objectToReturn;
         } else {
 
-            return {
+            objectToReturn = {
+                img: images[counter],
                 ...el,
                 votes,
                 date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate()), 'MM/dd/yyyy').split('/').join('.')
             };
+            counter++;
+            console.log(counter)
+            return objectToReturn;
         }
     })
     return {
         ...item,
     }
+
 }).slice(props.start, props.end)
 </script>
 
 <template>
     <div class="container is-widescreen themes" :style="{
-        paddingTop: end === 1 ? 0 : '96px',
+        paddingTop: end === 1 ? 0 : '24px',
     }
 
         ">
@@ -201,27 +248,32 @@ const newsDataNow = dataAll.map(item => {
                 </a>
             </h2>
             <section class="theme-container">
+                <span v-for="i in 5" :key="i" class="img-small">
+                    <img width="120" height="70" :src="theme.content[5 - i].img">
+                    <span class="iterator">{{i}}</span>
+                </span>
                 <article class="card article-card" :class="`item-${i}`" v-for="(article, i) in theme.content"
                     :key="article.link">
 
                     <div class="news-bottom news-bottom-right news-theme-bottom-tags">
-                        <strong v-if="article.tag1">{{ article.tag1[1] }}</strong>
-                        <strong v-if="article.tag2">{{ article.tag2[1] }}</strong>
+                        <strong v-if="article.tag1">
+
+                            <a :href="article.tag1[0]">
+                                {{ article.tag1[1] }}
+                            </a>
+                        </strong>
+                        <strong v-if="article.tag2"><a :href="article.tag2[0]">
+                                {{ article.tag2[1] }}
+                            </a></strong>
                     </div>
 
-                    <div class="img-holder">
-                        
-                        <img :src="backgroundUrl2">
+                    <div class="img-holder" v-if="i === 5">
+                        <img width="120" height="70" :src="article.img">
                     </div>
-
-
-                    <h2 class="">
+                    <h2 class="big-title">
                         <a :href="article.link">
                             {{ article.title }}
                         </a>
-                        
-
-
                     </h2>
                     <div class="news-bottom news-theme-bottom">
                         <strong>{{ article.date }}</strong>
@@ -233,69 +285,93 @@ const newsDataNow = dataAll.map(item => {
                     </div>
                 </article>
                 <div>
-
-
                 </div>
-
-
             </section>
-
-
         </div>
     </div>
 </template>
 
 <style>
+.big-title {
+    padding-left: 12px;
+}
+.img-small {
+    position: relative;
+    border: 4px solid white;
+}
+
+.img-small img {
+    max-height: 70px;
+}
+.iterator {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    bottom: 0%;
+    transform: translateY(50%);
+    z-index: 1;
+    right: 0;
+    background-color: var(--my-red);
+    text-align: center;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
 .theme-title {
     background-color: white;
     position: relative;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 2rem;
-    padding: 0px 12px 0;
+    padding: 0px 16px;
+    margin-bottom: 16px;
+    margin-top: -4px;
 }
 
 section.theme-container {
     display: grid;
-    grid-template-columns: 240px 220px 280px;
-    grid-template-rows: 120px 150px 150px 150px 250px;
-    gap: 4px;
+    grid-template-columns: 120px 240px 220px 280px;
+    grid-template-rows: 120px 150px 120px 70px 70px 70px 70px 70px;
+    row-gap: 27px;
     grid-auto-flow: row;
 }
 
 .item-0 {
 
-    grid-area: 1 / 1 / 3 / 2;
+    grid-area: 8 / 2 / 8 / 6;
 }
 
 .item-1 {
 
-    grid-area: 1 / 2 / 1 / -1;
+    grid-area: 7 / 2 / 7 / 6;
 }
 
 .item-2 {
 
-    grid-area: 1 / 4 / 4 / -1;
+    grid-area: 6 / 2 / 6 / 6;
 }
 
 .item-3 {
 
-    grid-area: 2 / 2 / 4 / -1;
+    grid-area: 5 / 2 / 5 / 6
 }
 
 .item-4 {
-    grid-area: 3 / 1 / 3 / 2;
+    grid-area: 4 / 2 / 4 / 6;
 }
 
 .item-5 {
-    grid-area: 4 / 1 / -1 / 5;
+    grid-area: 1 / 1 / 4 / 6;
 }
 
 
 
 
 
-.news-theme-bottom strong, .news-bottom-right strong, h2 .news-bottom-right span, .news-bottom-right strong {
+.news-theme-bottom strong,
+.news-bottom-right strong,
+h2 .news-bottom-right span,
+.news-bottom-right strong {
     font-size: 12px;
     color: rgb(255, 255, 255);
     font-weight: 500;
@@ -306,7 +382,7 @@ section.theme-container {
 .news-theme-bottom {
     transition: all 0.3s ease;
     pointer-events: none;
-    padding: 4px;
+    padding: 0 8px;
     background-color: rgb(17, 17, 17);
     align-self: center;
     width: 100%;
@@ -318,6 +394,22 @@ section.theme-container {
     z-index: 1;
     font-size: 16px;
     font-weight: 700;
+    padding: 4px 8px;
+
+}
+
+.news-bottom.news-bottom-right.news-theme-bottom-tags strong a {
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.news-bottom.news-bottom-right.news-theme-bottom-tags strong a:hover {
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.405);
 }
 
 .themes {
@@ -326,7 +418,6 @@ section.theme-container {
 }
 
 .img-holder {
-    background-color: var(--my-red);
     z-index: 0;
     overflow: hidden;
     width: 100%;
@@ -336,11 +427,10 @@ section.theme-container {
     left: 0;
     right: 0;
     bottom: 0;
-
+    z-index: 0;
 }
 
 .img-holder img {
-    opacity: 9;
     cursor: pointer;
     transition: all 0.3s ease;
     object-fit: cover;
@@ -350,6 +440,11 @@ section.theme-container {
     height: 100%;
     border-radius: 0;
 
+}
+
+.img-holder img:not(.item-5 .img-holder img) {
+    filter: blur(8px) grayscale(0.2);
+    opacity: 0.8;
 }
 
 
@@ -365,14 +460,28 @@ section.theme-container {
     border-radius: 0;
 }
 
-
-.card.article-card:hover img {
-    background: 50% 50%;
-    opacity: 1;
-    filter: grayscale(0.5);
-    transform: scale(1.1) translateY(-5%);
+.card.article-card h2 a:not(.card.article-card.item-5 h2 a) {
+    padding: 4px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
 }
 
+.card.article-card h2 a:not(.card.article-card.item-5 h2 a):hover {
+    color: #700303;
+}
+
+
+.card.article-card .news-theme-bottom strong:not(.card.article-card.item-5 .news-theme-bottom strong) {
+    color: rgb(60, 60, 60);
+
+}
+
+.card.article-card .news-theme-bottom:not(.card.article-card.item-5 .news-theme-bottom) {
+    background-color: whitesmoke;
+}
 
 .section.content-middle {
     padding: 0 0 96px 0;
@@ -385,9 +494,8 @@ section.theme-container {
     margin: auto auto;
     font-weight: 700;
     min-width: 100%;
-    background-color: rgba(48, 46, 46, 0.152);
     color: #b6b6b6;
-    padding: 4px;
+    padding: 0 24px;
     text-align: left;
     z-index: 0;
 }
@@ -395,38 +503,28 @@ section.theme-container {
 .card.article-card h2 a {
     color: #ffffff;
     border-left: 4px solid var(--my-red);
-    border-right: 4px solid var(--my-red);
-    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto auto;
+    font-weight: 700;
+    min-width: 100%;
+
+    color: #b6b6b6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto auto;
+    font-weight: 700;
+    max-width: 100%;
+    color: #b6b6b6;
 }
 
-
-.item-0.card.article-card h2 a {
-    font-size: 1.5rem;
-}
-
-.item-1.card.article-card h2 a {
-    font-size: 1.2rem;
-}
-
-.item-2.card.article-card h2 a {
-    font-size: 1.5rem;
-}
-
-.item-3.card.article-card h2 a {
-    font-size: 2rem;
-;
-    
-}
-
-.item-4.img-holder.article-card h2 a {
-    font-size: 1rem;
-    
-
-}
 
 .item-5.card.article-card h2 a {
     color: #ffffff;
     font-size: 3rem;
+    padding: 48px 12px;
 }
 
 
@@ -447,39 +545,29 @@ section.theme-container {
     padding: 0;
 }
 
-@media screen and (max-width: 700px) {
-    .content-middle.items {
-        flex-direction: column;
-        gap: 28px;
+@media screen and (max-width: 1024px) {
+    section.theme-container {
+        display: grid;
+        grid-template-columns: 80px 120px 90px 140px;
+        grid-template-rows: 80px 90px 90px 50px 50px 50px 50px 50px;
+        row-gap: 27px;
+        grid-auto-flow: row;
     }
 
-    .card.article-card {
-
-        box-shadow: none;
-        position: relative;
+    .section.content-middle {
+        padding: 0 0 24px 0;
+    }
+    .theme-title {
+        text-align: center; 
     }
 
     .theme-title::before {
-        width: 8px;
-        height: 8px;
-        left: 0;
+        left: 18px;
     }
-
-    section.theme-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 24px;
-    }
-
-    .card.article-card {
-        flex-basis: 20%;
-        min-height: 250px;
-        flex: 1 1;
-    }
-
-    .theme-title {
-        padding: 4px 12px;
+    
+    .item-5.card.article-card h2 a{
+        padding: 12px;
+        font-size: 2.5rem;
     }
 }
 </style>

@@ -478,7 +478,7 @@ const setActiveArticle = (i) => {
     right: 0;
     opacity: 1;
     margin: 0 auto;
-    z-index: 1;
+    z-index: 2;
     background-color: rgba(120, 8, 8, 0.581);
     transform: translateY(0%);
 }
@@ -572,7 +572,7 @@ background-color: var(--my-red)
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    z-index: 0;
+    z-index: 2;
 }
 
 .navbar-additional .navbar-item {
@@ -675,6 +675,7 @@ article.box {
 }
 
 .header {
+    z-index: 2;
     transition: all 0.3s ease;
 }
 
@@ -715,7 +716,7 @@ header.header {
     position: absolute;
     backdrop-filter: blur(8px);
     background-color: red;
-    z-index: 1;
+    z-index: 2;
 }
 
 .header-end {
