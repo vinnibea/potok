@@ -248,7 +248,7 @@ const newsDataNow = dataAll.map((item, j) => {
                 </a>
             </h2>
             <section class="theme-container">
-                <span v-for="i in 5" :key="i" class="img-small">
+                <span v-for="i in 5" :key="i" class="img-small" :class="`picture-${6 - i}`">
                     <img width="120" height="70" :src="theme.content[5 - i].img">
                     <span class="iterator">{{ i }}</span>
                 </span>
@@ -338,6 +338,7 @@ const newsDataNow = dataAll.map((item, j) => {
 
 .img-small img {
     min-height: 100px;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -346,7 +347,7 @@ const newsDataNow = dataAll.map((item, j) => {
     width: 24px;
     height: 24px;
     bottom: 0%;
-    transform: translateY(-25%);
+    transform: translateY(25%);
     z-index: 1;
     right: 0;
     background-color: var(--my-red);
@@ -366,15 +367,16 @@ const newsDataNow = dataAll.map((item, j) => {
 
 section.theme-container {
     display: grid;
-    grid-template-columns: 120px minmax(130px, 1fr) 120px minmax(130px, 1fr) 120px minmax(130px, 1fr);
-    grid-template-rows: 120px 120px 120px 120px 120px;
+    grid-template-columns: minmax(80px, 120px) minmax(120px, 1fr) minmax(80px, 120px) minmax(120px, 1fr) minmax(80px, 120px) 1fr;
+    grid-template-rows: 180px 180px 120px 120px 120px;
     border-bottom: 1px solid rgb(227, 227, 227);
     padding-bottom: 24px;
     row-gap: 24px;
+   grid-auto-flow: column;
 }
 
 .item-0 {
-    grid-area: 5/ 4 / 5 / 5;
+    grid-area: 5/ -4 / 5 / -3;
 }
 
 .item-1 {
@@ -388,7 +390,7 @@ section.theme-container {
 
 .item-3 {
 
-    grid-area: 4 / 4 / 4 / 4;
+    grid-area: 4 / -4 / 4 / -3;
 }
 
 .item-4 {
@@ -399,8 +401,18 @@ section.theme-container {
     grid-area: 1 / 1 / 4 / 7;
 }
 
+.picture-4 {
+    grid-area: 4 / -5 / 4 / -4;
+}
 
+.picture-3 {
+    opacity: 3;
+    grid-area: 4 / -3 / 4 / -2;
+}
 
+.picture-1 {
+    
+}
 
 
 .news-theme-bottom strong,
@@ -589,7 +601,7 @@ h2 .news-bottom-right span,
     color: rgba(60, 60, 60, 0.742);
 }
 .card.article-card.item-5:hover >.img-holder > img {
- transform: scale(1.05) translateX(-2%);
+ transform: scale(1.05) translateX(0px);
  opacity: 0.3;
 
 }
@@ -601,7 +613,46 @@ h2 .news-bottom-right span,
 }
 .item-5 {}
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1180px) {
+    section.theme-container {
+        display: grid;
+        grid-template-columns: 120px 1fr 120px 1fr;
+        grid-template-rows: 1fr 1fr 230px 120px 120px 120px;
+        column-gap: px;
+    }
+    .item-0 {
+        grid-area: 6  / 2 / 6 / 3; 
+    }
+    .item-1 {
+        grid-area: 5  / 4 / 5 / 5; 
+    }
+    .item-2 {
+        grid-area: 5  / 2 / 5 /3;
+    }
+    .item-3 {
+        grid-area: 4 / 4 / 4 /5;
+    }
+
+    .item-5 {
+        grid-area: 1 / 1 / 4 / -1;
+    }
+     .picture-1 {
+        border: 2px solid;
+        grid-area: 6 / 1 / 6 / 2;
+     }
+    .picture-2 {
+        grid-area: 5 / 3 / 5/ 3;
+    }
+    .picture-3 { 
+        grid-area: 5 / 1 / 5 /  2;
+    }
+    .picture-4 { 
+        grid-area: 4 / 3 / 4/  3;
+    }
+
+    .picture-5 { 
+        grid-area: 4 / 1 / 4/ 2;
+    }
     .news-bottom.news-bottom-text {
         max-width: 100%;
         padding: 12px;
@@ -623,13 +674,6 @@ h2 .news-bottom-right span,
         display: inline-block;
         
         color: rgb(255, 255, 255)}
-    section.theme-container {
-        display: grid;
-        grid-template-columns: 80px 120px 90px 140px;
-        grid-template-rows: 80px 90px 90px 50px 50px 50px 50px 50px;
-        row-gap: 27px;
-        grid-auto-flow: row;
-    }
 
     .section.content-middle {
         padding: 0 0 24px 0;
@@ -650,19 +694,14 @@ h2 .news-bottom-right span,
 }
 
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 980px) {
     .img-small img {
         min-height: 70px;
+        height: 100%;
         object-fit: cover;
     }
 
-    section.theme-container {
-        display: grid;
-        grid-template-columns: 80px 90px 90px 90px;
-        grid-template-rows: 70px 70px 70px 90px 90px 90px 90px 90px;
-        row-gap: 27px;
-        grid-auto-flow: row;
-    }
+   
 
     .section.content-middle {
         padding: 0 0 24px 0;
@@ -710,6 +749,50 @@ h2 .news-bottom-right span,
 
     .news-bottom-text {
         display: none;
+    }
+
+    section.theme-container {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        grid-template-rows: 120px 120px 120px 120px 120px 120px 120px;
+        column-gap: px;
+    }
+    .item-0 {
+        grid-area: 7 / 2 / 7 / 5; 
+    }
+    .item-1 {
+        grid-area: 6  / 2 / 6 / 5; 
+    }
+    .item-2 {
+        grid-area: 5  / 2 / 5 / 5;
+    }
+    .item-3 {
+        grid-area: 4 / 2 / 4 / 5;
+    }
+
+    .item-4 {
+        grid-area: 3 / 2 / 3 / 5;
+    }
+
+    .item-5 {
+        grid-area: 1 / 1 / 3 / 5;
+    }
+     .picture-1 {
+       
+       grid-area: 7 / 1 / 7 / 2;
+     }
+    .picture-2 {
+        grid-area: 6 / 1 / 6 / 2;
+    }
+    .picture-3 { 
+        grid-area: 5 / 1 / 5 /  2;
+    }
+    .picture-4 { 
+        grid-area: 4 / 1 / 4/  2;
+    }
+
+    .picture-5 { 
+        grid-area: 3 / 1 / 3 / 2;
     }
 }
 </style>
