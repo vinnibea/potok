@@ -578,7 +578,7 @@ h2 .news-bottom-right span,
 
 @media screen and (max-width: 560px) {
     .img-small img {
-        max-height: 70px;
+        min-height: 70px;
         object-fit: cover;
     }
     section.theme-container {
