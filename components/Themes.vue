@@ -50,7 +50,7 @@ const props = defineProps({
     },
 })
 const dataAll = [{
-    href: "/index.php", theme: 'Главные новости', bg: 'red', content: [
+    href: "/index.php", theme: 'Главные новости', bg: 'red', bd: 'red', content: [
 
         {
             link: "/main/115488-goroskop-na-segodnya-3-marta-2023.html",
@@ -75,7 +75,7 @@ const dataAll = [{
         { text: "В 2024 году многие украинцы задаются вопросом, останется ли 8 марта выходным днем.Еще с советских времен многие привыкли в этот день чествовать и поздравлять женщин, и, конечно же, 8 марта уже многие десятилетия остается выходным днем.Однако, в 2024…", link: "/main/115490-8-marta-2023-goda-kak-otdyxaem.html", tag1: ["/main/", "Главная"], tag2: ["/srochno", "Калейдоскоп новостей"], title: "8 марта 2024 года: как отдыхаем" }]
 },
 {
-    href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', bg:'blue', content: [
+    href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', bg: 'blue', bd: 'blue', content: [
         {
             link: "/buznes-ekonomuka/115472-otkrytie-torgov-na-mezhbanke-27-yanvarya-2022.html",
             title: "Открытие торгов на межбанке",
@@ -100,7 +100,7 @@ const dataAll = [{
     ]
 },
 {
-    href: "/mirovie-novoti", theme: 'Мировые новости', bg:'orange', content: [
+    href: "/mirovie-novoti", theme: 'Мировые новости', bg:'orange', bd:'orange',  content: [
         {
             link: "/mirovie-novoti/115390-cherez-dva-mesyaca-vozmozhen-krax-shengenskoj-zony-tusk.html",
             title: 'Через два месяца возможен крах Шенгенской зоны, - Туск'
@@ -124,7 +124,7 @@ const dataAll = [{
 },
 
 {
-    href: "/ukraine", theme: 'Украина', bg: 'yellow', content: [
+    href: "/ukraine", theme: 'Украина', bg: 'yellow', bd: 'yellow', content: [
 
         {
             link: "/ukraine/115450-v-krym-edet-missiya-soveta-evropy-po-pravam-cheloveka.html",
@@ -149,7 +149,7 @@ const dataAll = [{
         { text: "Еврокомиссия внесла изменения в требования для въезда туристов из стран, не входящих в ЕС, и обновила критерии для стран содружества, которые стремятся снять карантинные ограничения. Об этом информирует ответственная пресс-служба учреждения…", link: "/es-uzhestochil-vezd-dlya-turistov-iz-za-shtammov-covid-19.html", tag1: ["/ukraine/", "Новости Украины"], tag2: ["/novost-dnya/", "Новость дня"], title: "ЕС ужесточил въезд для туристов из-за штаммов COVID-19" }
     ]
 }, {
-    href: "/sport", theme: 'Спорт', bg: 'green', content: [
+    href: "/sport", theme: 'Спорт', bg: 'green', bd: 'green', content: [
         {
             link: "/sport/115120-blatter-i-platini-diskvalificirovany-fifa-na-8-let.html",
             title: 'Блаттер и Платини дисквалифицированы ФИФА на 8 лет'
@@ -243,6 +243,9 @@ const newsDataNow = dataAll.map((item, j) => {
         ">
         <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.href">
             <h2 class="title is-3">
+                <span class="id" :class="[{
+                    ['is-' + theme.bg + '-bg']: true,
+                }]"></span>
                 <a :href="theme.href">
                     {{ theme.theme }}
                 </a>
@@ -251,13 +254,13 @@ const newsDataNow = dataAll.map((item, j) => {
                 <span v-for="i in 5" :key="i" class="img-small" :class="`picture-${6 - i}`">
                     <img width="120" height="70" :src="theme.content[5 - i].img">
                     <span class="iterator" :class="[{
-                        ['is-' + theme.bg +'-bg']: true,
-                    }]">{{i}}</span>
+                        ['is-' + theme.bg + '-bg']: true,
+                    }]">{{ i }}</span>
                 </span>
                 <article class="card article-card" :class="`item-${i}`" v-for="(article, i) in theme.content"
-                    :key="article.link" >
+                    :key="article.link">
 
-                    <div class="news-bottom news-bottom-right news-theme-bottom-tags" >
+                    <div class="news-bottom news-bottom-right news-theme-bottom-tags">
                         <strong v-if="article.tag1">
 
                             <a :href="article.tag1[0]">
@@ -273,8 +276,10 @@ const newsDataNow = dataAll.map((item, j) => {
                         <img width="120" height="70" :src="article.img">
 
                     </div>
-                    <h2 class="big-title">
-                        <a :href="article.link">
+                    <h2 class="big-title" >
+                        <a :href="article.link" :class="[{
+                            ['is-' + theme.bd + '-bd']: i === 5,
+                        }]">
                             {{ article.title }}
 
                         </a>
@@ -297,13 +302,32 @@ const newsDataNow = dataAll.map((item, j) => {
 </template>
 
 <style>
+.id {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: rgb(108, 6, 6);
+    top: 12px;
+    left: -4px;
+}
+
 .content-middle .title.is-3 {
     text-transform: uppercase;
     padding-top: 0;
     position: relative;
 }
+
 .is-red-bg {
-    background-color: rgb(104, 8, 8)}
+    background-color: rgb(186, 34, 34)
+}
+
+.item-5.card.article-card h2 a.is-red-bd {
+    border-left: 4px solid rgb(186, 34, 34)
+}
+
+.item-5.card.article-card h2 a.is-blue-bd {
+    border-left: 4px solid rgb(54, 54, 187);
+}
 
 .is-blue-bg {
     background-color: rgb(54, 54, 187);
@@ -313,13 +337,26 @@ const newsDataNow = dataAll.map((item, j) => {
     background-color: rgb(21, 132, 21);
 }
 
-.is-yellow-bg{
-    background-color: rgb(171, 171, 47);
+.item-5.card.article-card h2 a.is-green-bd {
+    border-left: 4px solid rgb(21, 132, 21);
+}
+
+.is-yellow-bg {
+    background-color: rgb(237, 237, 0);
+}
+
+.item-5.card.article-card h2 a.is-yellow-bd {
+    border-left: 4px solid rgb(255, 255, 0);
+}
+
+.item-5.card.article-card h2 a.is-orange-bd {
+    border-left: 4px solid rgb(204, 149, 47);
 }
 
 .is-orange-bg {
-    background-color: rgb(204, 149, 47);
+    background-color: rgb(243, 185, 78);
 }
+
 .news-bottom .subtitle {
     color: rgb(0, 0, 0);
     font-weight: 700;
@@ -333,8 +370,9 @@ const newsDataNow = dataAll.map((item, j) => {
     font-size: 18px;
     align-self: flex-end;
     display: inline-block;
-    
-    color: rgb(255, 255, 255)}
+
+    color: rgb(255, 255, 255)
+}
 
 .subtitle.content-description {
     max-width: 80%;
@@ -345,7 +383,7 @@ const newsDataNow = dataAll.map((item, j) => {
     backdrop-filter: blur(81px);
     justify-content: flex-end;
     max-width: 100%;
-    background: linear-gradient(to right, rgba(167, 167, 167, 0),rgba(208, 56, 56, 0.546), rgba(128, 4, 4, 0.868), rgb(34, 1, 1));
+    background: linear-gradient(to right, rgba(167, 167, 167, 0), rgba(208, 56, 56, 0.546), rgba(128, 4, 4, 0.868), rgb(34, 1, 1));
     padding: 0 8px;
 }
 
@@ -372,7 +410,7 @@ const newsDataNow = dataAll.map((item, j) => {
     transform: translateY(25%);
     z-index: 1;
     right: 0;
-    
+
     text-align: center;
     font-weight: bold;
     color: whitesmoke;
@@ -394,7 +432,7 @@ section.theme-container {
     border-bottom: 1px solid rgb(227, 227, 227);
     padding-bottom: 24px;
     row-gap: 24px;
-   grid-auto-flow: column;
+    grid-auto-flow: column;
 }
 
 .item-0 {
@@ -432,9 +470,7 @@ section.theme-container {
     grid-area: 4 / -3 / 4 / -2;
 }
 
-.picture-1 {
-    
-}
+.picture-1 {}
 
 
 .news-theme-bottom strong,
@@ -497,7 +533,7 @@ h2 .news-bottom-right span,
     right: 0;
     bottom: 0;
     z-index: 0;
-    
+
 }
 
 .img-holder img {
@@ -532,7 +568,7 @@ h2 .news-bottom-right span,
 
 .card.article-card h2 a:not(.card.article-card.item-5 h2 a) {
     padding: 4px;
-    border: none;
+
     font-size: 16px;
     font-weight: 500;
     color: #333;
@@ -573,7 +609,6 @@ h2 .news-bottom-right span,
 
 .card.article-card h2 a {
     color: #ffffff;
-    border-left: 4px solid var(--my-red);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -622,17 +657,19 @@ h2 .news-bottom-right span,
 .item-5.card.article-card h2 a:hover {
     color: rgba(60, 60, 60, 0.742);
 }
-.card.article-card.item-5:hover >.img-holder > img {
- transform: scale(1.05) translateX(0px);
- opacity: 0.3;
+
+.card.article-card.item-5:hover>.img-holder>img {
+    transform: scale(1.05) translateX(0px);
+    opacity: 0.3;
 
 }
 
 .card.article-card.item-5:hover .news-bottom.news-bottom-right.news-theme-bottom-tags *,
 
-.card.article-card.item-5:hover  h2 > a {
+.card.article-card.item-5:hover h2>a {
     color: rgba(0, 0, 0, 0.742);
 }
+
 .item-5 {}
 
 @media screen and (max-width: 1180px) {
@@ -642,15 +679,19 @@ h2 .news-bottom-right span,
         grid-template-rows: 1fr 1fr 230px 120px 120px 120px;
         column-gap: px;
     }
+
     .item-0 {
-        grid-area: 6  / 2 / 6 / 3; 
+        grid-area: 6 / 2 / 6 / 3;
     }
+
     .item-1 {
-        grid-area: 5  / 4 / 5 / 5; 
+        grid-area: 5 / 4 / 5 / 5;
     }
+
     .item-2 {
-        grid-area: 5  / 2 / 5 /3;
+        grid-area: 5 / 2 / 5 /3;
     }
+
     .item-3 {
         grid-area: 4 / 4 / 4 /5;
     }
@@ -658,22 +699,27 @@ h2 .news-bottom-right span,
     .item-5 {
         grid-area: 1 / 1 / 4 / -1;
     }
-     .picture-1 {
+
+    .picture-1 {
         grid-area: 6 / 1 / 6 / 2;
-     }
+    }
+
     .picture-2 {
         grid-area: 5 / 3 / 5/ 3;
     }
-    .picture-3 { 
-        grid-area: 5 / 1 / 5 /  2;
-    }
-    .picture-4 { 
-        grid-area: 4 / 3 / 4/  3;
+
+    .picture-3 {
+        grid-area: 5 / 1 / 5 / 2;
     }
 
-    .picture-5 { 
+    .picture-4 {
+        grid-area: 4 / 3 / 4/ 3;
+    }
+
+    .picture-5 {
         grid-area: 4 / 1 / 4/ 2;
     }
+
     .news-bottom.news-bottom-text {
         max-width: 100%;
         padding: 12px;
@@ -683,6 +729,7 @@ h2 .news-bottom-right span,
         min-width: 100%;
         line-height: 1;
     }
+
     .news-bottom .subtitle {
         border-top: none;
         color: rgb(0, 0, 0);
@@ -691,16 +738,17 @@ h2 .news-bottom-right span,
         border: none;
         text-align: right;
         margin-bottom: 0px;
-        font-size:14px;
+        font-size: 14px;
         display: inline-block;
-        
-        color: rgb(255, 255, 255)}
+
+        color: rgb(255, 255, 255)
+    }
 
     .section.content-middle {
         padding: 0 0 24px 0;
     }
 
-    
+
 
     .item-5.card.article-card h2 a {
         padding: 12px;
@@ -716,7 +764,7 @@ h2 .news-bottom-right span,
         object-fit: cover;
     }
 
-   
+
 
     .section.content-middle {
         padding: 0 0 24px 0;
@@ -755,15 +803,19 @@ h2 .news-bottom-right span,
         grid-template-rows: 120px 120px 120px 120px 120px 120px 120px;
         column-gap: px;
     }
+
     .item-0 {
-        grid-area: 7 / 2 / 7 / 5; 
+        grid-area: 7 / 2 / 7 / 5;
     }
+
     .item-1 {
-        grid-area: 6  / 2 / 6 / 5; 
+        grid-area: 6 / 2 / 6 / 5;
     }
+
     .item-2 {
-        grid-area: 5  / 2 / 5 / 5;
+        grid-area: 5 / 2 / 5 / 5;
     }
+
     .item-3 {
         grid-area: 4 / 2 / 4 / 5;
     }
@@ -775,21 +827,25 @@ h2 .news-bottom-right span,
     .item-5 {
         grid-area: 1 / 1 / 3 / 5;
     }
-     .picture-1 {
-       
-       grid-area: 7 / 1 / 7 / 2;
-     }
+
+    .picture-1 {
+
+        grid-area: 7 / 1 / 7 / 2;
+    }
+
     .picture-2 {
         grid-area: 6 / 1 / 6 / 2;
     }
-    .picture-3 { 
-        grid-area: 5 / 1 / 5 /  2;
-    }
-    .picture-4 { 
-        grid-area: 4 / 1 / 4/  2;
+
+    .picture-3 {
+        grid-area: 5 / 1 / 5 / 2;
     }
 
-    .picture-5 { 
+    .picture-4 {
+        grid-area: 4 / 1 / 4/ 2;
+    }
+
+    .picture-5 {
         grid-area: 3 / 1 / 3 / 2;
     }
 
@@ -797,7 +853,7 @@ h2 .news-bottom-right span,
         .theme-title {
             text-align: center;
         }
-    
+
         .theme-title::before {
             left: 18px;
         }
@@ -810,6 +866,10 @@ h2 .news-bottom-right span,
 
     .theme-title {
         font-size: 24px;
+    }
+
+    .id {
+        display: none;
     }
 }
 </style>

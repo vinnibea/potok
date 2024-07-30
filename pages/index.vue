@@ -456,7 +456,7 @@ const setActiveArticle = (i) => {
    padding: 24px 12px;
 }
 .bottom-article:not(.bottom-article:last-child) {
-    border-right: 1px solid white;
+    border-right: 1px solid rgb(62, 62, 62);
     
     
 }
