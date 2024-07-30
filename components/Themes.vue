@@ -428,7 +428,7 @@ const newsDataNow = dataAll.map((item, j) => {
 section.theme-container {
     display: grid;
     grid-template-columns: minmax(80px, 120px) minmax(120px, 1fr) minmax(80px, 120px) minmax(120px, 1fr) minmax(80px, 120px) 1fr;
-    grid-template-rows: 180px 180px 120px 120px 120px;
+    grid-template-rows: 120px 120px 120px minmax(120px, 1fr) minmax(120px, 1fr);
     border-bottom: 1px solid rgb(227, 227, 227);
     padding-bottom: 24px;
     row-gap: 24px;
@@ -505,7 +505,7 @@ h2 .news-bottom-right span,
 
 .news-bottom.news-bottom-right.news-theme-bottom-tags strong a {
     color: whitesmoke;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 900;
 
     transition: all 0.3s ease;
@@ -673,11 +673,16 @@ h2 .news-bottom-right span,
 .item-5 {}
 
 @media screen and (max-width: 1180px) {
+
+    .news-bottom.news-bottom-right.news-theme-bottom-tags strong a {
+        font-size: 12px;
+    
+    }
     section.theme-container {
         display: grid;
         grid-template-columns: 120px 1fr 120px 1fr;
-        grid-template-rows: 1fr 1fr 230px 120px 120px 120px;
-        column-gap: px;
+        grid-template-rows: 90px 90px 90px minmax(120px, 140px) 140px 140px;
+        column-gap: 4px;
     }
 
     .item-0 {

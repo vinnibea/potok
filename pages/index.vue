@@ -12,17 +12,23 @@ import { useElementSize } from '@vueuse/core'
 import { useWindowSize } from '@vueuse/core'
 
 const mainData = [{
+    tag: 'Новость дня',
+    tagLink: "/novost-dnya/",
     title: 'ЕС ужесточил въезд для туристов из-за штаммов COVID-19',
     link: '/es-uzhestochil-vezd-dlya-turistov-iz-za-shtammov-covid-19.html',
     img: backgroundUrl,
     content: 'Еврокомиссия внесла изменения в требования для въезда туристов из стран, не входящих в ЕС, и обновила критерии для стран содружества, которые стремятся снять карантинные ограничения. Об этом информирует ответственная пресс-служба учреждения…',
 }, {
+    tag: 'Новость часа',
+    tagLink: "/hour/",
     title: 'В Крым едет миссия Совета Европы по правам человека﻿',
     link: '/href="/ukraine/115450-v-krym-edet-missiya-soveta-evropy-po-pravam-cheloveka.html',
     img: backgroundUrl2,
     content: 'В понедельник, 25 января 2024 года, Генеральный секретарь Совета Европы Турбьерн Ягланд объявил о начале работы делегации в аннексированном Россией Крыму, которая оценит ситуацию с правами человека на полуострове. Об этом говорится…',
 },
 {
+    tag: 'Новость часа',
+    tagLink: "/hour/",
     title: 'Лондонский суд: возможна причастность Путина к убийству Литвиненко',
     link: '/mirovie-novoti/115412-londonskij-sud-vozmozhna-prichastnost-putina-k-ubijstvu-litvinenko.html',
     img: backgroundUrl3,
@@ -242,72 +248,89 @@ const setActiveArticle = (i) => {
 
 
                 <div class="hero-columns">
-                    <div class="desktop-sub">
-                        <ul class="navbar navbar-additional">
-                            <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/analitika">Аналитика</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
-                            </li>
-                            <li class="navbar-item"> <a href="/sonnik">Сонник</a>
-                            </li>
-                        </ul>
 
-                        <span class="trigger-left" v-if="transition">
-                            <Icon class="icon" name="ri:arrow-left-wide-fill" @click="counter(1)"></Icon>
-                        </span>
-
-                        <span class="trigger-right" v-if="transitionFn !== -2376">
-                            <Icon class="icon" name="ri:arrow-right-wide-fill" @click="counter(-1)"></Icon>
-                        </span>
-
-                    </div>
                     <div class="content-fresh-wrapper">
-                        <article class="hero">
-                            <h1 class="title">
-                                {{ mainData[activeArticle].title }}
-                            </h1>
-                            
 
-                            <div class="hero-bottom">
-                                <article class="bottom-article" v-for="item in mainData" :key="item.title">
-                                    <a class="bottom-article-link" :href="item.link">
-                                        <img width="180px" height="120px" :src="item.img" />
-                                        <h2>{{ item.title }}</h2>
-                                    </a>
-                                </article>
+
+
+                        <article class="hero">
+                            <div class="hero-center">
+                                <div class="hero-for-desktop">
+                                   <a :href="mainData[activeArticle].link">
+                                    <h1 class="title">
+
+
+                                        {{ mainData[activeArticle].title }}
+                                    </h1>
+                                   </a>
+
+                                    <div class="hero-bottom">
+                                        <article class="bottom-article" v-for="item in mainData" :key="item.title">
+                                            <a class="bottom-article-link" :href="item.link">
+                                                <img width="180px" height="120px" :src="item.img" />
+                                                <p>
+                                                    <span class="hero-subtitle"> 
+                                                        <a :href="item.tagLink">
+                                                            {{ item.tag }}
+                                                        </a>
+                                                    </span>
+                                                    <h2>{{ item.title }}</h2>
+                                                </p>
+                                            </a>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="desktop-sub">
+                                    <ul class="navbar navbar-additional">
+                                        <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/analitika">Аналитика</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая
+                                                личность</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая
+                                                личность</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
+                                        </li>
+                                        <li class="navbar-item"> <a href="/sonnik">Сонник</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
                             </div>
+
+
+
+
                         </article>
 
 
                     </div>
 
-                    
+
                 </div>
 
 
@@ -431,45 +454,78 @@ const setActiveArticle = (i) => {
 </template>
 
 <style>
+.hero-center {
+    display: flex;
+    padding-top: 80px;
+}
+
+.hero-center .hero-for-desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero-center>div>.title {
+    margin: 0;
+}
+
 .hero-bottom {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
-    margin-top: 124px;
+    padding: 0px;
+    justify-content: center;
 }
 
 .hero-bottom img {
-    min-height: 100px;
-    max-height: 100px;
-    min-width: 180px;
-    max-width: 180px;
+    min-height: 60px;
+    max-height: 60px;
+    min-width: 80px;
+    max-width: 80px;
     object-fit: cover;
 }
 
 .bottom-article-link {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
     gap: 12px;
+    font-size: 12px;
 }
 
 .bottom-article {
-   padding: 24px 12px;
+    padding: 4px;
+    flex-basis: 32%;
+    flex-shrink: 0;
 }
+
 .bottom-article:not(.bottom-article:last-child) {
-    border-right: 1px solid rgb(62, 62, 62);
-    
-    
+    border-right: 1px solid rgba(62, 62, 62, 0.275);
 }
-.desktop-sub{
+
+.desktop-sub {
     order: 21;
-
 }
-
+.bottom-article-link * {
+    transition: all 0.3s ease;
+} 
 .bottom-article-link h2 {
     color: white;
     font-size: 16px;
     font-weight: 700;
+    padding-top: 8px;
 }
+
+.bottom-article-link p a {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.bottom-article-link h2:hover, .bottom-article-link p a:hover {
+    opacity: 0.8;
+}
+
 .hero-columns {
     display: flex;
     justify-content: space-between;
@@ -490,7 +546,7 @@ const setActiveArticle = (i) => {
     -moz-background-size: cover;
     -o-background-size: cover;
     object-fit: cover;
-    padding: 8px 24px;
+    padding: 8px;
     z-index: 3;
     box-shadow: inset -2px 0px 240px black;
 }
@@ -498,8 +554,9 @@ const setActiveArticle = (i) => {
 .content-fresh-wrapper {
     display: flex;
     flex-wrap: nowrap;
+    flex-direction: row;
     cursor: pointer;
-    align-items: flex-end;
+    align-items: center;
 }
 
 
@@ -633,15 +690,18 @@ p.subtitle {
     color: white;
     font-size: 12px;
 }
+
 .desktop-sub .navbar-additional .navbar-item a {
-    padding: 8px 0;
+    padding: 0 0 6px 0;
     text-align: justify;
     font-weight: 700;
-   
+
 }
+
 .desktop-sub .navbar-additional {
     background-color: rgba(133, 3, 3, 0.887);
-    padding: 0 24px;
+    padding: 8px 24px;
+    border: none;
 }
 
 .navbar-additional .navbar-item a:hover {
@@ -742,11 +802,17 @@ article.box {
 }
 
 .container.main-container .title {
-    padding: 24px 12px;
+    padding: 120px 24px 12px;
+    max-width: 85%;
     color: white;
     font-size: 3rem;
     min-height: 4rem;
     border-left: 4px solid red;
+    transition: all 0.3s ease;
+}
+
+.container.main-container .title:hover {
+  opacity: 0.9;
 }
 
 .icon-social {
@@ -769,8 +835,8 @@ header.header {
     left: 0;
     position: absolute;
     backdrop-filter: blur(8px);
-    background-color: rgba(248, 56, 56, 0.601); 
-     z-index: 2;
+    background-color: rgba(248, 56, 56, 0.601);
+    z-index: 2;
 }
 
 .header-end {
@@ -792,6 +858,15 @@ header.header {
 }
 
 @media screen and (max-width: 700px) {
+    .desktop-sub {
+        display: none;
+    }
+
+    .hero-bottom {
+        display: none;
+
+    }
+
     .content-fresh-wrapper {
         width: 100%;
     }
@@ -845,9 +920,7 @@ header.header {
 
 @media screen and (max-width: 1224px) {
     .hero-top {}
-    .desktop-sub {
-        display: none;
-    }
+
     .hero-top>h1.title {
         display: inline;
         min-width: 85%;
@@ -889,12 +962,10 @@ header.header {
     .container.main-container .title {
         max-width: fit-content;
         font-size: 2rem;
-    } 
-
-    .hero-bottom {
-        display: none;
-        
     }
+
+
+
 
     .header {
         max-width: 100%;

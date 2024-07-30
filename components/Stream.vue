@@ -82,32 +82,49 @@ const newsData = [{
 
                         <a class="fire-link" :href="item.link">
                             
-                            <Icon name="mdi:fire" v-if="item.title.length < 50"></Icon> <h3 class="subtitle is-6" :class="[
+                             <h3 class="subtitle is-6" :class="[
                                 {'fire-link-active': item.title.length < 50}
-                            ]">{{ item.title }} </h3>
+                            ]">
+                            <Icon name="mdi:fire" class="news-fire" v-if="item.title.length < 50"></Icon>
+                            {{ item.title }} 
+                        </h3>
                         </a>
 
-                        <div class="news-bottom">
+                        <div class="news-bottom news-stream-bottom">
                             <strong>{{ item.time }}, {{item.date}}</strong>
                             <div class="news-bottom news-bottom-right">
-                                <strong>{{item.votes}}</strong>
                                 <Icon name="mdi:eye"></Icon>
-                                
+                                <strong>{{item.votes}}</strong>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </article>
+            
         </div>
-           
-        <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
-
-        <big></big>
+        <button class="button" data-v-inspector="components/ShowBiz.vue:101:17">Больше новостей</button>
     </section>
+        <!-- <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
+
+        <big></big> -->
+    
 </template>
 
 <style>
+.news-fire {
+    color: orange;
+}
+.news-stream-bottom .news-bottom-right {
+    gap: 2px;
+}
+
+.news-stream-bottom .news-bottom-right strong {
+    color: rgb(77, 77, 77);
+    opacity: 1;
+    font-size: 12px;
+    font-weight: 700;
+}
 .fire-link-active {
     font-weight: 700;
 }
@@ -117,8 +134,11 @@ const newsData = [{
   margin: 0 auto;
 }
  .news {
-    padding: 0 12px 12px;
-    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 24px 48px;
+    flex-basis: 42%;
  }
 .fire-link {
     display: flex;
@@ -131,11 +151,17 @@ const newsData = [{
 }
 .box.box-news {
     box-shadow: none;
+    margin: 0;
     border-radius: 0;
-    border-bottom: 1px solid rgba(29, 29, 29, 0.349);
-    padding: 0 8px 2px 2px;
+    border-bottom: 1px solid rgba(29, 29, 29, 0.131);
+    padding: 0 0 8px 0;
     background-color: transparent;
 
+}
+
+.box.box-news:nth-last-child(2){
+    border-bottom: none;
+    padding-bottom: 24px;
 }
 
 .fire-link-active {
@@ -145,16 +171,24 @@ const newsData = [{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    opacity: 0.8;
+    opacity: 0.5;
 }
 .news-bottom {
     gap: 12px;
 }
 
+
+.news-stream-bottom {
+    justify-content: flex-start;
+    gap: 8px;
+}
+
 .subtitle.is-6 {
-    color: #262626;
-    font-weight: 300;
-    padding: 0;
+    color: #000000;
+    font-weight: 400;
+    padding: 8px 8px 8px 0;
+    font-size: 18px;
+    margin: 0;
 }
 
 .subtitle.is-6.fire-link-active {
@@ -162,14 +196,14 @@ const newsData = [{
 }
 
 .subtitle.is-6:hover {
-    color: #570b0b;
+    color: #c80606;
 }
 
 .content strong {
     color: grey;
     opacity: 1;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 @media screen and (max-width: 700) {

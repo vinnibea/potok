@@ -141,10 +141,17 @@ const newsDataNow = data.map((el, i) => {
 }
 .button {
     margin: 0 auto;
-    width: 95%;
+    width: 100%;
     color: white;
-    background-color: var(--my-red);
+    background-color: rgb(177 8 8);
     border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    opacity: 0.7;
 }
 .show {display: flex;}
 .show-translate {
