@@ -50,7 +50,7 @@ const props = defineProps({
     },
 })
 const dataAll = [{
-    href: "/index.php", theme: 'Главные новости', content: [
+    href: "/index.php", theme: 'Главные новости', bg: 'red', content: [
 
         {
             link: "/main/115488-goroskop-na-segodnya-3-marta-2023.html",
@@ -75,7 +75,7 @@ const dataAll = [{
         { text: "В 2024 году многие украинцы задаются вопросом, останется ли 8 марта выходным днем.Еще с советских времен многие привыкли в этот день чествовать и поздравлять женщин, и, конечно же, 8 марта уже многие десятилетия остается выходным днем.Однако, в 2024…", link: "/main/115490-8-marta-2023-goda-kak-otdyxaem.html", tag1: ["/main/", "Главная"], tag2: ["/srochno", "Калейдоскоп новостей"], title: "8 марта 2024 года: как отдыхаем" }]
 },
 {
-    href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', content: [
+    href: '/buznes-ekonomuka', theme: 'Бизнес и экономика', bg:'blue', content: [
         {
             link: "/buznes-ekonomuka/115472-otkrytie-torgov-na-mezhbanke-27-yanvarya-2022.html",
             title: "Открытие торгов на межбанке",
@@ -100,7 +100,7 @@ const dataAll = [{
     ]
 },
 {
-    href: "/mirovie-novoti", theme: 'Мировые новости', content: [
+    href: "/mirovie-novoti", theme: 'Мировые новости', bg:'orange', content: [
         {
             link: "/mirovie-novoti/115390-cherez-dva-mesyaca-vozmozhen-krax-shengenskoj-zony-tusk.html",
             title: 'Через два месяца возможен крах Шенгенской зоны, - Туск'
@@ -124,7 +124,7 @@ const dataAll = [{
 },
 
 {
-    href: "/ukraine", theme: 'Украина', content: [
+    href: "/ukraine", theme: 'Украина', bg: 'yellow', content: [
 
         {
             link: "/ukraine/115450-v-krym-edet-missiya-soveta-evropy-po-pravam-cheloveka.html",
@@ -149,7 +149,7 @@ const dataAll = [{
         { text: "Еврокомиссия внесла изменения в требования для въезда туристов из стран, не входящих в ЕС, и обновила критерии для стран содружества, которые стремятся снять карантинные ограничения. Об этом информирует ответственная пресс-служба учреждения…", link: "/es-uzhestochil-vezd-dlya-turistov-iz-za-shtammov-covid-19.html", tag1: ["/ukraine/", "Новости Украины"], tag2: ["/novost-dnya/", "Новость дня"], title: "ЕС ужесточил въезд для туристов из-за штаммов COVID-19" }
     ]
 }, {
-    href: "/sport", theme: 'Спорт', content: [
+    href: "/sport", theme: 'Спорт', bg: 'green', content: [
         {
             link: "/sport/115120-blatter-i-platini-diskvalificirovany-fifa-na-8-let.html",
             title: 'Блаттер и Платини дисквалифицированы ФИФА на 8 лет'
@@ -242,7 +242,7 @@ const newsDataNow = dataAll.map((item, j) => {
 
         ">
         <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.href">
-            <h2 class="theme-title">
+            <h2 class="title is-3">
                 <a :href="theme.href">
                     {{ theme.theme }}
                 </a>
@@ -250,7 +250,9 @@ const newsDataNow = dataAll.map((item, j) => {
             <section class="theme-container">
                 <span v-for="i in 5" :key="i" class="img-small" :class="`picture-${6 - i}`">
                     <img width="120" height="70" :src="theme.content[5 - i].img">
-                    <span class="iterator">{{ i }}</span>
+                    <span class="iterator" :class="[{
+                        ['is-' + theme.bg +'-bg']: true,
+                    }]">{{i}}</span>
                 </span>
                 <article class="card article-card" :class="`item-${i}`" v-for="(article, i) in theme.content"
                     :key="article.link" >
@@ -277,9 +279,6 @@ const newsDataNow = dataAll.map((item, j) => {
 
                         </a>
                     </h2>
-                    <!-- <div class="news-bottom news-bottom-text" v-if="article.text">
-                        <p class="subtitle content-description">{{ article.text }}</p>
-                    </div> -->
                     <div class="news-bottom news-theme-bottom">
 
                         <strong>{{ article.date }}</strong>
@@ -298,6 +297,29 @@ const newsDataNow = dataAll.map((item, j) => {
 </template>
 
 <style>
+.content-middle .title.is-3 {
+    text-transform: uppercase;
+    padding-top: 0;
+    position: relative;
+}
+.is-red-bg {
+    background-color: rgb(104, 8, 8)}
+
+.is-blue-bg {
+    background-color: rgb(54, 54, 187);
+}
+
+.is-green-bg {
+    background-color: rgb(21, 132, 21);
+}
+
+.is-yellow-bg{
+    background-color: rgb(171, 171, 47);
+}
+
+.is-orange-bg {
+    background-color: rgb(204, 149, 47);
+}
 .news-bottom .subtitle {
     color: rgb(0, 0, 0);
     font-weight: 700;
@@ -350,7 +372,7 @@ const newsDataNow = dataAll.map((item, j) => {
     transform: translateY(25%);
     z-index: 1;
     right: 0;
-    background-color: var(--my-red);
+    
     text-align: center;
     font-weight: bold;
     color: whitesmoke;

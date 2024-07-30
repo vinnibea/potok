@@ -299,6 +299,7 @@ div.img-wrapper {
 
 .show-wrapper {
     flex-direction: column;
+    gap: 48px;
 }
 
 .main_showbiz_block .show, div.main_showbiz_block {

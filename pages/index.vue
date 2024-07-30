@@ -492,7 +492,7 @@ const setActiveArticle = (i) => {
     object-fit: cover;
     padding: 8px 24px;
     z-index: 3;
-    box-shadow: inset -2px 0px 240px black, inset 0px 0px 200px rgba(8, 8, 8, 0.59);
+    box-shadow: inset -2px 0px 240px black;
 }
 
 .content-fresh-wrapper {
@@ -769,8 +769,8 @@ header.header {
     left: 0;
     position: absolute;
     backdrop-filter: blur(8px);
-    background-color: red;
-    z-index: 2;
+    background-color: rgba(248, 56, 56, 0.601); 
+     z-index: 2;
 }
 
 .header-end {

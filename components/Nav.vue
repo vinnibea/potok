@@ -301,9 +301,7 @@ onMounted(() => {
 
 .navbar {
     position: relative;
-
-    backdrop-filter: blur(8px);
-    
+    border-bottom: 1px solid whitesmoke;
     z-index: 6000;
 }
 
