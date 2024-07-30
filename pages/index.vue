@@ -58,13 +58,13 @@ const heroRef = ref(null)
 const headerRef = ref(null);
 const isVisible = useElementVisibility(heroRef);
 const { width, height } = useElementSize(headerRef)
-const hideHeader= ref(null);
+const hideHeader = ref(null);
 const headRef = ref(null);
 const { stop } = useIntersectionObserver(
     headRef,
     ([{ isIntersecting }], observerElement) => {
-       
-            hideHeader.value = isIntersecting
+
+        hideHeader.value = isIntersecting
     },
 )
 
@@ -77,8 +77,8 @@ const transitionE = 1 * 216;
 
 const transitionFn = computed(() => transition.value * transitionE);
 const counter = (i) => {
-    if (i === -1 && transitionFn.value === -1944) return  transition.value = 0;
-    if (i === 1 && transitionFn.value === 0) return 
+    if (i === -1 && transitionFn.value === -1944) return transition.value = 0;
+    if (i === 1 && transitionFn.value === 0) return
     transition.value += i;
 }
 
@@ -99,7 +99,7 @@ const { width: windowWidth } = useWindowSize()
 let timer;
 
 onMounted(() => {
-    
+
     timer = setInterval(() => {
         if (activeArticle.value >= 2) {
             activeArticle.value = 0;
@@ -138,22 +138,21 @@ const setActiveArticle = (i) => {
 
 <template>
 
-    <div class="container hero is-fullheight-with-navbar"  ref="el">
-        <div class="container main-container hero"
-            :style="{ backgroundImage: `url(${mainData[activeArticle].img})`}">
+    <div class="container hero is-fullheight-with-navbar" ref="el">
+        <div class="container main-container hero" :style="{ backgroundImage: `url(${mainData[activeArticle].img})` }">
 
             <div class="mobile-menu-wrapper">
 
                 <MobileMenu :showModal="showMobile" @onClose="onHideMobileMenu"></MobileMenu>
             </div>
-           
-         
-            <header  class="header" :class="[
+
+
+            <header class="header" :class="[
                 {
                     'header-hidden': hideHeader,
                     'header-isVisible': !hideHeader
-                } 
- 
+                }
+
             ]">
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
                 <HeaderTopVue />
@@ -161,68 +160,68 @@ const setActiveArticle = (i) => {
 
                     <ul class="navbar-additional">
                         <li class="navbar-item" :style="{
-                transform: `translate(${transitionFn}px)`
-            }"> <a href="/srochno">Калейдоскоп новостей</a>
+                            transform: `translate(${transitionFn}px)`
+                        }"> <a href="/srochno">Калейдоскоп новостей</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/novost-dnya">Новость дня</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/novost-dnya">Новость дня</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/istoriya-dnya">История дня</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/istoriya-dnya">История дня</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/analitika">Аналитика</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/analitika">Аналитика</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/dosie-politiki">Досье: Политики</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/dosie-politiki">Досье: Политики</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sportsmeny">Спортсмены</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sportsmeny">Спортсмены</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-psihologa">Советы: психолога</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-psihologa">Советы: психолога</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-dietologa">Советы: диетолога</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-dietologa">Советы: диетолога</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-terapevta">Советы: терапевта</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-terapevta">Советы: терапевта</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-okulista">Советы: окулиста</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-okulista">Советы: окулиста</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/interesnie-fakty">Интересные факты</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/interesnie-fakty">Интересные факты</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/aforizmy">Афоризмы</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/aforizmy">Афоризмы</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/anekdoty">Анекдоты</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/anekdoty">Анекдоты</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sonnik">Сонник</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sonnik">Сонник</a>
                         </li>
 
                     </ul>
@@ -236,78 +235,81 @@ const setActiveArticle = (i) => {
                     </span>
 
                 </div>
-               
+
             </header>
 
-            <section class="hero-top"  ref="swipeMainRef">
-              
-                    
-                   <div class="hero-columns">
-                        <div class="content-fresh-wrapper" 
-              >
-                            <article class="hero">
-                                <h1 class="title">
-                                    {{ mainData[activeArticle].title }}
-                                </h1>
+            <section class="hero-top" ref="swipeMainRef">
 
-                                
-                                <!-- <p class="subtitle">
 
-                                    {{ data.content }}
+                <div class="hero-columns">
+                    <div class="desktop-sub">
+                        <ul class="navbar navbar-additional">
+                            <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/analitika">Аналитика</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
+                            </li>
+                            <li class="navbar-item"> <a href="/sonnik">Сонник</a>
+                            </li>
+                        </ul>
 
-                                </p> -->
-                            </article>
+                        <span class="trigger-left" v-if="transition">
+                            <Icon class="icon" name="ri:arrow-left-wide-fill" @click="counter(1)"></Icon>
+                        </span>
 
-                            
-                        </div>
+                        <span class="trigger-right" v-if="transitionFn !== -2376">
+                            <Icon class="icon" name="ri:arrow-right-wide-fill" @click="counter(-1)"></Icon>
+                        </span>
 
-                        <div class="desktop-sub">
-                            <ul class="navbar navbar-additional">
-                                <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/analitika">Аналитика</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
-                                </li>
-                                <li class="navbar-item"> <a href="/sonnik">Сонник</a>
-                                </li>
-                            </ul>
-        
-                            <span class="trigger-left" v-if="transition">
-                                <Icon class="icon" name="ri:arrow-left-wide-fill" @click="counter(1)"></Icon>
-                            </span>
-        
-                            <span class="trigger-right" v-if="transitionFn !== -2376">
-                                <Icon class="icon" name="ri:arrow-right-wide-fill" @click="counter(-1)"></Icon>
-                            </span>
-        
-                        </div>
                     </div>
-            
+                    <div class="content-fresh-wrapper">
+                        <article class="hero">
+                            <h1 class="title">
+                                {{ mainData[activeArticle].title }}
+                            </h1>
+                            
+
+                            <div class="hero-bottom">
+                                <article class="bottom-article" v-for="item in mainData" :key="item.title">
+                                    <a class="bottom-article-link" :href="item.link">
+                                        <img width="180px" height="120px" :src="item.img" />
+                                        <h2>{{ item.title }}</h2>
+                                    </a>
+                                </article>
+                            </div>
+                        </article>
+
+
+                    </div>
+
+                    
+                </div>
+
 
 
 
@@ -316,20 +318,20 @@ const setActiveArticle = (i) => {
 
             <div class="selector selector-right">
                 <span class="selector-item" :class="[
-                { 'selector-item-active': i - 1 === activeArticle }
-            ]" v-for="i in 3" :key="i" @click="setActiveArticle(i - 1)">
+                    { 'selector-item-active': i - 1 === activeArticle }
+                ]" v-for="i in 3" :key="i" @click="setActiveArticle(i - 1)">
                 </span>
 
             </div>
         </div>
-    
-        <div class="container content-container columns"  :style="`padding-top: ${20}px`">
-            <header  class="header-hidden" :class="[
-               
-        {
-            'header-isVisible': hideHeader,
-            'header-hidden': !hideHeader,
-        }
+
+        <div class="container content-container columns" :style="`padding-top: ${20}px`">
+            <header class="header-hidden" :class="[
+
+                {
+                    'header-isVisible': hideHeader,
+                    'header-hidden': !hideHeader,
+                }
             ]">
                 <HeaderTopVue />
                 <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
@@ -337,68 +339,68 @@ const setActiveArticle = (i) => {
                 <div class="carusel carusel-mobile">
                     <ul class="navbar-additional navbar-additional-mobile">
                         <li class="navbar-item" :style="{
-                transform: `translate(${transitionFn}px)`
-            }"> <a href="/srochno">Калейдоскоп новостей</a>
+                            transform: `translate(${transitionFn}px)`
+                        }"> <a href="/srochno">Калейдоскоп новостей</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/novost-dnya">Новость дня</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/novost-dnya">Новость дня</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/istoriya-dnya">История дня</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/istoriya-dnya">История дня</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/analitika">Аналитика</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/analitika">Аналитика</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/dosie-politiki">Досье: Политики</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/dosie-politiki">Досье: Политики</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sportsmeny">Спортсмены</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sportsmeny">Спортсмены</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/tvorcheskaya-lichnost">Творческая личность</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/istoricheskaya-lichnost">Историческая личность</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-psihologa">Советы: психолога</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-psihologa">Советы: психолога</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-dietologa">Советы: диетолога</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-dietologa">Советы: диетолога</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-terapevta">Советы: терапевта</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-terapevta">Советы: терапевта</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sovety-okulista">Советы: окулиста</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sovety-okulista">Советы: окулиста</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/interesnie-fakty">Интересные факты</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/interesnie-fakty">Интересные факты</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/aforizmy">Афоризмы</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/aforizmy">Афоризмы</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/anekdoty">Анекдоты</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/anekdoty">Анекдоты</a>
                         </li>
                         <li class="navbar-item" :style="{
-                transform: `translateX(${transitionFn}px)`
-            }"> <a href="/sonnik">Сонник</a>
+                            transform: `translateX(${transitionFn}px)`
+                        }"> <a href="/sonnik">Сонник</a>
                         </li>
 
                     </ul>
@@ -407,37 +409,80 @@ const setActiveArticle = (i) => {
                         <span class="trigger-left" v-if="transition">
                             <Icon class="icon" name="ri:arrow-left-wide-fill" @click="counter(1)"></Icon>
                         </span>
-    
+
                         <span class="trigger-right" v-if="transitionFn !== -1944">
                             <Icon class="icon" name="ri:arrow-right-wide-fill" @click="counter(-1)"></Icon>
                         </span>
-    
+
                     </div>
                 </div>
 
             </header>
-     
+
             <stream></stream>
-            
+
             <div class="is-flex is-flex-direction-column" ref="headRef">
-              <show-biz></show-biz>
+                <show-biz></show-biz>
             </div>
-            
+
         </div>
         <footer class="card-footer"></footer>
     </div>
 </template>
 
 <style>
-.hero-columns {
+.hero-bottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 12px;
+    gap: 12px;
+    margin-top: 124px;
 }
-.container.hero.is-fullheight-with-navbar, .container.main-container.hero, .container.container.content-container, .container.is-widescreen.themes {
+
+.hero-bottom img {
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 180px;
+    max-width: 180px;
+    object-fit: cover;
+}
+
+.bottom-article-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bottom-article {
+   padding: 24px 12px;
+}
+.bottom-article:not(.bottom-article:last-child) {
+    border-right: 1px solid white;
+    
+    
+}
+.desktop-sub{
+    order: 21;
+
+}
+
+.bottom-article-link h2 {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+.hero-columns {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.container.hero.is-fullheight-with-navbar,
+.container.main-container.hero,
+.container.container.content-container,
+.container.is-widescreen.themes {
     min-width: 100%;
 }
+
 .container.main-container.hero {
     justify-content: flex-end;
     background: no-repeat center center fixed;
@@ -445,18 +490,16 @@ const setActiveArticle = (i) => {
     -moz-background-size: cover;
     -o-background-size: cover;
     object-fit: cover;
-    padding-bottom: 24px;
+    padding: 8px 24px;
     z-index: 3;
-    box-shadow: inset 2px 2xp 2px black;
+    box-shadow: inset -2px 0px 240px black, inset 0px 0px 200px rgba(8, 8, 8, 0.59);
 }
 
 .content-fresh-wrapper {
     display: flex;
     flex-wrap: nowrap;
     cursor: pointer;
-    padding: 8px 12px;
-  
-    width: 75%;
+    align-items: flex-end;
 }
 
 
@@ -486,10 +529,10 @@ const setActiveArticle = (i) => {
 }
 
 .header-content {
-    background-color: rgba(120, 8, 8, 0.581); 
+    background-color: rgba(120, 8, 8, 0.581);
 }
 
-.header.header-isVisible  {
+.header.header-isVisible {
     transition: all 1s ease;
     backdrop-filter: blur(8px)
 }
@@ -514,7 +557,7 @@ img.img-top {
 .hero-fresh-content {
     align-content: baseline;
     justify-content: space-around;
-   
+
 
 }
 
@@ -546,7 +589,7 @@ img.img-top {
     display: none;
 }
 
-ul.navbar-additional  > li.navbar-item {
+ul.navbar-additional>li.navbar-item {
     padding: 0;
     transition: all 0.5s ease-in-out;
 }
@@ -555,19 +598,18 @@ p.subtitle {
     color: #333;
     font-size: 16px;
     padding-left: 8px;
-   border-top: 4px solid;
+    border-top: 4px solid;
 }
 
 .container.content-container {
-  gap: 24px;
+    gap: 24px;
 }
 
 .container.main-container {
- min-height: 100svh;
+    min-height: 100svh;
 }
-.desktop-sub {
-background-color: var(--my-red)
-}
+
+
 .navbar-additional {
     backdrop-filter: none;
     box-shadow: none;
@@ -584,10 +626,22 @@ background-color: var(--my-red)
 
 }
 
+
+
 .navbar-additional .navbar-item a {
     padding: 12px;
     color: white;
     font-size: 12px;
+}
+.desktop-sub .navbar-additional .navbar-item a {
+    padding: 8px 0;
+    text-align: justify;
+    font-weight: 700;
+   
+}
+.desktop-sub .navbar-additional {
+    background-color: rgba(133, 3, 3, 0.887);
+    padding: 0 24px;
 }
 
 .navbar-additional .navbar-item a:hover {
@@ -622,7 +676,7 @@ section.hero.hero-fresh {
     flex-direction: row;
     gap: 4px;
     backdrop-filter: blur(8px);
-    
+
 }
 
 article.box {
@@ -690,11 +744,9 @@ article.box {
 .container.main-container .title {
     padding: 24px 12px;
     color: white;
-    max-width: 75%;
     font-size: 3rem;
     min-height: 4rem;
     border-left: 4px solid red;
-    backdrop-filter: blur(8px);
 }
 
 .icon-social {
@@ -731,9 +783,9 @@ header.header {
 }
 
 .content-fresh-wrapper article.hero {
-    flex-direction: row;
-    background: linear-gradient(to right, rgba(139, 139, 139, 0.449), rgba(255, 255, 255, 0));
+    flex-direction: column;
 }
+
 .hero.is-fullheight-with-navbar {
 
     box-shadow: 0px 2px 22px rgba(175, 70, 70, 0.2);
@@ -786,18 +838,21 @@ header.header {
     max-width: max-content;
     padding-right: 0;
 }
-.hero-top > h1.title {
+
+.hero-top>h1.title {
     display: none;
 }
+
 @media screen and (max-width: 1224px) {
-     .hero-top {
-       
-     }
-    .hero-top > h1.title {
+    .hero-top {}
+    .desktop-sub {
+        display: none;
+    }
+    .hero-top>h1.title {
         display: inline;
         min-width: 85%;
         max-width: 85%;
-        
+
 
     }
 
@@ -831,10 +886,16 @@ header.header {
 }
 
 @media screen and (max-width: 700px) {
-    .container.main-container .title  {
+    .container.main-container .title {
         max-width: fit-content;
         font-size: 2rem;
+    } 
+
+    .hero-bottom {
+        display: none;
+        
     }
+
     .header {
         max-width: 100%;
         z-index: 20;
@@ -881,7 +942,7 @@ header.header {
         background-color: white;
         top: 0;
         bottom: 0;
-        
+
     }
 
 
@@ -921,37 +982,37 @@ header.header {
         transform: translateY(-45%);
 
         right: 0px;
-       
+
         padding: 2px 24px;
         z-index: 2;
 
     }
 
     .trigger-left {
-        
+
         position: absolute;
         color: white;
         top: 50%;
         transform: translateY(-45%);
         font-size: 16px;
         left: 0px;
-    
+
         padding: 2px 24px;
         z-index: 2;
-      
+
         transition: all 0.3s ease;
     }
 
 
     .carusel .trigger-right {
         filter: none;
-       
+
         z-index: 4;
 
         transition: all 0.3s ease;
     }
 
-   
+
     .navbar-additional {
         flex-direction: row;
         flex-wrap: nowrap;
