@@ -59,7 +59,7 @@ useResizeObserver(el, (entries) => {
     }
 })
 
-
+const firstLoad = ref(true);
 const heroRef = ref(null)
 const headerRef = ref(null);
 const isVisible = useElementVisibility(heroRef);
@@ -105,7 +105,7 @@ const { width: windowWidth } = useWindowSize()
 let timer;
 
 onMounted(() => {
-
+    firstLoad.value = false;
     timer = setInterval(() => {
         if (activeArticle.value >= 2) {
             activeArticle.value = 0;
@@ -156,7 +156,7 @@ const setActiveArticle = (i) => {
             <header class="header" :class="[
                 {
                     'header-hidden': !isVisible,
-                    'header-isVisible': isVisible
+                    'header-isVisible': isVisible || firstLoad
                 }
 
             ]">
@@ -353,7 +353,7 @@ const setActiveArticle = (i) => {
             <header class="header-hidden" :class="[
 
                 {
-                    'header-isVisible': !isVisible,
+                    'header-isVisible': !isVisible && !firstLoad,
                     'header-hidden': isVisible,
                 }
             ]">
