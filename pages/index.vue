@@ -450,7 +450,7 @@ const setActiveArticle = (i) => {
             </div>
 
         </div>
-        <footer class="card-footer"></footer>
+      <potok-footer></potok-footer>
     </div>
 </template>
 

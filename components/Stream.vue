@@ -206,7 +206,7 @@ const newsData = [{
     font-weight: 700;
 }
 
-@media screen and (max-width: 700) {
+@media screen and (max-width: 700px) {
 
 
     .box.box-news {
@@ -219,8 +219,8 @@ const newsData = [{
     }
 
     .news {
-        border-right: 0px solid rgba(255, 255, 255, 0);
-        padding: 0;
+        border-right: none;
+        padding: 4px 8px;
     }
 
 }
