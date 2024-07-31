@@ -236,7 +236,7 @@ onMounted(() => {
 
         <div id="navbarBasicExample" class="navbar-menu">
 
-            <div class="navbar-start ">
+            <div class="navbar-start">
                 <a v-for="item in menuItems" class="navbar-item has-text-white" :class="[{
                     'has-text-dark': bg
                 }]" :key="item.link" :href="item.link">
@@ -322,9 +322,21 @@ onMounted(() => {
 }
 
 .navbar-item .has-text-white:hover,
-.has-text-white:hover {
-    background-color: rgba(255, 255, 255, 0.322);
-    color: #030303 !important;
+.has-text-white {
+    border: 2px solid transparent;
+    margin-bottom: -1px;
+}
+ .has-text-white:hover,
+ .navbar-item .has-text-white:not(.navbar-item .has-text-white:hover,
+.has-text-white:last-child):hover {
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid red;
+}
+
+
+.has-text-white.navbar-link:hover:not(.is-arrowless)::after {
+
+    border-color: red;
 }
 
 .navbar-link::after {

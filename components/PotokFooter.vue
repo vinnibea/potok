@@ -12,6 +12,10 @@ const socialButtons = [{
   alt: 'telegram',
   icon: 'mdi:telegram',
 },
+
+{alt: 'rss',
+  icon: 'majesticons:rss',
+}
 ]
 
 </script>
@@ -44,9 +48,10 @@ const socialButtons = [{
         </div>
       </div>
       <div class="footer-row">
-        <div class="header-end is-flex is-justify-content-space-between is-align-items-center">
-          <Icon class="icon-social" v-for="icon in socialButtons" :name="icon.icon" :key="icon.alt" :alt="icon.alt" />
-
+        <div class="header-end is-flex is-justify-content-space-between is-align-items-center header-link">
+          <a :href="socialButtons[3]">
+            <Icon class="icon-social" v-for="icon in socialButtons" :name="icon.icon" :key="icon.alt" :alt="icon.alt" >        </Icon>
+          </a>
 
         </div>
       </div>
@@ -66,6 +71,10 @@ const socialButtons = [{
   </footer>
 </template>
 <style>
+.header-link a {
+  display: flex;
+  gap: 8px;
+}
 .footer-row span {
   font-size: 24px;
   color: #333;
@@ -81,13 +90,18 @@ const socialButtons = [{
  .footer-row span:nth-child(3):hover {
   color: lightblue;
  }
-.footer {
+
+ .footer-row span:nth-child(4):hover {
+  color: rgba(255, 166, 0, 0.505);
+ }
+footer.footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
   
   border-top: 1px solid whitesmoke;
   margin-top: 42px;
+  padding: 8px 0;
 }
 
 .footer-top,
