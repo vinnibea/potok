@@ -106,19 +106,19 @@ const newsData = [{
         </div>
         <button class="button" data-v-inspector="components/ShowBiz.vue:101:17">Больше новостей</button>
     </section>
-
+    
     
     <div class="card-content card-holiday">
       <!-- <span>“</span> -->
        <p class="title">
-        Какой сегодня праздник:
+       Какой сегодня праздник:
       </p>
       <p class="title is-4"> 
         <a href="/main/115486-kakoj-segodnya-prazdnik-3-marta-2023-vsemirnyj-den-pisatelya.html">Всемирный день писателя</a>
       </p>
       <!-- <span>”</span> -->
     </div>
-
+    <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
     <!-- <a href="/zdravochranenie/37065-kak-zavarivat-lechebnye-travy.html" target="_blank"><b><font color="maroon">Как заваривать лечебные травы?</font></b></a><br>
     <a href="/trudoustroistvo/27544-poleznye-sovety-po-trudoustrojstvu-v-italii.html" target="_blank"><b><font color="maroon">Полезные советы по трудоустройству в Италии</font></b></a><br>
     <a href="/sport/15886-u-sbornoj-brazilii-novyj-trener.html" target="_blank"><b><font color="maroon">У сборной Бразилии новый тренер</font></b></a><br>
@@ -126,28 +126,36 @@ const newsData = [{
     <a href="/main/66272-v-moskovskom-metro-ukrainec-upal-na-relsy.html" target="_blank"><b><font color="maroon">В московском метро украинец упал на рельсы</font></b></a><br>
       <a href="/2013/12/25/dinamo-mozhet-otkazatsya-uchastvovat-v-chempionate-ukrainy-surkis.html" target="_blank"><b><font color="maroon">«Динамо» может отказаться участвовать в чемпионате Украины</font></b></a><br>
     <a href="/ukraine/67269-goloseevskij-sud-opravdal-pilipishina.html" target="_blank"><b><font color="maroon">Голосеевский суд оправдал Пилипишина</font></b></a><br> -->
-   </div>
-        <!-- <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
+    
+    <big></big>
+</div>
+        
 
-        <big></big> -->
+       
     
 </template>
 
 <style>
-
+.banner {
+    display: block;
+    
+}
 .card-holiday {
-    margin-top: 48px;
-   padding: 36px;
-   background-color: rgb(255, 255, 255);
+    margin: 48px;
+
    position: relative;
 }
-.card-holiday p.title {
-    margin: 0;
+
+.card-holiday a:hover {
+    color: rgb(122, 122, 122);
+}
+
+.card-holiday a {
+    padding: 2px;
 }
 .card-holiday p:nth-child(2) {
     text-align: right;
     font-size: 18px;
-    padding: 4px;
 }
 .card-holiday p a:nth-child(1) {
     color: rgb(165, 10, 10);
@@ -162,35 +170,11 @@ const newsData = [{
     position: relative;
 }
 
-.card-holiday::before {
-    content: '';
-    display: block;
-    height: 42px;
-    width: 42px;
-    position: absolute;
-    border-left: 4px solid var(--my-red);
-    border-top: 4px solid var(--my-red);
-    top: -24px;
-    left: 12px;
-}
 
-.card-holiday::after {
-    content: '';
-    display: block;
-    height: 42px;
-    width: 42px;
-    position: absolute;
-    border-bottom: 4px solid var(--my-red);
-    border-right: 4px solid var(--my-red);
-    bottom: -32px;
-    right: 4px;
-}
 
-.card-holiday span:last-child {
-  display: block;
-  width: 100%;
-  text-align: right;
-} 
+
+
+
 .news-fire {
     color: orange;
 }
@@ -210,7 +194,7 @@ const newsData = [{
 .banner {
   width: 181px;
   height: 256px;
-  margin: 0 auto;
+  margin: 96px auto;
 }
  .news {
     display: flex;
@@ -301,30 +285,7 @@ const newsData = [{
         border-right: none;
         padding: 4px 8px;
     }
-    .card-holiday::before {
-        content: '';
-        display: block;
-        height: 42px;
-        width: 42px;
-        position: absolute;
-        border-left: 4px solid var(--my-red);
-        border-top: 4px solid var(--my-red);
-        top: -24px;
-        left: 4px;
-    }
-    
-    .card-holiday::after {
-        height: 42px;
-        width: 42px;
-        bottom: -24px;
-        right: 4px;
-    }
-    .card-holiday {
-       margin: 48px 0;
-       padding: 24px;
-       background-color: rgb(255, 255, 255);
-       position: relative;
-    }
+   
 }
 
 
