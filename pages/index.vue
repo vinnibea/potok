@@ -69,7 +69,7 @@ const headRef = ref(null);
 const { stop } = useIntersectionObserver(
     headRef,
     ([{ isIntersecting }], observerElement) => {
-
+       console.log(isIntersecting)
         hideHeader.value = isIntersecting
     },
 )
@@ -155,8 +155,8 @@ const setActiveArticle = (i) => {
 
             <header class="header" :class="[
                 {
-                    'header-hidden': hideHeader,
-                    'header-isVisible': !hideHeader
+                    'header-hidden': !isVisible,
+                    'header-isVisible': isVisible
                 }
 
             ]">
@@ -241,7 +241,45 @@ const setActiveArticle = (i) => {
                     </span>
 
                 </div>
+                <div class="desktop-sub">
+                    <ul class="navbar navbar-additional">
+                        <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/analitika">Аналитика</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая
+                                личность</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая
+                                личность</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
+                        </li>
+                        <li class="navbar-item"> <a href="/sonnik">Сонник</a>
+                        </li>
+                    </ul>
 
+                </div>
             </header>
 
             <section class="hero-top" ref="swipeMainRef">
@@ -251,9 +289,9 @@ const setActiveArticle = (i) => {
 
                     <div class="content-fresh-wrapper">
 
+                    
 
-
-                        <article class="hero">
+                        <article class="hero" ref="heroRef">
                             <div class="hero-center">
                                 <div class="hero-for-desktop">
                                    <a :href="mainData[activeArticle].link">
@@ -280,45 +318,7 @@ const setActiveArticle = (i) => {
                                         </article>
                                     </div>
                                 </div>
-                                <div class="desktop-sub">
-                                    <ul class="navbar navbar-additional">
-                                        <li class="navbar-item"> <a href="/srochno">Калейдоскоп новостей</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/novost-dnya">Новость дня</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/istoriya-dnya">История дня</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/analitika">Аналитика</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/dosie-politiki">Досье: Политики</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/sportsmeny">Спортсмены</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/tvorcheskaya-lichnost">Творческая
-                                                личность</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/istoricheskaya-lichnost">Историческая
-                                                личность</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/sovety-psihologa">Советы: психолога</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/sovety-dietologa">Советы: диетолога</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/sovety-terapevta">Советы: терапевта</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/sovety-okulista">Советы: окулиста</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/interesnie-fakty">Интересные факты</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/aforizmy">Афоризмы</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/anekdoty">Анекдоты</a>
-                                        </li>
-                                        <li class="navbar-item"> <a href="/sonnik">Сонник</a>
-                                        </li>
-                                    </ul>
-
-                                </div>
+                            
 
                             </div>
 
@@ -348,12 +348,13 @@ const setActiveArticle = (i) => {
             </div>
         </div>
 
-        <div class="container content-container columns" :style="`padding-top: ${20}px`">
+        <div class="container content-container columns" ref="headRef" style="padding-top: 40px;" >
+            
             <header class="header-hidden" :class="[
 
                 {
-                    'header-isVisible': hideHeader,
-                    'header-hidden': !hideHeader,
+                    'header-isVisible': !isVisible,
+                    'header-hidden': isVisible,
                 }
             ]">
                 <HeaderTopVue />
@@ -441,10 +442,10 @@ const setActiveArticle = (i) => {
                 </div>
 
             </header>
-
+         
             <stream></stream>
 
-            <div class="is-flex is-flex-direction-column" ref="headRef">
+            <div class="is-flex is-flex-direction-column" >
                 <show-biz></show-biz>
             </div>
 
@@ -454,6 +455,10 @@ const setActiveArticle = (i) => {
 </template>
 
 <style>
+.div {
+    background-color: red;
+    height: 220px;
+}
 .hero-center {
     display: flex;
     padding-top: 80px;
@@ -462,6 +467,7 @@ const setActiveArticle = (i) => {
 .hero-center .hero-for-desktop {
     display: flex;
     flex-direction: column;
+    gap: 48px;
     justify-content: space-between;
 }
 
@@ -504,7 +510,7 @@ const setActiveArticle = (i) => {
 }
 
 .desktop-sub {
-    order: 21;
+    order: -1;
 }
 .bottom-article-link * {
     transition: all 0.3s ease;
@@ -547,14 +553,14 @@ const setActiveArticle = (i) => {
     -o-background-size: cover;
     object-fit: cover;
     padding: 8px;
-    z-index: 3;
+    z-index: 2;
     box-shadow: inset -2px 0px 240px black;
 }
 
 .content-fresh-wrapper {
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row;
+    flex-direction: column;
     cursor: pointer;
     align-items: center;
 }
@@ -564,7 +570,7 @@ const setActiveArticle = (i) => {
     position: fixed;
     max-height: 0px;
     opacity: 0;
-    transition: all 1s;
+    transition: all 0.3s ease;
     transform: translateY(-100%);
 }
 
@@ -579,19 +585,19 @@ const setActiveArticle = (i) => {
     right: 0;
     opacity: 1;
     margin: 0 auto;
-    z-index: 2;
-    background-color: rgba(120, 8, 8, 0.581);
+    z-index: 3;
+    background-color: rgba(138, 20, 20, 0.581);
     transform: translateY(0%);
     backdrop-filter: blur(8px);
 }
 
 .header-content {
-    background-color: rgba(120, 8, 8, 0.581);
+    background-color: rgba(62, 62, 62, 0.476);
 }
 
 .header.header-isVisible {
     transition: all 1s ease;
-    backdrop-filter: blur(8px)
+    backdrop-filter: blur(0px)
 }
 
 img.img-top {
@@ -692,14 +698,17 @@ p.subtitle {
 }
 
 .desktop-sub .navbar-additional .navbar-item a {
-    padding: 0 0 6px 0;
-    text-align: justify;
-    font-weight: 700;
+    padding: 8px 12px;
+    font-weight: 400;
+    background-color: rgba(185, 185, 185, 0.157);
+    border-radius: 4px;
 
 }
 
 .desktop-sub .navbar-additional {
-    background-color: rgba(133, 3, 3, 0.887);
+    flex-direction: row;
+    gap: 12px;
+    background-color: rgba(147, 144, 144, 0);
     padding: 8px 24px;
     border: none;
 }
@@ -802,7 +811,7 @@ article.box {
 }
 
 .container.main-container .title {
-    padding: 120px 24px 12px;
+    padding: 24px 24px 12px;
     max-width: 85%;
     color: white;
     font-size: 3rem;
@@ -835,7 +844,7 @@ header.header {
     left: 0;
     position: absolute;
     backdrop-filter: blur(8px);
-    background-color: rgba(248, 56, 56, 0.601);
+    background-color: rgba(77, 77, 77, 0.086);
     z-index: 2;
 }
 

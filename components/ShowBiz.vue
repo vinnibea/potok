@@ -103,7 +103,7 @@ const newsDataNow = data.map((el, i) => {
         </div>
 
         
-       <themes :start="1" :end="5"></themes>
+       <themes :start="1" :end="6"></themes>
      
        
     </div>

@@ -301,7 +301,7 @@ onMounted(() => {
 
 .navbar {
     position: relative;
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.175);
     z-index: 6000;
 }
 

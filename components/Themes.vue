@@ -38,7 +38,7 @@ import t35 from '~/assets/t35.webp';
 import t36 from '~/assets/t36.jpg';
 import { format } from 'date-fns';
 
-const images = [t6, t5, t4, t3, t2, t1, t7, t8, t9, t10, t11, t12, t18, t17, t16, t15, t14, t13, t24, t23, t22, t21, t20, t19, t30, t29, t28, t27, t26, t25, t32, t33, t34, t35, t36]
+const images = [t6, t5, t4, t3, t2, t1, t7, t8, t9, t10, t11, t12, t18, t17, t16, t15, t14, t13, t24, t23, t22, t21, t20, t19, t30, t29, t28, t27, t26, t25, t32,  t33, t34, t35, t36, t31]
 const props = defineProps({
     start: {
         type: Number,
@@ -49,6 +49,9 @@ const props = defineProps({
         default: 0,
     },
 })
+
+
+
 const dataAll = [{
     href: "/index.php", theme: 'Главные новости', bg: 'red', bd: 'red', content: [
 
@@ -174,7 +177,7 @@ const dataAll = [{
 },
 
 {
-    href: "/srochno", theme: 'Калейдоскоп новостей', content: [
+    href: "/srochno", theme: 'Калейдоскоп новостей',bg: 'violet', bd: 'violet', content: [
         {
             link: "/main/115488-goroskop-na-segodnya-3-marta-2023.html",
             title: 'Гороскоп на сегодня'
@@ -241,7 +244,7 @@ const newsDataNow = dataAll.map((item, j) => {
     }
 
         ">
-        <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.href">
+        <div class="section is-wide content-middle" v-for=" (theme) in newsDataNow" :key="theme.theme">
             <h2 class="title is-3">
                 <span class="id" :class="[{
                     ['is-' + theme.bg + '-bg']: true,
@@ -296,12 +299,38 @@ const newsDataNow = dataAll.map((item, j) => {
                 </article>
                 <div>
                 </div>
+              
             </section>
+            <div class="theme-devider">
+                <a :href="theme.href" class="theme-more">Показать больше</a>
+            </div>
         </div>
     </div>
 </template>
 
 <style>
+.theme-devider {
+    height: 2px;
+    background-color: whitesmoke;
+    position: relative
+}
+
+.theme-more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 4px 8px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #3333334d;
+}
+
+.theme-more:hover {
+    color: #333;
+}
 .id {
     position: absolute;
     height: 10px;
@@ -339,6 +368,12 @@ const newsDataNow = dataAll.map((item, j) => {
 
 .item-5.card.article-card h2 a.is-green-bd {
     border-left: 4px solid rgb(21, 132, 21);
+}
+.is-violet-bg {
+    background-color:rgb(168, 9, 152);
+}
+.item-5.card.article-card h2 a.is-violet-bd {
+    border-left: 4px solid rgb(168, 9, 152);
 }
 
 .is-yellow-bg {
@@ -429,7 +464,7 @@ section.theme-container {
     display: grid;
     grid-template-columns: minmax(80px, 120px) minmax(120px, 1fr) minmax(80px, 120px) minmax(120px, 1fr) minmax(80px, 120px) 1fr;
     grid-template-rows: 120px 120px 120px minmax(120px, 1fr) minmax(120px, 1fr);
-    border-bottom: 1px solid rgb(227, 227, 227);
+   
     padding-bottom: 24px;
     row-gap: 24px;
     grid-auto-flow: column;
