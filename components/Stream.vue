@@ -165,8 +165,8 @@ const newsData = [{
 .card-holiday::before {
     content: '';
     display: block;
-    height: 56px;
-    width: 56px;
+    height: 42px;
+    width: 42px;
     position: absolute;
     border-left: 4px solid var(--my-red);
     border-top: 4px solid var(--my-red);
@@ -301,6 +301,31 @@ const newsData = [{
         border-right: none;
         padding: 4px 8px;
     }
-
+    .card-holiday::before {
+        content: '';
+        display: block;
+        height: 42px;
+        width: 42px;
+        position: absolute;
+        border-left: 4px solid var(--my-red);
+        border-top: 4px solid var(--my-red);
+        top: -24px;
+        left: 4px;
+    }
+    
+    .card-holiday::after {
+        height: 42px;
+        width: 42px;
+        bottom: -24px;
+        right: 4px;
+    }
+    .card-holiday {
+       margin: 48px 0;
+       padding: 24px;
+       background-color: rgb(255, 255, 255);
+       position: relative;
+    }
 }
+
+
 </style>
