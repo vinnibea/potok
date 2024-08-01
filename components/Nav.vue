@@ -232,17 +232,10 @@ onMounted(() => {
                         class="icon" />
                 </div>
             </div>
-
-
         </div>
 
 
-
-
-
-
-
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="" class="navbar-menu">
 
             <div class="navbar-start">
                 <a v-for="item in menuItems" class="navbar-item has-text-white" :class="[{
@@ -279,12 +272,12 @@ onMounted(() => {
             </div>
 
             <div class="navbar-end">
-
+                <div class="icon">
+                    <Icon name="ic:baseline-account-box" class="icon-profile" @click="modalOpen"></Icon>
+                </div>
                 <div class="navbar-item last-item">
 
-                    <div class="icon">
-                        <Icon name="ic:baseline-account-box" class="icon-profile" @click="modalOpen"></Icon>
-                    </div>
+                   
 
                     <div class="icon" @click="onSearchOpen">
                         <Icon class="icon-search" name="mdi:magnify"></Icon>

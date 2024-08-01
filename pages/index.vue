@@ -127,19 +127,6 @@ const setActiveArticle = (i) => {
     activeArticle.value = i;
 }
 
-// watch(mainSwipe, (answer) => {
-//     if (answer) {
-//         if(activeArticle.value === 2 && mainDirection.value === 'right' ) {
-//          activeArticle.value = 0
-//          return;
-//         };
-//         if(activeArticle.value === 0 && mainDirection.value === 'left') {
-//             activeArticle.value = 2
-//             return 
-//         };
-//         setActiveArticle(mainDirection.value === 'left' ? activeArticle.value += -1 :  activeArticle.value +=1);
-//     }
-// })
 const modal = ref(false);
 const onOpenModal = () => {
     console.log('modal')
@@ -149,7 +136,7 @@ const onOpenModal = () => {
 
 const closeModal = () => {
     modal.value = false;
-      document.body.style = "overflowY: hidden; min-height: 100vh; position: static;"
+      document.body.style = "overflowY: hidden; min-height: 100vh; position: relative;"
 }
 </script>
 
@@ -159,7 +146,6 @@ const closeModal = () => {
         <div class="container main-container hero" :style="{ backgroundImage: `url(${mainData[activeArticle].img})` }">
 
             <div class="mobile-menu-wrapper">
-
                 <MobileMenu :showModal="showMobile" @onClose="onHideMobileMenu"></MobileMenu>
             </div>
 
@@ -369,7 +355,7 @@ const closeModal = () => {
                 }
             ]">
                 <HeaderTopVue />
-                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
+                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" @onModal="onOpenModal"/>
 
                 <div class="carusel carusel-mobile">
                     <ul class="navbar-additional navbar-additional-mobile">

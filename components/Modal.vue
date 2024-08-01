@@ -59,8 +59,8 @@ const closeModal = () => {
     padding: 0px;
 }
 .logo {
-    width: 82px;
-    height: 82px;
+    min-width: 82px;
+    min-height: 82px;
     border: 2px solid rgb(214, 212, 212);
     border-radius: 8px;
 }
@@ -144,8 +144,8 @@ const closeModal = () => {
     background-color: rgb(255, 255, 255);
     align-items: center;
     justify-content: space-between;
-    padding: 56px 24px 0;
-    max-width: 33%;
+    padding: 12px 24px 0;
+    max-width: 40%;
     min-width: 33%;
     min-height: 75%;
     flex-direction: column;
@@ -159,9 +159,22 @@ const closeModal = () => {
 @media screen and (max-width: 700px) {
     .modal, .modal-content {
         min-height: 100dvh;
-        min-width: 100dvw;
+        max-width: 100vw;
         border-radius: 0;
+        gap: 12px;
+        padding: 68px 0px;
 
+
+    }
+
+    .button-enter {
+        background-color: rgb(227, 227, 227);
+        border-radius: 18px;
+        min-width: 270px;
+        text-transform:none;
+        text-align: right;
+        color: #000000;
+        padding: 12px 24px;
     }
 }
 </style>

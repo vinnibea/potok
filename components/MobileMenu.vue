@@ -164,6 +164,7 @@ const onCloseModal = () => {
         'is-active': showModal,
     }">
         <div class="modal-card">
+            
             <info-top @closeModal="onCloseModal" :mobile="true"></info-top>
             <search-input :isMobile="true"></search-input>
             <section class="modal-card-body hero is-fullheight">
