@@ -27,6 +27,7 @@
     "@vesp/nuxt-fontawesome": "^1.0.4",
     "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "vite-svg-loader": "^5.1.0"
   }
 }

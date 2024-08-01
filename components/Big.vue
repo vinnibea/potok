@@ -72,8 +72,11 @@ const zodiacs = ['mdi:zodiac-aquarius', 'mdi:zodiac-aries', 'mdi:zodiac-cancer',
     color: rgb(153, 18, 18);
 }
 
-.card-astro p.title {
+.card-astro .title {
+    display: flex;
+    justify-content: center;
     font-size: 24px;
+    text-align: center;
 }
 
 

@@ -2,6 +2,7 @@
 import backgroundUrl from '~/assets/f.webp';
 import backgroundUrl2 from '~/assets/s2.jpg';
 import backgroundUrl3 from '~/assets/s3.jpg';
+import logo from '~/assets/logo-square.png';
 import HeaderTopVue from '~/components/HeaderTop.vue';
 import NavVue from '~/components/Nav.vue';
 import MobileMenu from '~/components/MobileMenu.vue';
@@ -70,13 +71,13 @@ const headRef = ref(null);
 const { stop } = useIntersectionObserver(
     headRef,
     ([{ isIntersecting }], observerElement) => {
-       console.log(isIntersecting)
+        console.log(isIntersecting)
         hideHeader.value = isIntersecting
     },
 )
 
 const showMobile = ref(false);
-// menu items < a href = "/prikol-dnya" > Прикол дня</a >
+
 const transition = ref(0);
 const transitionE = 1 * 216;
 
@@ -131,12 +132,12 @@ const modal = ref(false);
 const onOpenModal = () => {
     console.log('modal')
     modal.value = true;
-      document.body.style = "overflowY: hidden; max-height: auto; scroll: hidden; position: fixed; left: 0; right: 0; "
+    document.body.style = "overflowY: hidden; max-height: auto; scroll: hidden; position: fixed; left: 0; right: 0; "
 }
 
 const closeModal = () => {
     modal.value = false;
-      document.body.style = "overflowY: hidden; min-height: 100vh; position: relative;"
+    document.body.style = "overflowY: hidden; min-height: 100vh; position: relative;"
 }
 </script>
 
@@ -157,7 +158,7 @@ const closeModal = () => {
                 }
 
             ]">
-                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" @onModal="onOpenModal"/>
+                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" @onModal="onOpenModal" />
                 <HeaderTopVue />
                 <div class="carusel carusel-mobile" ref="carouselRef">
 
@@ -286,25 +287,29 @@ const closeModal = () => {
 
                     <div class="content-fresh-wrapper">
 
-                    
+
 
                         <article class="hero" ref="heroRef">
                             <div class="hero-center">
+
                                 <div class="hero-for-desktop">
-                                   <a :href="mainData[activeArticle].link">
-                                    <h1 class="title">
+                                    <a class="logo-title" :href="mainData[activeArticle].link">
 
+                                        <div class="">
+                                            <h1 class="title">
+                                                {{ mainData[activeArticle].title }}
+                                            </h1>
 
-                                        {{ mainData[activeArticle].title }}
-                                    </h1>
-                                   </a>
+                                        </div>
+
+                                    </a>
 
                                     <div class="hero-bottom">
                                         <article class="bottom-article" v-for="item in mainData" :key="item.title">
                                             <a class="bottom-article-link" :href="item.link">
                                                 <img width="180px" height="120px" :src="item.img" />
                                                 <p>
-                                                    <span class="hero-subtitle"> 
+                                                    <span class="hero-subtitle">
                                                         <a :href="item.tagLink">
                                                             {{ item.tag }}
                                                         </a>
@@ -315,7 +320,7 @@ const closeModal = () => {
                                         </article>
                                     </div>
                                 </div>
-                            
+
 
                             </div>
 
@@ -345,8 +350,8 @@ const closeModal = () => {
             </div>
         </div>
 
-        <div class="container content-container columns" ref="headRef" style="padding-top: 40px;" >
-            
+        <div class="container content-container columns" ref="headRef" style="padding-top: 40px;">
+
             <header class="header-hidden" :class="[
 
                 {
@@ -355,7 +360,7 @@ const closeModal = () => {
                 }
             ]">
                 <HeaderTopVue />
-                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" @onModal="onOpenModal"/>
+                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" @onModal="onOpenModal" />
 
                 <div class="carusel carusel-mobile">
                     <ul class="navbar-additional navbar-additional-mobile">
@@ -439,26 +444,36 @@ const closeModal = () => {
                 </div>
 
             </header>
-         
+
             <stream></stream>
 
-            <div class="is-flex is-flex-direction-column" >
+            <div class="is-flex is-flex-direction-column">
                 <show-biz></show-biz>
             </div>
 
         </div>
- 
-      <potok-footer></potok-footer>
-     
-      <ModalVue @onModal="closeModal" :open="modal"></ModalVue>
+
+        <potok-footer></potok-footer>
+
+        <ModalVue @onModal="closeModal" :open="modal"></ModalVue>
     </div>
 </template>
 
 <style>
+
+
+
+.logo-title {
+    display: flex;
+    flex-direction: row;
+
+}
+
 .div {
     background-color: red;
     height: 220px;
 }
+
 .hero-center {
     display: flex;
     padding-top: 80px;
@@ -512,9 +527,11 @@ const closeModal = () => {
 .desktop-sub {
     order: -1;
 }
+
 .bottom-article-link * {
     transition: all 0.3s ease;
-} 
+}
+
 .bottom-article-link h2 {
     color: white;
     font-size: 16px;
@@ -528,7 +545,8 @@ const closeModal = () => {
     font-weight: 500;
 }
 
-.bottom-article-link h2:hover, .bottom-article-link p a:hover {
+.bottom-article-link h2:hover,
+.bottom-article-link p a:hover {
     opacity: 0.8;
 }
 
@@ -821,7 +839,7 @@ article.box {
 }
 
 .container.main-container .title:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .icon-social {
@@ -864,6 +882,13 @@ header.header {
 .hero.is-fullheight-with-navbar {
 
     box-shadow: 0px 2px 22px rgba(175, 70, 70, 0.2);
+}
+
+@media screen and(max-width: 1024px) {
+    .logo-main {
+        bottom: 55%;
+        border: 2px solid red;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -1110,11 +1135,15 @@ header.header {
     }
 }
 
+
+
 @media screen and (max-width: 460px) {
     body {
         max-width: 100%;
         margin: 0 auto;
         position: static
     }
+
+   
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 import SearchInputVue from './SearchInput.vue';
-
+import logo from '~/assets/logo-square-red.png';
 const subMenuItems = [
     {
         title: "Пресс-релизы",
@@ -108,14 +108,17 @@ const subMenuItems = [
         title: "Здоровье",
         link: "/zdravochranenie",
     },
+
+    
+    {
+        title: "Прикол дня",
+        link: "/prikol-dnya",
+    },
 ];
 
 
 
-const menuItems = [{
-    title: "Главная",
-    link: "/",
-}, {
+const menuItems = [ {
     title: "Мировые новости",
     link: "/mirovie-novoti",
 }, {
@@ -238,6 +241,9 @@ onMounted(() => {
         <div id="" class="navbar-menu">
 
             <div class="navbar-start">
+              <a href="/">
+                <img class="logo logo-main" :src="logo"/>
+              </a>
                 <a v-for="item in menuItems" class="navbar-item has-text-white" :class="[{
                     'has-text-dark': bg
                 }]" :key="item.link" :href="item.link">
@@ -291,6 +297,22 @@ onMounted(() => {
 </template>
 
 <style>
+.logo-main {
+
+    object-fit: cover;
+    width: 64px;
+    height: 100%;
+
+    opacity: 0.3;
+    border: 4px solid rgba(164, 2, 2, 0.126);
+    align-self: flex-start;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 1;
+}
 .last-item {
     display: flex;
     align-items: center;
@@ -323,6 +345,7 @@ onMounted(() => {
     position: relative;
     border-bottom: 1px solid rgba(245, 245, 245, 0.175);
     z-index: 6000;
+    padding: 0 4px;
 }
 
 

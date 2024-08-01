@@ -1,4 +1,5 @@
 <script setup>
+import logo from '~/assets/logo-square.png';
 defineProps(
     {
         open: {
@@ -23,7 +24,7 @@ const closeModal = () => {
 
         <div class="modal-content">
             <Icon name="mdi:close" class="icon-close" @click="closeModal" aria-label="close"></Icon>
-            <span class="logo"></span>
+            <span> <img class="logo" width="96" height="96" :src="logo"></span>
             <h2 class="title is-3">Вход в аккаунт</h2>
             <div class="modal-center">
                 <div class="button-wrapper">
@@ -60,18 +61,22 @@ const closeModal = () => {
 .modal {
     padding: 0px;
 }
+.modal .logo {
+    height: 96px;
+    width: 96px;
+    border: 2px solid rgba(255, 255, 255, 0.124);
+    border-radius: 8px;
+    margin: 0;
+    filter: grayscale(0.6)
+}
 .modal-center {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 0 12px;
+
 }
-.logo {
-    min-width: 82px;
-    min-height: 82px;
-    border: 2px solid rgb(214, 212, 212);
-    border-radius: 8px;
-}
+
 
 .icon-close {
     font-size: 24px;

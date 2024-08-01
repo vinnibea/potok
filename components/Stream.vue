@@ -1,6 +1,6 @@
 <script setup>
 
-import liveCredit from '~/assets/LiveCredit.jpg';
+import liveCredit from '~/assets/LiveCredit.png';
 import {format} from 'date-fns';
 
 const newsData = [{
@@ -105,7 +105,7 @@ const newsData = [{
             
         </div>
         <button class="button" data-v-inspector="components/ShowBiz.vue:101:17">Больше новостей</button>
-        <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
+        <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="481" height="556" :src="liveCredit" alt="LiveCredit"></a>
         
     </section>
     <trend :start="0" :end="3"></trend>
@@ -131,10 +131,7 @@ const newsData = [{
 </template>
 
 <style>
-.banner {
-    display: block;
-    
-}
+
 .card-holiday {
     margin: 48px;
 
@@ -187,9 +184,11 @@ const newsData = [{
     font-weight: 700;
 }
 .banner {
-  width: 181px;
-  height: 256px;
-  margin: 96px auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-top: 64px;
+    
 }
  .news {
     display: flex;
