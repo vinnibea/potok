@@ -128,7 +128,9 @@ const trendsNow = trends.map((el, i) => {
  }
 
  .trends-left .is-3 {
-    font-weight: 500;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
  }
 
 
