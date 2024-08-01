@@ -120,7 +120,7 @@ const newsData = [{
     
     </div>
     <trend :start="3" :end="7"></trend>
-    
+    <big></big>
     
     
 </div>

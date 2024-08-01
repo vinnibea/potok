@@ -1,8 +1,8 @@
 <script setup>
 import {format} from 'date-fns';
-import backgroundUr1 from '~/assets/s3.jpg';
-import backgroundUr2 from '~/assets/s2.jpg';
-import backgroundUr3 from '~/assets/s3.jpg';
+import backgroundUr1 from '~/assets/shw.jpg';
+import backgroundUr2 from '~/assets/shw1.jpg';
+import backgroundUr3 from '~/assets/shw2.jpg';
 import backgroundUr5 from '~/assets/s21.jpeg';
 const active = ref(0);
 
