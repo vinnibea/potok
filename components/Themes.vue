@@ -583,7 +583,7 @@ h2 .news-bottom-right span,
     box-shadow: inset -45px -45px 4px black;
 }
 
-.img-holder img:not(.item-5 .img-holder img) {
+.img-holder img:not(.item-5 .img-holder img, .img-holder-trends img) {
     filter: blur(8px) grayscale(0.2);
     opacity: 0.8;
 }
@@ -601,7 +601,7 @@ h2 .news-bottom-right span,
     border-radius: 0;
 }
 
-.card.article-card h2 a:not(.card.article-card.item-5 h2 a) {
+.card.article-card h2 a:not(.card.article-card.item-5 h2 a, .card.article-card h2 a.link-trends) {
     padding: 4px;
 
     font-size: 16px;
@@ -610,7 +610,7 @@ h2 .news-bottom-right span,
     transition: all 0.3s ease;
 }
 
-.card.article-card h2 a:not(.card.article-card.item-5 h2 a):hover {
+.card.article-card h2 a:not(.card.article-card.item-5 h2 a, .trends-left .card.article-card h2 a ):hover {
     color: #700303;
 }
 
@@ -845,23 +845,23 @@ h2 .news-bottom-right span,
     }
 
     .item-0 {
-        grid-area: 7 / 2 / 7 / 5;
+        grid-area: 7 / 2 / 7 / -1;
     }
 
     .item-1 {
-        grid-area: 6 / 2 / 6 / 5;
+        grid-area: 6 / 2 / 6 / -1;
     }
 
     .item-2 {
-        grid-area: 5 / 2 / 5 / 5;
+        grid-area: 5 / 2 / 5 / -1;
     }
 
     .item-3 {
-        grid-area: 4 / 2 / 4 / 5;
+        grid-area: 4 / 2 / 4 / -1;
     }
 
     .item-4 {
-        grid-area: 3 / 2 / 3 / 5;
+        grid-area: 3 / 2 / 3 / -1;
     }
 
     .item-5 {

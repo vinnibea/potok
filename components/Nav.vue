@@ -144,7 +144,7 @@ const menuItems = [{
 ];
 
 const showDropDown = ref(false);
-const emit = defineEmits(['onOpen', 'onClose', 'closeMobile']);
+const emit = defineEmits(['onOpen', 'onClose', 'closeMobile', 'onModal']);
 defineProps({
     bg: {
         type: Boolean,
@@ -155,6 +155,10 @@ defineProps({
         default: false,
     }
 })
+
+const modalOpen = () => {
+    emit('onModal')
+}
 const dropDownRef = ref(null);
 const showSearch = ref(false);
 const modalOpened = ref(false);
@@ -188,7 +192,7 @@ const onSearchOpen = () => {
 };
 
 watch(iconRef, (prev, what) => {
-  
+
 })
 
 onMounted(() => {
@@ -205,12 +209,12 @@ onMounted(() => {
 </script>
 
 <template>
-   
+
     <nav class="navbar navbar-relative is-flex is-justify-content-space-between" role="navigation" :class="[
         {
             'navbar-has-background-white': isMobile || bg,
-            
-            
+
+
         }
     ]" aria-label="main navigation">
 
@@ -221,8 +225,12 @@ onMounted(() => {
             <div class="navbar-top-left" ref="iconRef">
 
 
-        <info-top></info-top>
-                <Icon style="color: white; transform: scale(1.2)" @click="onModalShow" name="ri:menu-search-line" class="icon" />
+                <info-top></info-top>
+                <div class="navbar-top-left-mobile">
+                    <Icon name="ic:baseline-account-box" class="icon-profile" @click="modalOpen"></Icon>
+                    <Icon style="color: white; transform: scale(1.2)" @click="onModalShow" name="ri:menu-search-line"
+                        class="icon" />
+                </div>
             </div>
 
 
@@ -244,14 +252,14 @@ onMounted(() => {
                 </a>
 
                 <div class="navbar-item has-dropdown" :class="[{
-        'is-active': showDropDown,
-    }]">
+                    'is-active': showDropDown,
+                }]">
                     <a class="navbar-link has-text-white" :class="[
-        {
-            'has-background-white': showDropDown,
-            'has-text-dark': showDropDown,
-        }
-    ]" @click="onDropDown">
+                        {
+                            'has-background-white': showDropDown,
+                            'has-text-dark': showDropDown,
+                        }
+                    ]" @click="onDropDown">
                         Больше
                     </a>
 
@@ -271,7 +279,13 @@ onMounted(() => {
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item">
+
+                <div class="navbar-item last-item">
+
+                    <div class="icon">
+                        <Icon name="ic:baseline-account-box" class="icon-profile" @click="modalOpen"></Icon>
+                    </div>
+
                     <div class="icon" @click="onSearchOpen">
                         <Icon class="icon-search" name="mdi:magnify"></Icon>
                     </div>
@@ -284,7 +298,20 @@ onMounted(() => {
 </template>
 
 <style>
+.last-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end
+}
 
+.navbar-end {
+    display: flex;
+    align-items: center;
+}
+.navbar-top-left-mobile {
+    display: flex;
+    gap: 12px;
+}
 .navbar-top-left {
     display: none;
 }
@@ -326,9 +353,10 @@ onMounted(() => {
     border: 2px solid transparent;
     margin-bottom: -1px;
 }
- .has-text-white:hover,
- .navbar-item .has-text-white:not(.navbar-item .has-text-white:hover,
-.has-text-white:last-child):hover {
+
+.has-text-white:hover,
+.navbar-item .has-text-white:not(.navbar-item .has-text-white:hover,
+    .has-text-white:last-child):hover {
     background-color: rgba(255, 255, 255, 0);
     border-bottom: 2px solid red;
 }
@@ -364,15 +392,26 @@ div.icon:hover {
     padding: 8px;
 }
 
-div.icon:hover>.icon-search {
-    
-}
+div.icon:hover>.icon-search {}
 
 .navbar-button>.icon {
     display: none;
     color: #eee;
 }
 
+.icon-profile {
+    font-size: 22px;
+    color: #eeeeee86;
+    padding: 12px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+.icon-profile:hover {
+    color: rgb(255, 255, 255);
+    background-color: #eee;
+}
 
 
 @media screen and (max-width: 700px) {
@@ -381,6 +420,7 @@ div.icon:hover>.icon-search {
         box-shadow: none;
         background-color: black;
     }
+
     .navbar-top-brand,
     .navbar-top-left {
         display: flex;

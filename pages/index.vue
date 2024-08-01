@@ -5,6 +5,7 @@ import backgroundUrl3 from '~/assets/s3.jpg';
 import HeaderTopVue from '~/components/HeaderTop.vue';
 import NavVue from '~/components/Nav.vue';
 import MobileMenu from '~/components/MobileMenu.vue';
+import ModalVue from '~/components/Modal.vue';
 import { useIntersectionObserver } from '@vueuse/core'
 import { useResizeObserver } from '@vueuse/core'
 import { useElementVisibility } from '@vueuse/core'
@@ -139,7 +140,17 @@ const setActiveArticle = (i) => {
 //         setActiveArticle(mainDirection.value === 'left' ? activeArticle.value += -1 :  activeArticle.value +=1);
 //     }
 // })
+const modal = ref(false);
+const onOpenModal = () => {
+    console.log('modal')
+    modal.value = true;
+      document.body.style = "overflowY: hidden; max-height: auto; scroll: hidden; position: fixed; left: 0; right: 0; "
+}
 
+const closeModal = () => {
+    modal.value = false;
+      document.body.style = "overflowY: hidden; min-height: 100vh; position: static;"
+}
 </script>
 
 <template>
@@ -160,7 +171,7 @@ const setActiveArticle = (i) => {
                 }
 
             ]">
-                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" />
+                <NavVue @onOpen="onShowMobileMenu" @onClose="onHideMobileMenu" @onModal="onOpenModal"/>
                 <HeaderTopVue />
                 <div class="carusel carusel-mobile" ref="carouselRef">
 
@@ -450,7 +461,10 @@ const setActiveArticle = (i) => {
             </div>
 
         </div>
+       
       <potok-footer></potok-footer>
+     
+      <ModalVue @onModal="closeModal" :open="modal"></ModalVue>
     </div>
 </template>
 

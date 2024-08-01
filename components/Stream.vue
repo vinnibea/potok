@@ -105,29 +105,24 @@ const newsData = [{
             
         </div>
         <button class="button" data-v-inspector="components/ShowBiz.vue:101:17">Больше новостей</button>
+        <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
+        
     </section>
-    
+    <trend :start="0" :end="3"></trend>
     
     <div class="card-content card-holiday">
-      <!-- <span>“</span> -->
        <p class="title">
        Какой сегодня праздник:
       </p>
       <p class="title is-4"> 
         <a href="/main/115486-kakoj-segodnya-prazdnik-3-marta-2023-vsemirnyj-den-pisatelya.html">Всемирный день писателя</a>
       </p>
-      <!-- <span>”</span> -->
-    </div>
-    <a href="https://livecredit.com.ua/" target="_blank"><img class="banner" width="181" height="256" :src="liveCredit" alt="LiveCredit"></a>
-    <!-- <a href="/zdravochranenie/37065-kak-zavarivat-lechebnye-travy.html" target="_blank"><b><font color="maroon">Как заваривать лечебные травы?</font></b></a><br>
-    <a href="/trudoustroistvo/27544-poleznye-sovety-po-trudoustrojstvu-v-italii.html" target="_blank"><b><font color="maroon">Полезные советы по трудоустройству в Италии</font></b></a><br>
-    <a href="/sport/15886-u-sbornoj-brazilii-novyj-trener.html" target="_blank"><b><font color="maroon">У сборной Бразилии новый тренер</font></b></a><br>
-     <a href="/ukraine/64574-nikolaev-paren-iznasiloval-16-letnyuyu-devushku-pri-pomoshhi-podrug.html" target="_blank"><b><font color="maroon">Николаев: парень изнасиловал 16-летнюю девушку при помощи подруг</font></b></a><br>
-    <a href="/main/66272-v-moskovskom-metro-ukrainec-upal-na-relsy.html" target="_blank"><b><font color="maroon">В московском метро украинец упал на рельсы</font></b></a><br>
-      <a href="/2013/12/25/dinamo-mozhet-otkazatsya-uchastvovat-v-chempionate-ukrainy-surkis.html" target="_blank"><b><font color="maroon">«Динамо» может отказаться участвовать в чемпионате Украины</font></b></a><br>
-    <a href="/ukraine/67269-goloseevskij-sud-opravdal-pilipishina.html" target="_blank"><b><font color="maroon">Голосеевский суд оправдал Пилипишина</font></b></a><br> -->
     
-    <big></big>
+    </div>
+    <trend :start="3" :end="7"></trend>
+    
+    
+    
 </div>
         
 
@@ -222,7 +217,7 @@ const newsData = [{
 
 }
 
-.box.box-news:nth-last-child(2){
+.box.box-news:nth-last-child(3){
     border-bottom: none;
     padding-bottom: 24px;
 }
