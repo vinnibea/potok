@@ -60,14 +60,14 @@ const trendsNow = trends.map((el, i) => {
         return  {
             ...el,
             votes,
-            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate() - 1) , 'MM/dd/yyyy').split('/').join('.'),
+            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate() - 1) , 'dd/MM/yyyy').split('/').join('.'),
             img: images[i]
         };
      } else {
         return {
             ...el,
             votes,
-            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate()), 'MM/dd/yyyy').split('/').join('.'),
+            date: format(new Date(new Date(Date.now()).getUTCFullYear(), new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getDate()), 'dd/MM/yyyy').split('/').join('.'),
             img: images[i]
         };
      }

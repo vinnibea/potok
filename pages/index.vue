@@ -447,7 +447,7 @@ const closeModal = () => {
             </div>
 
         </div>
-       
+       <big></big>
       <potok-footer></potok-footer>
      
       <ModalVue @onModal="closeModal" :open="modal"></ModalVue>

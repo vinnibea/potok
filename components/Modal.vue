@@ -16,47 +16,55 @@ const closeModal = () => {
 
 <template>
     <div id="modal-js" class="modal" :class="[
-        {'is-active': open}
+        { 'is-active': open }
     ]">
         <div class="modal-background is-active" @click="closeModal"></div>
-      
-        
-            <div class="modal-content">
-                <Icon name="mdi:close" class="icon-close" @click="closeModal"  aria-label="close"></Icon>
-                <span class="logo"></span>
-               <h2 class="title is-3">Вход в аккаунт</h2>
-               <div class="button-wrapper">
-                <Icon name="logos:google-icon" class="enter-icon"></Icon>
-                <button class="button button-enter">Продолжить с Google</button>
-               </div>
-               <div class="button-wrapper">
-                <Icon name="mdi:facebook-box" class="enter-icon"></Icon>
-                <button class="button button-enter">Продолжить с Facebook</button>
-               </div>
-               <div class="button-wrapper"> 
-                <Icon name="mdi:email-outline" class="enter-icon"></Icon>
-                
-                <button class="button button-enter">Почта</button>
-               </div>
-               <p class="subtitle is-6">
-        
+
+
+        <div class="modal-content">
+            <Icon name="mdi:close" class="icon-close" @click="closeModal" aria-label="close"></Icon>
+            <span class="logo"></span>
+            <h2 class="title is-3">Вход в аккаунт</h2>
+            <div class="modal-center">
+                <div class="button-wrapper">
+                    <Icon name="logos:google-icon" class="enter-icon"></Icon>
+                    <button class="button button-enter">Продолжить с Google</button>
+                </div>
+                <div class="button-wrapper">
+                    <Icon name="mdi:facebook-box" class="enter-icon"></Icon>
+                    <button class="button button-enter">Продолжить с Facebook</button>
+                </div>
+                <div class="button-wrapper">
+                    <Icon name="mdi:email-outline" class="enter-icon"></Icon>
+
+                    <button class="button button-enter">Почта</button>
+                </div>
+            </div>
+            <p class="subtitle is-6">
+
                 <span>Нет аккаунта? <a href="/index.php?do=register">Регистрация</a></span>
                 <a href="/index.php?do=lostpassword">Напомнить пароль</a>
-               </p>
+            </p>
 
-               
-              </div>
-          
-                
-        
-      
-        
-      </div>
+
+        </div>
+
+
+
+
+
+    </div>
 </template>
 
 <style>
 .modal {
     padding: 0px;
+}
+.modal-center {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 12px;
 }
 .logo {
     min-width: 82px;
@@ -64,6 +72,7 @@ const closeModal = () => {
     border: 2px solid rgb(214, 212, 212);
     border-radius: 8px;
 }
+
 .icon-close {
     font-size: 24px;
     position: absolute;
@@ -78,6 +87,7 @@ const closeModal = () => {
 .icon-close:hover {
     background-color: rgb(200, 200, 200);
 }
+
 .button-wrapper {
     position: relative;
 }
@@ -90,13 +100,14 @@ const closeModal = () => {
     font-size: 24px;
     transform: translateY(-50%);
 }
+
 .modal .subtitle.is-6 {
- border-top: 1px solid rgb(219, 219, 219);
- padding: 48px 24px;
- display: flex;
- flex-direction: column;
- align-items: center;
- gap: 12px;
+    border-top: 1px solid rgb(219, 219, 219);
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
 
 .modal .subtitle.is-6 a {
@@ -108,31 +119,37 @@ const closeModal = () => {
     font-size: 14px;
     color: grey;
 }
+
 .modal .subtitle.is-6:hover {
     color: #333;
 }
+
 .modal .subtitle.is-6 a:hover {
     opacity: 0.8;
 }
+
 .button-enter {
     background-color: rgb(227, 227, 227);
     border-radius: 18px;
     min-width: 320px;
-    text-transform:none;
+    text-transform: none;
     text-align: right;
     color: #000000;
     padding: 12px 24px;
 }
+
 .modal-content .is-3 {
     font-weight: 700;
     font-size: 24px;
     text-align: center;
 }
+
 .modal-background.is-active {
     backdrop-filter: blur(8px);
 }
-.modal.is-active .field{
- 
+
+.modal.is-active .field {
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -152,12 +169,15 @@ const closeModal = () => {
     gap: 24px;
     border-radius: 12px;
 }
+
 .modal-content input.input {
     min-width: 100%;
 }
 
 @media screen and (max-width: 700px) {
-    .modal, .modal-content {
+
+    .modal,
+    .modal-content {
         min-height: 100dvh;
         max-width: 100vw;
         border-radius: 0;
@@ -171,7 +191,7 @@ const closeModal = () => {
         background-color: rgb(227, 227, 227);
         border-radius: 18px;
         min-width: 270px;
-        text-transform:none;
+        text-transform: none;
         text-align: right;
         color: #000000;
         padding: 12px 24px;
